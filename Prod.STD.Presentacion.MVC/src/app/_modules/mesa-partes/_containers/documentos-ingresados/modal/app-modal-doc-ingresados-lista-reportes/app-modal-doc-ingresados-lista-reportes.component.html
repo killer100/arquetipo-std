@@ -1,0 +1,16 @@
+<app-modal-envelope modal-title="Listado de reportes generados por la OGACI"
+    [onClose]="bsModalRef.hide">
+    <div body>
+
+        <app-datatable [tableDef]="tableDef" [pagination]="pagination"
+            [loading]="loading" [error]="datatableError" [onChangePage]="handleChangePage"
+            [onChangePageSize]="handleChangePageSize">
+        </app-datatable>
+    </div>
+    <div footer>
+        <button (click)="bsModalRef.hide()" [disabled]="loading" type="button"
+            class="btn btn-default-custom" data-dismiss="modal"><i class="fa fa-ban fa-lg"
+                aria-hidden="true"></i>
+            Cancelar</button>
+    </div>
+</app-modal-envelope>

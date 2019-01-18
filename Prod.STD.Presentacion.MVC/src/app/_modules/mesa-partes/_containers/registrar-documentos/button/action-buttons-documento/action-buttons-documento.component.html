@@ -1,0 +1,43 @@
+<div style="min-width:150px;">
+    <button *ngIf="showButtonAdjuntarDocumento" (click)="onClickAdjuntarDocumento(documento.id_documento)"
+        [disabled]="disabled" class="btn btn-secondary-custom btn-icon"
+        placement="bottom" tooltip="Adjuntar documento" container="body"><i
+            class="fa fa-upload" aria-hidden="true"></i></button>
+
+    <button (click)="onClickVerAdjuntos(documento)" [disabled]="disabled" class="btn btn-secondary-custom btn-icon"
+        *ngIf="documento.cant_adjuntos>0" placement="bottom" tooltip="Ver adjuntos"><i
+            class="fa fa-list-alt" aria-hidden="true"></i></button>
+
+
+    <button *ngIf="!documento.aceptado_dependencia_inicial && !documento.id_tup"
+        (click)="onClickAgregarCopia(documento)" [disabled]="disabled" class="btn btn-secondary-custom btn-icon"
+        placement="bottom" tooltip="Agregar copia"><i class="fa fa-clone"
+            aria-hidden="true"></i></button>
+
+    <button (click)="onClickVerCopia(documento.id_documento)" [disabled]="disabled"
+        *ngIf="documento.cant_copias>0" class="btn btn-secondary-custom btn-icon"
+        role="button" rel="tooltip" placement="bottom" tooltip="Ver copias"><i
+            class="fa fa-copy" aria-hidden="true"></i></button>
+
+    <button *ngIf="!documento.aceptado_dependencia_inicial" (click)="handleClickEditarRegistro()"
+        [disabled]="disabled" class="btn btn-secondary-custom btn-icon"
+        placement="bottom" tooltip="Editar registro"><i class="fa fa-edit"></i></button>
+
+    <button *ngIf="!documento.aceptado_dependencia_inicial" (click)="onClickAnularRegistro(documento)"
+        [disabled]="disabled" class="btn btn-secondary-custom btn-icon"
+        placement="bottom" tooltip="Anular registro"><i class="fa fa-trash"></i></button>
+
+    <button *ngIf="showButtonVerReactivar" (click)="onClickReactivarRegistro(documento)"
+        [disabled]="disabled" class="btn btn-secondary-custom btn-icon"
+        placement="bottom" tooltip="Reactivar registro"><i class="fa fa-share-square-o"></i></button>
+
+    <button *ngIf="showButtonVerObservaciones" (click)="onClickVerObservaciones(documento)"
+        [disabled]="disabled" class="btn btn-secondary-custom btn-icon"
+        placement="bottom" tooltip="Ver observaciones"><i class="fa fa-eye"
+            aria-hidden="true"></i></button>
+
+    <button (click)="onClickImprimirEtiqueta(documento.id_documento)"
+        [disabled]="disabled" class="btn btn-secondary-custom btn-icon"
+        placement="bottom" tooltip="Imprimir etiquetas"><i class="fa fa-print"
+            aria-hidden="true"></i></button>
+</div>

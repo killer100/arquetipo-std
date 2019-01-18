@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.5" />
+    <PackageReference Include="Release.Helper.Data.Core" Version="1.0.5" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\MapDB\Prod.STD.Datos\Modelo\*.cs">
+      <Link>Modelo\%(FileName)</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="IUnitOfWorkTemplate.cs" />
+    <Compile Remove="UnitOfWorkTemplate.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Modelo\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Prod.STD.Entidades\Prod.STD.Entidades.csproj" />
+  </ItemGroup>
+</Project>

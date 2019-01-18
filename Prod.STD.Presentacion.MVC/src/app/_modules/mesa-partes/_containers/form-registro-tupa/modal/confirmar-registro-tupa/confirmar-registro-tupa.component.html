@@ -1,0 +1,46 @@
+<app-modal-envelope modal-title="Confirmar Registro" [onClose]="bsModalRef.hide">
+    <div body>
+        <div class="form-horizontal datos-confirmar">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Tipo de Documento</label>
+                <div class="col-sm-9">
+                    <p class="form-control-static">TUPA</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Razón Social</label>
+                <div class="col-sm-9">
+                    <p class="form-control-static">{{razon_social?razon_social:"-"}}</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Asunto</label>
+                <div class="col-sm-9">
+                    <p class="form-control-static">{{asunto?asunto: "-"}}</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Destinatario</label>
+                <div class="col-sm-9">
+                    <p class="form-control-static">{{destino?destino:"-"}}</p>
+                </div>
+            </div>
+            <div class="form-group has-error" *ngIf="requisitosTotal>requisitosCumplidos">
+                <div class="col-sm-12 text-center"><label class="control-label">Ha
+                        cumplido
+                        {{requisitosCumplidos}} requisitos de un total de
+                        {{requisitosTotal}},
+                        el expediente se registrará como observado</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div footer>
+        <button type="button" class="btn btn-primary-custom" (click)="handleConfirm()"><i
+                class="fa fa-check" aria-hidden="true"></i>
+            Confirmar</button>
+        <button type="button" class="btn btn-default-custom" (click)="bsModalRef.hide()"><i
+                class="fa fa-ban" aria-hidden="true"></i> Cancelar</button>
+    </div>
+</app-modal-envelope>

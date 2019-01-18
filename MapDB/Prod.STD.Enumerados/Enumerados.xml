@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <entidad>
+    <add NombreTabla = "dbo.TIPO_ENUMERADO" Codigo = "id_tipo_enumerado" Descripcion = "descripcion" ></add>
+
+  </entidad>
+  <grupo>
+    <!--TODOS LOS ENUMERADOS-->
+    <add NombreTabla = "dbo.ENUMERADO"  Codigo = "id_enumerado" Sql ="SELECT e.NombreTabla,e.Codigo,Enumerado = e.Nombre FROM dbo.enumerados e" ></add>
+  </grupo>
+</root>

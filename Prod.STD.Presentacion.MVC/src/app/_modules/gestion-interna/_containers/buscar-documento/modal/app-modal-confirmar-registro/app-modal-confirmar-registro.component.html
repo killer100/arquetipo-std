@@ -1,0 +1,13 @@
+<app-modal-envelope modal-title="Confirmar Registro" [onClose]="bsModalRef.hide">
+    <div body>
+        
+    </div>
+
+    <div footer>
+        <button type="button" class="btn btn-primary-custom" (click)="handleConfirm()"><i
+                class="fa fa-check" aria-hidden="true"></i>
+            Confirmar</button>
+        <button type="button" class="btn btn-default-custom" (click)="bsModalRef.hide()"><i
+                class="fa fa-ban" aria-hidden="true"></i> Cancelar</button>
+    </div>
+</app-modal-envelope>

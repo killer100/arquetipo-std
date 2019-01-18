@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="DataSourceSTD">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=srvsqlp01;Initial Catalog=DB_TRAMITE_DOCUMENTARIO</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>7f56c7bb-7df1-48e6-ac4f-69155a1a784c</DataSourceID>
+</RptDataSource>

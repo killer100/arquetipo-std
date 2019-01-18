@@ -1,0 +1,168 @@
+<form (submit)="handleSubmit()">
+  <app-modal-envelope modal-title="Nuevo Documento" [onClose]="bsModalRef.hide" sise="lg" [loading]="loading">
+    <div body>    
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label class="col-md-4 col-sm-4 control-label">Fecha</label>
+          <div class="col-md-8 col-sm-8">
+            <p class="form-control-static">{{documento.fecha_registro | dateFormat:"":"DD/MM/YYYY HH:mm:ss"}}</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 col-sm-4 control-label" [ngClass]="{'has-error': errors.id_clase_documento_interno}">Documento</label>
+          <div class="col-md-8 col-sm-8" [ngClass]="{'has-error': errors.id_clase_documento_interno}">
+              <app-typed-select [items]="enum_clasesDocumento" 
+                bindValue="id_clase_documento_interno" [(Model)]="documento.id_clase_documento_interno"
+                bindLabel="descripcion" [disabled]="loading">                                
+              </app-typed-select>
+              <span class="help-block" *ngIf="errors.id_clase_documento_interno">{{errors.id_clase_documento_interno}}</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 col-sm-4 control-label" [ngClass]="{'has-error': errors.coddeps_destino}">Derivar a</label>
+          <div class="col-md-8 col-sm-8" [ngClass]="{'has-error': errors.coddeps_destino}">
+              <app-typed-select [items]="enum_dependencias" bindValue="coddep" [asObject]="true" bindLabel="siglas"
+                [multiple]="true" [disabled]="loading" [(Model)]="documento.coddeps_destino" [ngClass]="{'has-error': errors.coddeps_destino}">
+                <ng-template #optionTemplate ng-option-tmp let-item="item" let-index="index">
+                    {{item.dependencia}} - {{item.siglas}}
+                </ng-template>
+              </app-typed-select>
+            <div class="mt-10">             
+              <div class="btn-group">
+                <label class="btn btn-secondary-custom" [(ngModel)]="seccion.todos" (ngModelChange)="onChangeSeccion()" btnCheckbox  tabindex="0" role="button" [ngModelOptions]="{standalone: true}">Todos</label>
+                <label class="btn btn-secondary-custom" [(ngModel)]="seccion.dvmype" (ngModelChange)="onChangeSeccion()" btnCheckbox  tabindex="0" role="button" [ngModelOptions]="{standalone: true}">DVMYPE-I</label>
+                <label class="btn btn-secondary-custom" [(ngModel)]="seccion.dvpa" (ngModelChange)="onChangeSeccion()" btnCheckbox  tabindex="0" role="button" [ngModelOptions]="{standalone: true}">DVPA</label>
+                <label class="btn btn-secondary-custom" [(ngModel)]="seccion.sg" (ngModelChange)="onChangeSeccion()" btnCheckbox  tabindex="0" role="button" [ngModelOptions]="{standalone: true}">SG</label>
+              </div>
+            </div>
+            <span class="help-block" *ngIf="errors.coddeps_destino">{{errors.coddeps_destino}}</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 col-sm-4 control-label" [ngClass]="{'has-error': errors.asunto}">Asunto</label>
+          <div class="col-md-8 col-sm-8" [ngClass]="{'has-error': errors.asunto}">
+            <textarea class="form-control" rows="3" name="asunto" placeholder="Asunto" [(ngModel)] = "documento.asunto"></textarea>
+            <span class="help-block" *ngIf="errors.asunto">{{errors.asunto}}</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 col-sm-4 control-label">Observaciones</label>
+          <div class="col-md-8 col-sm-8">
+            <textarea class="form-control" rows="3" name="observaciones" placeholder="Observaciones" [(ngModel)] = "documento.observaciones"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 col-sm-4 control-label" [ngClass]="{'has-error': errors.acciones}" >Acciones</label>
+          <div class="col-md-8 col-sm-8" [ngClass]="{'has-error': errors.acciones}">
+              <app-typed-select [items]="enum_tiposTratamiento"  [closeOnSelect]="false" [asObject]="true" 
+              [multiple]="true" bindValue="id_tipo_tratamiento" [(Model)]="documento.acciones"
+                bindLabel="descripcion" [disabled]="loading">
+              </app-typed-select>
+              <small class="form-text text-muted">Si sólo se considera <strong>Para conocimiento</strong>, el documento
+              finalizará en el área destino.</small>
+              <span class="help-block" *ngIf="errors.acciones">{{errors.acciones}}</span>
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 col-sm-4 control-label" [ngClass]="{'has-error': errors.folios}">Folios</label>
+            <div class="col-md-8 col-sm-8" [ngClass]="{'has-error': errors.folios}">
+              <input type="text" class="form-control" name="folios" [(ngModel)]="documento.folios" placeholder="Folios">
+              <span class="help-block" *ngIf="errors.folios">{{errors.folios}}</span>
+            </div>            
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 col-sm-4 control-label">¿Es respuesta de algún documento?</label>
+          <div class="col-md-8 col-sm-8">
+              <app-input-radio [options]="enum_itemsPregunta" [(Model)]="documento.es_documento_respuesta" [Name]="'es_documento_respuesta'">                
+              </app-input-radio>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="documento.es_documento_respuesta">
+          <label class="col-md-4 col-sm-4 control-label">Hoja de trámite</label>
+          <div class="col-md-8 col-sm-8">
+              <app-input-radio [options]="enum_itemsHojaTramite" [(Model)]="documento.tipo_hoja_tramite" [Name]="'tipo_hoja_tramite'" >                
+              </app-input-radio>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="documento.es_documento_respuesta">
+          <label class="col-md-4 col-sm-4 control-label" [ngClass]="{'has-error': errors.referencias}">Digite N° de Hoja de Trámite</label>
+          <div class="col-md-8 col-sm-8" [ngClass]="{'has-error': errors.referencias}">            
+            <app-typed-select [items]="documento.referencias" [multiple]="true" [isOpen] = "false" [addTag]="addCustomHojaTramite"  
+                              [disabled]="documento.tipo_hoja_tramite == null" 
+                              bindLabel ="numero_hoja_tramite" bindValue="id_hoja_tramite"
+                              [(Model)]="documento.referencias" [asObject]="true">
+            </app-typed-select>
+            <small class="form-text text-muted">Al digitar el N° de Hoja de Trámite presionar la tecla <strong>ENTER</strong>.</small>
+            <span class="help-block" *ngIf="errors.referencias">{{errors.referencias}}</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 col-sm-4 control-label">¿Desea adjuntar algún documento?</label>
+          <div class="col-md-8 col-sm-8">
+              <app-input-radio [options]="enum_itemsPregunta" [(Model)]="documento.tiene_adjuntos" [Name]="'tiene_adjuntos'">                
+              </app-input-radio>
+          </div>
+        </div>
+        <div class="form-group mb-0" *ngIf="documento.tiene_adjuntos">
+          <label class="col-md-4 col-sm-4 control-label" [ngClass]="{'has-error': errors.adjuntos}">Subir adjuntos</label>
+          <div class="col-md-8 col-sm-8" [ngClass]="{'has-error': errors.archivo}">
+            <div class="form-inline" [ngClass]="{'has-error': errors.adjuntos}">
+              <div class="form-group-doc">
+                <input type="file"  ng2FileSelect [uploader]="uploader" class="btn btn-default-custom"  />
+                <span class="help-block" *ngIf="errors.adjuntos">{{errors.adjuntos}}</span>
+              </div>                           
+            </div>
+            <span class="help-block" *ngIf="errors.archivo">{{errors.archivo}}</span> 
+          </div>
+        </div>
+        <table class="table table-custom table-bordered table-condensed" *ngIf="documento.tiene_adjuntos">
+          <thead>
+            <tr>
+              <th>N°</th>
+              <th>Nombre de archivo</th>
+              <th>Tipo</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>            
+            <tr *ngFor="let item of uploader.queue; index as i">
+              <td scope="row">{{ i + 1}}</td>
+              <td>{{item.file.name}}</td>
+              <td>{{item.file.type}}</td>
+              <td class="text-center">                                   
+                  <button class="btn btn-link btn-icon" type="button"            
+                     (click)="onRemoveFromQueue(item)" role="button"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+            <tr *ngIf="uploader.queue.length == 0">
+              <td scope="row" colspan="4">No se encontraron archivos</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="form-group">
+          <label class="col-md-4 col-sm-4 control-label">Requiere respuesta</label>
+          <div class="col-md-8 col-sm-8">
+              <app-input-radio [options]="enum_itemsPregunta" [(Model)]="documento.si_requiere_respuesta" [Name]="'si_requiere_respuesta'">                
+                </app-input-radio>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 col-sm-4 control-label">¿Es urgente?</label>
+          <div class="col-md-8 col-sm-8">
+              <app-input-radio [options]="enum_itemsPregunta" [(Model)]="documento.es_urgente" [Name]="'es_urgente'">                
+              </app-input-radio>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div footer>
+        <button type="submit" class="btn btn-primary-custom" [disabled]="loading">
+            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            Guardar</button>
+
+        <button type="button" class="btn btn-default-custom" (click)="bsModalRef.hide()"
+            [disabled]="loading"><i class="fa fa-ban" aria-hidden="true"></i>
+            Cancelar</button>
+    </div>
+  </app-modal-envelope>
+</form>

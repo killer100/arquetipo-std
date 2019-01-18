@@ -1,0 +1,17 @@
+<app-modal-envelope [loading]="loading" modal-title="Generar Reporte" [onClose]="bsModalRef.hide">
+    <div body>
+        <div>
+            Total de documentos entregados: {{documentos.length}}.
+        </div>
+        <app-list-table [tableDef]="tableDef" [items]="documentos"></app-list-table>
+    </div>
+    <div footer>
+        <button [disabled]="loading" type="button" (click)="handleGeneraReporte()"
+            class="btn btn-primary-custom"><i class="fa fa-floppy-o fa-lg"></i>
+            Generar reporte</button>
+        <button (click)="bsModalRef.hide()" [disabled]="loading" type="button"
+            class="btn btn-default-custom" data-dismiss="modal"><i class="fa fa-ban fa-lg"
+                aria-hidden="true"></i>
+            Cancelar</button>
+    </div>
+</app-modal-envelope>

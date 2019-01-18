@@ -1,0 +1,52 @@
+<app-modal-envelope [loading]="loading" modal-title="Reactivar Registro"
+    [onClose]="bsModalRef.hide">
+    <div body>
+        <div class="well well-sm">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">N° Registro:</label>
+                    <div class="col-sm-5">
+                        <p class="form-control-static">{{documento.num_tram_documentario}}</p>
+                    </div>
+                    <label class="col-sm-2 control-label">Fecha:</label>
+                    <div class="col-sm-3">
+                        <p class="form-control-static">{{documento.auditmod |
+                            dateFormat: "": "DD/MM/YYYY hh:mm:ss A"}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Razón Social:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{documento.persona.razon_social_format}}
+                            {{documento.persona.nro_documento}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Asunto:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{documento.asunto}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': errors.oficina_derivada}">
+            <label>Oficina en donde se quiere reactivar <span class="required_field">(*)</span></label>
+            <app-select [items]="enum_dependencias" [defaultOptionText]="enum_dependencias.length==0?'--No hay dependencias para reactivar--':'--Seleccionar--'"
+                [(Model)]="form.oficina_derivada" [disabled]="loading"></app-select>
+            <span class="help-block" *ngIf="errors.oficina_derivada">{{errors.oficina_derivada}}</span>
+        </div>
+        <div>
+            <label>Motivo de Reactivación <span class="required_field">(*)</span></label>
+            <textarea [disabled]="loading" [(ngModel)]="form.observaciones"
+                class="form-control" rows="3" maxlength="100"></textarea>
+        </div>
+    </div>
+    <div footer>
+        <button [disabled]="!form.observaciones||loading" (click)="handleReactivar()"
+            type="button" class="btn btn-primary-custom"><i class="fa fa-check fa-lg"></i>
+            Reactivar</button>
+        <button [disabled]="loading" (click)="bsModalRef.hide()" type="button"
+            class="btn btn-default-custom" data-dismiss="modal"><i class="fa fa-ban fa-lg"
+                aria-hidden="true"></i> Cancelar</button>
+    </div>
+</app-modal-envelope>

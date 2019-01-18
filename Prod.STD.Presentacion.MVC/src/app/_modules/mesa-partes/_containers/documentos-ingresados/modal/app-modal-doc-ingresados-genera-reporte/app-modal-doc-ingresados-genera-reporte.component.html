@@ -1,0 +1,46 @@
+<app-modal-envelope [loading]="loading" modal-title="Generar Reporte" [onClose]="bsModalRef.hide">
+    <div body>
+
+        <label class="control-label">Recibido por:</label>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <app-typed-select [items]="enum_dependencias" bindValue="codigo_dependencia"
+                        [defaultOptionText]="'--Seleccionar dependencia--'"
+                        bindLabel="dependenciaFormat" [(Model)]="codigo_dependencia"
+                        [disabled]="loadingDependencias||loading" [onSelect]="handleSelectDependencia">
+                    </app-typed-select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <app-typed-select [items]="enum_trabajadores" bindValue="codigo_trabajador"
+                        [defaultOptionText]="'--Seleccionar trabajador--'"
+                        bindLabel="nombreFormat" [(Model)]="codigo_trabajador"
+                        [disabled]="loadingTrabajadores||loading">
+                    </app-typed-select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Observaciones</label>
+            <textarea [disabled]="loading" class="form-control" name="observaciones"
+                rows="3" maxlength="200" [(ngModel)]="observaciones"></textarea>
+        </div>
+
+        <div>
+            Total de documentos entregados: {{documentos.length}}.
+        </div>
+        <app-list-table [tableDef]="tableDef" [items]="documentos"></app-list-table>
+    </div>
+    <div footer>
+        <button [disabled]="loading" type="button" (click)="handleGeneraReporte()"
+            class="btn btn-primary-custom"><i class="fa fa-floppy-o fa-lg"></i>
+            Generar reporte</button>
+        <button (click)="bsModalRef.hide()" [disabled]="loading" type="button"
+            class="btn btn-default-custom" data-dismiss="modal"><i class="fa fa-ban fa-lg"
+                aria-hidden="true"></i>
+            Cancelar</button>
+    </div>
+</app-modal-envelope>

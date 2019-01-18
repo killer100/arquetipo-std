@@ -1,0 +1,26 @@
+<app-datatable-toolbar [onChangePageSize]="onChangePageSize" [disabled]="loading">
+    <ng-content></ng-content>
+</app-datatable-toolbar>
+
+<div class="table-responsive">
+    <app-progress-bar [show]="loading"></app-progress-bar>
+    <table class="table table-custom table-striped table-bordered table-hover">
+        <thead app-datatable-header [columns]="tableDef.columns"></thead>
+        <tbody app-datatable-body [columns]="tableDef.columns" [items]="pagination.Data"
+            [loading]="loading" [error]="error" [pageStart]="firstPageOrderItem"></tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-sm-5">
+        <div class="pagination-info" *ngIf="pagination.TotalRows>0">
+            Mostrando {{firstPageOrderItem}} a {{lastPageOrderItem}} de
+            {{pagination.TotalRows}} registros
+        </div>
+    </div>
+    <div class="col-sm-7">
+        <app-datatable-pagination [onChangePage]="handleChangePage" *ngIf="pagination.TotalRows>pagination.pageSize"
+            [disabled]="loading" [maxSize]="5" [pageSize]="pagination.pageSize"
+            [page]="pagination.page" [total]="pagination.TotalRows"></app-datatable-pagination>
+    </div>
+</div>

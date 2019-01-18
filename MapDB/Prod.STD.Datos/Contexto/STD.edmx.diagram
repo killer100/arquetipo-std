@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b6bd86db3e0b4ec78a2c39c512519290" Name="Diagram1" ZoomLevel="58">
+        <EntityTypeShape EntityType="Modelo.ANEXO" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Modelo.MOVIMIENTO_DOCUMENTO" Width="1.5" PointX="3" PointY="1.75" />
+        <EntityTypeShape EntityType="Modelo.CLASE_DOCUMENTO_INTERNO" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="Modelo.VW_DAT_CLASE_TUPA" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="Modelo.VW_DAT_DEPENDENCIA" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="Modelo.VW_DAT_TUPA" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Modelo.resolucion" Width="1.5" PointX="3.375" PointY="8.75" />
+        <EntityTypeShape EntityType="Modelo.tipo_resolucion" Width="1.5" PointX="5.375" PointY="8.75" />
+        <EntityTypeShape EntityType="Modelo.V_PERSONA" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="Modelo.contador" Width="1.5" PointX="9.375" PointY="5.75" />
+        <EntityTypeShape EntityType="Modelo.VW_DAT_REQUISITO_TUPA" Width="1.5" PointX="9.375" PointY="8.75" />
+        <EntityTypeShape EntityType="Modelo.OBSERVACIONES_REQUISITOS_TRAMITE" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Modelo.ESTADO_DOCUMENTO" Width="1.5" PointX="0.75" PointY="13" />
+        <EntityTypeShape EntityType="Modelo.TIPO_ANEXO" Width="1.5" PointX="3.875" PointY="13.875" />
+        <AssociationConnector Association="Modelo.FK_ANEXO_TIPO_ANEXO" />
+        <EntityTypeShape EntityType="Modelo.VW_DAT_TRABAJADOR" Width="1.5" PointX="11.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Modelo.finaldoc" Width="1.5" PointX="11.375" PointY="9.75" />
+        <EntityTypeShape EntityType="Modelo.DAT_CONTADOR_INTERNO" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Modelo.vw_documentos_sitradoc" Width="1.5" PointX="13.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Modelo.vw_documentos_sitradoc_digitalizacion" Width="1.5" PointX="13.375" PointY="9.75" />
+        <EntityTypeShape EntityType="Modelo.vw_documento_estado" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Modelo.DAT_DOCUMENTO_LF" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="Modelo.DAT_DOCUMENTO_COPIA" Width="1.5" PointX="9.375" PointY="13.75" />
+        <EntityTypeShape EntityType="Modelo.DAT_REPORTE_DIGITALIZADO" Width="1.5" PointX="15.375" PointY="4.75" />
+        <EntityTypeShape EntityType="Modelo.vw_documentos_sitradoc_red_digitalizacion" Width="1.5" PointX="11.375" PointY="15.75" />
+        <EntityTypeShape EntityType="Modelo.vw_listado_reportes_digitalizados" Width="1.5" PointX="3.375" PointY="16.75" />
+        <EntityTypeShape EntityType="Modelo.vw_listado_reportes_documentos" Width="1.5" PointX="5.375" PointY="16.75" />
+        <EntityTypeShape EntityType="Modelo.DAT_REPORTE_DOCUMENTOS" Width="1.5" PointX="7.375" PointY="16.75" />
+        <EntityTypeShape EntityType="Modelo.TIPO_TRATAMIENTO" Width="1.5" PointX="13.375" PointY="16.75" />
+        <EntityTypeShape EntityType="Modelo.DOCUMENTO_CONT" Width="1.5" PointX="0.75" PointY="18.125" />
+        <EntityTypeShape EntityType="Modelo.DOCUMENTO_ADJUNTO" Width="1.5" PointX="3" PointY="24" />
+        <EntityTypeShape EntityType="Modelo.DOCUMENTO_DEPDESTINO" Width="1.5" PointX="3" PointY="30.25" />
+        <EntityTypeShape EntityType="Modelo.CUENTAINTERNO" Width="1.5" PointX="15.375" PointY="16.75" />
+        <EntityTypeShape EntityType="Modelo.doc_tipo_tratamiento" Width="1.5" PointX="17.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Modelo.DOCUMENTO_REFERENCIA" Width="1.5" PointX="3" PointY="33.875" />
+        <EntityTypeShape EntityType="Modelo.vw_documentos_sitradoc_red" Width="1.5" PointX="15.375" PointY="10.75" />
+        <EntityTypeShape EntityType="Modelo.DOCUMENTO" Width="1.5" PointX="14" PointY="19.125" />
+        <AssociationConnector Association="Modelo.FK_DOCUMENTO_CLASE_DOCUMENTO_INTERNO" />
+        <AssociationConnector Association="Modelo.FK_DOCUMENTO_ESTADO_DOCUMENTO" />
+        <AssociationConnector Association="Modelo.FK__DOCUMENTO__ID_DO__505CB104" />
+        <AssociationConnector Association="Modelo.FK__DOCUMENTO__ID_DO__5150D53D" />
+        <AssociationConnector Association="Modelo.FK__DOCUMENTO__ID_DO__5244F976" />
+        <AssociationConnector Association="Modelo.FK_MOVIMIENTO_DOCUMENTO_DOCUMENTO" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,56 @@
+<app-modal-envelope [loading]="loading" modal-title="Agregar Copia" [onClose]="bsModalRef.hide">
+    <div body>
+        <div class="well well-sm">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">N° Registro:</label>
+                    <div class="col-sm-5">
+                        <p class="form-control-static">{{documento.num_tram_documentario}}</p>
+                    </div>
+                    <label class="col-sm-2 control-label">Fecha:</label>
+                    <div class="col-sm-3">
+                        <p class="form-control-static">{{documento.auditmod |
+                            dateFormat: "": "DD/MM/YYYY HH:mm:ss"}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Razón Social:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{documento.persona.razon_social_format}}
+                            {{documento.persona.nro_documento}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Asunto:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{documento.asunto}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Derivado a:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{documento.dependencia_inicial.siglas}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3 class="subtitle-custom">Agregar copia</h3>
+        <div class="row">
+            <div class="col-sm-12">
+                <app-typed-select [items]="enum_dependencias" bindValue="coddep"
+                    [asObject]="true" bindLabel="dependenciaFormat" [multiple]="true"
+                    [disabled]="loading" [(Model)]="copias">
+                </app-typed-select>
+            </div>
+        </div>
+    </div>
+    <div footer>
+        <button [disabled]="copias.length==0||loading" type="button" (click)="handleGuardar()"
+            class="btn btn-primary-custom"><i class="fa fa-floppy-o fa-lg"></i>
+            Guardar</button>
+        <button (click)="bsModalRef.hide()" [disabled]="loading" type="button"
+            class="btn btn-default-custom" data-dismiss="modal"><i class="fa fa-ban fa-lg"
+                aria-hidden="true"></i>
+            Cancelar</button>
+    </div>
+</app-modal-envelope>

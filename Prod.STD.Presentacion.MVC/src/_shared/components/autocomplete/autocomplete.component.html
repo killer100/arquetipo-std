@@ -1,0 +1,9 @@
+<div [ngClass]="{'input-group': loading}">
+    <input [(ngModel)]="Model" [typeaheadOptionField]="bindLabel" [typeahead]="_source"
+        [typeaheadWaitMs]="delay" class="form-control" (typeaheadOnSelect)="handleSelect($event)"
+        (typeaheadLoading)="handleChangeTypeaheadLoading($event)"
+        (ngModelChange)="handleChange()" [disabled]="disabled">
+    <span class="input-group-addon spinner" *ngIf="loading">
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+    </span>
+</div>

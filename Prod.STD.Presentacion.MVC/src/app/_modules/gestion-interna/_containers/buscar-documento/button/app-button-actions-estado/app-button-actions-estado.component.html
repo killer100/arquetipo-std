@@ -1,0 +1,41 @@
+<div *ngIf="codEstadoDocInterno == 1">
+  <button type="button" class="btn btn-default-custom" data-toggle="modal" data-target="#modalAceptarDocumento">
+    <i class="fa fa-check"></i> Aceptar
+  </button>
+  <button type="button" class="btn btn-default-custom" data-toggle="modal" data-target="#modalAceptarDocumentoBloques">
+    <i class="fa fa-check"></i> Aceptar por Bloques (Sólo para documentos que vienen de Mesa de Partes)
+  </button>
+</div>
+
+<div *ngIf="codEstadoDocInterno == 2 || codEstadoDocInterno == 3">
+  <button type="button" class="btn btn-default-custom" data-toggle="modal" href="#modalDelegarDocumento">
+    <i class="fa fa-users"></i> Delegar
+  </button>
+  <button type="button" class="btn btn-default-custom" data-toggle="modal" href="#modalDerivarDocumento">
+    <i class="fa fa-share-square-o"></i> Derivar
+  </button>
+  <button type="button" class="btn btn-default-custom" data-toggle="modal" href="#modalAgregarAnvance">
+    <i class="fa fa-pencil-square-o"></i> Agregar avances
+  </button>
+  <button type="button" class="btn btn-default-custom" data-toggle="modal" href="#modalGenerarCorrespondencia">
+    <i class="fa fa-file-text-o"></i> Generar correspondencia
+  </button>
+  <button type="button" class="btn btn-default-custom" data-toggle="modal" href="#modalFinalizarDocumento">
+    <i class="fa fa-sign-out"></i> Finalizar
+  </button>
+</div>
+
+<div *ngIf="codEstadoDocInterno == 5">
+  <button type="button" class="btn btn-default-custom">
+    <i class="fa fa-folder-open"></i> Archivo
+  </button>
+  <button type="button" class="btn btn-default-custom" data-toggle="modal" href="#modalReactivarDocumento">
+    <i class="fa fa-check-square-o"></i> Reactivar
+  </button>
+</div>
+
+<div *ngIf="codEstadoDocInterno == 6">
+  <button type="button" class="btn btn-default-custom">
+    <i class="fa fa-database"></i> Enviar al archivo central
+  </button>
+</div>

@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BF7CFFE9-9FC1-4C09-BF2F-7A603B19762F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Prod.STD.Enumerados</RootNamespace>
+    <AssemblyName>Prod.STD.Enumerados</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CALIFICACION_DE_INFRACCION.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CAUSALES_DE_DEVOLUCION.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CAUSALES_DE_SUSPENSION.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CLASE_DOCUMENTO_INTERNO.cs" />
+    <Compile Include="COBRANZA_CONVENCIONAL.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COBRANZA_PERSUASIVA.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEPENDENCIA_PRODUCE.cs" />
+    <Compile Include="Enumerados.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESTADO_ADJUNTO.cs" />
+    <Compile Include="ESTADO_DE_ACTIVIDAD.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESTADO_DE_ACUMULADO.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESTADO_DE_DEMANDA.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESTADO_DE_DEPOSITO.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESTADO_DE_DEUDA.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESTADO_DE_DOCUMENTO.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESTADO_DE_EXPEDIENTE_COACTIVO.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESTADO_DE_EXPEDIENTE_PAS.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESTADO_DE_FISCALIZACION.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESTADO_DE_PREINICIO.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESTADO_DE_PROCESAMIENTO.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESTADO_DE_RCONAS.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESTADO_DE_SESION.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESTADO_DOCUMENTO_INTERNO.cs" />
+    <Compile Include="ESTADO_DOCUMENTO.cs" />
+    <Compile Include="ESTADO_DOCUMENTO_COPIA.cs" />
+    <Compile Include="ESTADO_OBSERVACION_REQUISITO.cs" />
+    <Compile Include="ESTADO_REQUISITO_TUPA.cs" />
+    <Compile Include="FORMATO_DE_RCONAS.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MOTIVO_DE_DEVOLUCION.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OBJETIVO_DE_FISCALIZACION.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORIGEN_DE_DOCUMENTO.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PREGUNTA_EXCLUSIVA.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RESULTADO_DE_PROCESO_JUDICIAL.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SENTIDO_DE_PRONUNCIAMIENTO.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_ACTIVIDAD_PLANTA.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_CARGO.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_DOCUMENTO.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_DOCUMENTO_DE_IDENTIDAD.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_DOMICILIO.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_ENTIDAD.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_ESPECIALIDAD.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_FISCALIZACION.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_INFRACCION.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_MATERIA.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_MATERIAL.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_MEDIDA.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_MEDIDA_CAUTELAR.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_PROCEDENCIA.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_PRONUNCIAMIENTO.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_SANCION.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DE_SECTOR.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_DOCUMENTO.cs" />
+    <Compile Include="TIPO_ENUMERADO.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_UNIDAD.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UNIDAD_FISCALIZADA.cs">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="enumerado.js">
+      <DependentUpon>Enumerados.tt</DependentUpon>
+    </Content>
+    <Content Include="Enumerados.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Enumerados.cs</LastGenOutput>
+      <CustomToolNamespace>Prod.STD.Enumerados</CustomToolNamespace>
+    </Content>
+    <Content Include="Enumerados.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

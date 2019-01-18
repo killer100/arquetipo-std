@@ -1,0 +1,19 @@
+<div class="form-horizontal">
+    <div class="form-group">
+        <!-- <label class="col-lg-2 col-md-3 col-sm-4 control-label">Digite N° de
+            Documentos</label> -->
+        <label class="col-lg-2 col-md-3 col-sm-4 control-label">Documentos
+            Seleccionados</label>
+        <div class="col-lg-10 col-md-9 col-sm-8">
+            <div class="chips-container">
+                <span *ngFor="let item of items" class="tag label label-primary chip">
+                    {{item.numero_tramite}}
+                    <span class="chip-remove" (click)="onRemove(item)"><i class="fa fa-times-circle"></i></span>
+                </span>
+            </div>
+
+            <!-- <small class="form-text text-muted">Al digitar el N° de Documento
+                presionar la tecla <strong>ENTER</strong>.</small> -->
+        </div>
+    </div>
+</div>

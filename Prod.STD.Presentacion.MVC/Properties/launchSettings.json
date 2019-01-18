@@ -1,0 +1,32 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://127.0.0.1:5015",
+      "sslPort": 0
+    },
+    "iisExpress": {
+      "applicationUrl": "http://127.0.0.1:30700/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "http://127.0.0.1:30700/Home/Index?var=tNNNxML7ofUIqT90EWvySLa68wOuW42e4dS8AT0vQAqPxGNTlnyTrgF9WaG5m5mHHniRMmoreQ2izq6BnGaUfo1U1YoBFqZveoLYYhBAmorecTvB8qHTVDu4Gdmwequalequal",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "IIS Local": {
+      "commandName": "IIS",
+      "launchBrowser": true,
+      "launchUrl": "http://127.0.0.1:5015/Home/Index?var=tNNNxML7ofUIqT90EWvySLa68wOuW42e4dS8AT0vQAqPxGNTlnyTrgF9WaG5m5mHHniRMmoreQ2izq6BnGaUfo1U1YoBFqZveoLYYhBAmorecTvB8qHTVDu4Gdmwequalequal",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<ul class="nav navbar-nav">
+    <li><a href="#" class="btn-aplicaciones"><span class="icon-aplicaciones"><img
+                    src="images/icon-aplicaciones.png"> Aplicaciones</span></a></li>
+    <li *ngFor="let menu of options" dropdown routerLinkActive="active"
+        >
+        <a *ngIf="!menu.children" routerLink="{{menu.to}}">{{menu.label}}</a>
+        <a href="javascript:" *ngIf="menu.children" class="dropdown-toggle"
+            dropdownToggle>
+            {{menu.label}}
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" *dropdownMenu>
+            <li *ngFor="let item of menu.children" routerLinkActive="active"
+                [class]="item.divider===true&&'divider'">
+                <a routerLink="{{item.to}}" *ngIf="item.divider!==true">{{item.label}}</a>
+            </li>
+        </ul>
+    </li>
+</ul>

@@ -1,0 +1,18 @@
+
+<div *ngIf="documento.cod_estado_docinterno == 1">
+  <button class="btn btn-link-custom btn-icon" placement="bottom">
+    <i class="fa fa-eye" aria-hidden="true"></i>
+  </button>
+  <button class="btn btn-link-custom btn-icon" placement="bottom">
+    <i class="fa fa-file-text" aria-hidden="true"></i>
+  </button>  
+</div>
+
+<div *ngIf="documento.cod_estado_docinterno == 2">
+    <button class="btn btn-link-custom btn-icon" placement="bottom">
+      <i class="fa fa-info-circle" aria-hidden="true"></i>
+    </button>
+    <button class="btn btn-link-custom btn-icon" placement="bottom">
+      <i class="fa fa-list-alt" aria-hidden="true"></i>
+    </button>  
+  </div>

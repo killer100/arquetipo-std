@@ -1,0 +1,8 @@
+<div class="table-responsive">
+    <app-progress-bar [show]="loading"></app-progress-bar>
+    <table class="table table-custom table-striped table-bordered table-hover">
+        <thead app-list-table-header [columns]="tableDef.columns"></thead>
+        <tbody app-list-table-body [columns]="tableDef.columns" [items]="items"
+            [loading]="loading"></tbody>
+    </table>
+</div>

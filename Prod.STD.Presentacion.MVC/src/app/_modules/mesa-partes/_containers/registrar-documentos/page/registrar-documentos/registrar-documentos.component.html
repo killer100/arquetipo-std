@@ -1,0 +1,18 @@
+<app-page-title text="Registros">
+    <app-dropdown-button [disabled]="loading" [options]="DropdownRegistro" text="Nuevo Registro"
+        iconClass="fa fa-plus-circle"></app-dropdown-button>
+</app-page-title>
+
+<app-form-buscar-documento [onSubmit]="handleSubmitForm" [disabled]="loading"
+    [enum_tipos_resolucion]="enum_tipos_resolucion" [enum_clases_documento]="enum_clases_documento"
+    [enum_siglas_oficina]="enum_siglas_oficina" [enum_anios]="enum_anios"
+    [enum_tupas]="enum_tupas" [enum_dependencias]="enum_dependencias"></app-form-buscar-documento>
+
+<app-datatable [tableDef]="tableDef" [pagination]="pagination" [loading]="loading"
+    [error]="datatableError" [onChangePage]="handleChangePage"
+    [onChangePageSize]="handleChangePageSize">
+    <!--<button type="button" class="btn btn-secondary-custom"><i class="fa fa-print"
+            aria-hidden="true"></i> Imprimir</button>
+    <button type="button" class="btn btn-secondary-custom"><i class="fa fa-file-excel-o"
+            aria-hidden="true"></i> Exportar</button>-->
+</app-datatable>

@@ -1,0 +1,2522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="STDModelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CLASE_DOCUMENTO_INTERNO">
+          <Key>
+            <PropertyRef Name="ID_CLASE_DOCUMENTO_INTERNO" />
+          </Key>
+          <Property Name="ID_CLASE_DOCUMENTO_INTERNO" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="255" />
+          <Property Name="PROCEDENCIA" Type="varchar" MaxLength="1" />
+          <Property Name="categoria" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="ESTADO_DOCUMENTO">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_DOCUMENTO" />
+          </Key>
+          <Property Name="ID_ESTADO_DOCUMENTO" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="OBSERVACIONES_REQUISITOS_TRAMITE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_DOCUMENTO" Type="int" />
+          <Property Name="ID_REQUISITO_TUPA" Type="int" />
+          <Property Name="OBSERVACIONES" Type="varchar" MaxLength="500" />
+          <Property Name="ESTADO" Type="int" />
+        </EntityType>
+        <EntityType Name="TIPO_ANEXO">
+          <Key>
+            <PropertyRef Name="ID_TIPO_ANEXO" />
+          </Key>
+          <Property Name="ID_TIPO_ANEXO" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DAT_DOCUMENTO_COPIA">
+          <Key>
+            <PropertyRef Name="ID_DOCUMENTO_COPIA" />
+          </Key>
+          <Property Name="ID_DOCUMENTO_COPIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_DOCUMENTO" Type="int" Nullable="false" />
+          <Property Name="CODDEP" Type="int" Nullable="false" />
+          <Property Name="LEIDO" Type="int" Nullable="false" />
+          <Property Name="ESTADO" Type="int" Nullable="false" />
+          <Property Name="AUDITCREA" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DOCUMENTO_ADJUNTO">
+          <Key>
+            <PropertyRef Name="ID_DOCUMENTO_ADJUNTO" />
+          </Key>
+          <Property Name="ID_DOCUMENTO_ADJUNTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_DOCUMENTO" Type="int" Nullable="false" />
+          <Property Name="NOMBRE_ADJUNTO" Type="varchar" MaxLength="100" />
+          <Property Name="FLAG" Type="bit" />
+          <Property Name="MIMETYPE" Type="varchar" MaxLength="200" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="100" />
+          <Property Name="SIZE" Type="int" />
+        </EntityType>
+        <EntityType Name="DOCUMENTO_CONT">
+          <Key>
+            <PropertyRef Name="ID_DOCUMENTO" />
+          </Key>
+          <Property Name="ID_DOCUMENTO" Type="int" Nullable="false" />
+          <Property Name="CANT_COPIAS" Type="int" Nullable="false" />
+          <Property Name="CANT_ADJUNTOS" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DOCUMENTO_DEPDESTINO">
+          <Key>
+            <PropertyRef Name="ID_DOCUMENTO_DEPDESTINO" />
+          </Key>
+          <Property Name="ID_DOCUMENTO" Type="int" Nullable="false" />
+          <Property Name="CODDEP_DESTINO" Type="int" />
+          <Property Name="FLAG" Type="bit" />
+          <Property Name="ID_DOCUMENTO_DEPDESTINO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DOCUMENTO_REFERENCIA">
+          <Key>
+            <PropertyRef Name="ID_DOCUMENTO_REFERENCIA" />
+          </Key>
+          <Property Name="ID_DOCUMENTO" Type="int" Nullable="false" />
+          <Property Name="ID_DOCUMENTO_REFERENCIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIPO_HOJA_TRAMITE" Type="char" MaxLength="1" />
+          <Property Name="NUMERO_HOJA_TRAMITE" Type="varchar" MaxLength="20" />
+          <Property Name="FLAG" Type="bit" />
+          <Property Name="ID_HOJA_TRAMITE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ANEXO">
+          <Key>
+            <PropertyRef Name="ID_ANEXO" />
+          </Key>
+          <Property Name="ID_ANEXO" Type="int" Nullable="false" />
+          <Property Name="ID_DOCUMENTO" Type="int" Nullable="false" />
+          <Property Name="ID_TIPO_ANEXO" Type="int" Nullable="false" />
+          <Property Name="NUM_DOCUMENTO_ANEXO" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ID_PERSONA_DESTINO" Type="int" Nullable="false" />
+          <Property Name="FOLIOS" Type="int" Nullable="false" />
+          <Property Name="CONTENIDO" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="OBSERVACIONES" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="AUDIT_MOD" Type="datetime" Nullable="false" />
+          <Property Name="coddep" Type="int" />
+          <Property Name="modificado" Type="varchar" MaxLength="255" />
+          <Property Name="ID_PERSONA" Type="int" />
+          <Property Name="CORRELATIVO" Type="int" />
+          <Property Name="ID_DOCUMENTO_ADJUNTO" Type="int" />
+          <Property Name="ESTADO_ADJUNTO" Type="int" Nullable="false" />
+          <Property Name="MOTIVO_ANULACION" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="contador">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="cont" Type="int" Nullable="false" />
+          <Property Name="anio" Type="int" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="255" />
+          <Property Name="hostname" Type="varchar" MaxLength="255" />
+          <Property Name="AUDITMOD" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CUENTAINTERNO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="coddep" Type="int" Nullable="false" />
+          <Property Name="id_tipo_documento" Type="int" Nullable="false" />
+          <Property Name="contador" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_TRAMITE_DOCUMENTARIO.web_tramite.DAT_CONTADOR_INTERNO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DAT_CONTADOR_INTERNO">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_documento" />
+            <PropertyRef Name="contador" />
+            <PropertyRef Name="fecha_registro" />
+            <PropertyRef Name="estado" />
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_documento" Type="int" Nullable="false" />
+          <Property Name="contador" Type="int" Nullable="false" />
+          <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DAT_DOCUMENTO_LF">
+          <Key>
+            <PropertyRef Name="ID_LF" />
+          </Key>
+          <Property Name="ID_LF" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_LASERFICHE" Type="int" />
+          <Property Name="TIPO_DOCLF" Type="varchar" MaxLength="25" />
+          <Property Name="ID_DOCUMENTO" Type="int" />
+        </EntityType>
+        <EntityType Name="DAT_REPORTE_DIGITALIZADO">
+          <Key>
+            <PropertyRef Name="id_reporte" />
+          </Key>
+          <Property Name="id_reporte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_registro" Type="datetime" />
+          <Property Name="user_registro" Type="varchar" MaxLength="50" />
+          <Property Name="ip_user_registro" Type="varchar" MaxLength="20" />
+          <Property Name="numero_reporte" Type="int" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="coddep_entregado" Type="int" />
+          <Property Name="codigo_trabajador_entregado" Type="int" />
+          <Property Name="coddep_recibido" Type="int" />
+          <Property Name="codigo_trabajador_recibido" Type="int" />
+          <Property Name="fecha_recibido" Type="datetime" />
+          <Property Name="fecha_audit" Type="datetime" />
+          <Property Name="user_audit" Type="varchar" MaxLength="50" />
+          <Property Name="ip_audit" Type="varchar" MaxLength="20" />
+          <Property Name="observacion" Type="text" />
+          <Property Name="fecha_filtro_ini" Type="varchar" MaxLength="20" />
+          <Property Name="fecha_filtro_fin" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="DAT_REPORTE_DOCUMENTOS">
+          <Key>
+            <PropertyRef Name="id_reporte" />
+          </Key>
+          <Property Name="id_reporte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_registro" Type="datetime" />
+          <Property Name="user_registro" Type="varchar" MaxLength="50" />
+          <Property Name="ip_user_registro" Type="varchar" MaxLength="20" />
+          <Property Name="numero_reporte" Type="int" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="coddep_entregado" Type="int" />
+          <Property Name="codigo_trabajador_entregado" Type="int" />
+          <Property Name="coddep_recibido" Type="int" />
+          <Property Name="codigo_trabajador_recibido" Type="int" />
+          <Property Name="fecha_recibido" Type="datetime" />
+          <Property Name="fecha_audit" Type="datetime" />
+          <Property Name="user_audit" Type="varchar" MaxLength="50" />
+          <Property Name="ip_audit" Type="varchar" MaxLength="20" />
+          <Property Name="observacion" Type="text" />
+          <Property Name="fecha_filtro_ini" Type="varchar" MaxLength="20" />
+          <Property Name="fecha_filtro_fin" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="doc_tipo_tratamiento">
+          <Key>
+            <PropertyRef Name="ID_DOC_TIPO_TRATAMIENTO" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_documento" Type="int" Nullable="false" />
+          <Property Name="id_tipo_tratamiento" Type="int" Nullable="false" />
+          <Property Name="dependencia" Type="int" />
+          <Property Name="ID_DOC_TIPO_TRATAMIENTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DOCUMENTO">
+          <Key>
+            <PropertyRef Name="ID_DOCUMENTO" />
+          </Key>
+          <Property Name="ID_DOCUMENTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_PERSONA" Type="int" />
+          <Property Name="ID_TUP" Type="int" />
+          <Property Name="ID_TIPO_DOCUMENTO" Type="int" Nullable="false" />
+          <Property Name="ID_ESTADO_DOCUMENTO" Type="int" Nullable="false" />
+          <Property Name="ID_CLASE_DOCUMENTO_INTERNO" Type="int" />
+          <Property Name="NUM_TRAM_DOCUMENTARIO" Type="varchar" MaxLength="255" />
+          <Property Name="INDICATIVO_OFICIO" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ASUNTO" Type="varchar" MaxLength="1000" />
+          <Property Name="FOLIOS" Type="int" />
+          <Property Name="OBSERVACIONES" Type="varchar" MaxLength="2500" />
+          <Property Name="FECHA_RECEPCION" Type="varchar" MaxLength="255" />
+          <Property Name="PRIORIDAD" Type="varchar" MaxLength="255" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="AUDITMOD" Type="datetime" Nullable="false" />
+          <Property Name="ESTADO_REQUISITO" Type="varchar" MaxLength="255" />
+          <Property Name="FECHA2" Type="varchar" MaxLength="255" />
+          <Property Name="coddep" Type="int" />
+          <Property Name="OBSFIN" Type="varchar" MaxLength="255" />
+          <Property Name="fecha3" Type="varchar" MaxLength="255" />
+          <Property Name="modificacion" Type="varchar" MaxLength="255" />
+          <Property Name="referencia" Type="varchar" MaxLength="255" />
+          <Property Name="Fecha_Max_Plazo" Type="varchar" MaxLength="10" />
+          <Property Name="v_asesor" Type="int" />
+          <Property Name="requerimiento" Type="int" />
+          <Property Name="coddep_responsable" Type="int" />
+          <Property Name="ESTADO_EXPEDIENTE" Type="int" />
+          <Property Name="SUJETO_PROCESO_JUDICIAL" Type="int" />
+          <Property Name="REPORTE_OCURRENCIA" Type="varchar" MaxLength="150" />
+          <Property Name="id_docbak" Type="int" />
+          <Property Name="clave" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="finaldoc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_documento" Type="int" Nullable="false" />
+          <Property Name="observaciones" Type="varchar" MaxLength="255" />
+          <Property Name="coddep" Type="int" />
+          <Property Name="estado" Type="int" />
+          <Property Name="auditmod" Type="datetime" />
+          <Property Name="usuario" Type="varchar" MaxLength="255" />
+          <Property Name="FLAG" Type="varchar" MaxLength="1" />
+          <Property Name="audit_reactiva" Type="datetime" />
+          <Property Name="observaciones_reactiva" Type="varchar" MaxLength="255" />
+          <Property Name="usuario_reactiva" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="MOVIMIENTO_DOCUMENTO">
+          <Key>
+            <PropertyRef Name="ID_MOVIMIENTO_DOCUMENTO" />
+          </Key>
+          <Property Name="ID_MOVIMIENTO_DOCUMENTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_DOCUMENTO" Type="int" Nullable="false" />
+          <Property Name="ID_RUTA_TUPA" Type="int" />
+          <Property Name="ID_DEPENDENCIA_ORIGEN" Type="int" Nullable="false" />
+          <Property Name="ID_DEPENDENCIA_DESTINO" Type="int" Nullable="false" />
+          <Property Name="ID_OFICIO" Type="int" />
+          <Property Name="FOLIOS" Type="int" />
+          <Property Name="OBSERVACIONES" Type="varchar" MaxLength="255" />
+          <Property Name="FECHA_RESPUESTA" Type="varchar" MaxLength="10" />
+          <Property Name="AUDIT_MOD" Type="datetime" Nullable="false" />
+          <Property Name="AUDIT_REC" Type="datetime" />
+          <Property Name="estado" Type="varchar" MaxLength="1" />
+          <Property Name="avance" Type="varchar" MaxLength="2000" />
+          <Property Name="enviado" Type="int" Nullable="false" />
+          <Property Name="derivado" Type="int" Nullable="false" />
+          <Property Name="finalizado" Type="int" Nullable="false" />
+          <Property Name="fecha_plazo" Type="varchar" MaxLength="10" />
+          <Property Name="codigo_trabajador" Type="int" />
+          <Property Name="fecha_plazo_interno" Type="varchar" MaxLength="10" />
+          <Property Name="AUDIT_TRAB_DER" Type="datetime" />
+          <Property Name="AUDIT_TRAB_REC" Type="datetime" />
+          <Property Name="tratamiento" Type="varchar" MaxLength="21" />
+          <Property Name="condicion" Type="int" />
+          <Property Name="ULTIMO_AVANCE" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="resolucion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nro_resol" Type="varchar" MaxLength="255" />
+          <Property Name="id_documento" Type="int" />
+          <Property Name="flag" Type="varchar" MaxLength="1" />
+          <Property Name="sumilla" Type="varchar" MaxLength="1000" />
+          <Property Name="id_tipo_resolucion" Type="int" />
+          <Property Name="auditmod" Type="datetime" />
+          <Property Name="usuario" Type="varchar" MaxLength="255" />
+          <Property Name="auditmod2" Type="datetime" />
+          <Property Name="usuario2" Type="varchar" MaxLength="255" />
+          <Property Name="FIni" Type="varchar" MaxLength="10" />
+          <Property Name="FFin" Type="varchar" MaxLength="10" />
+          <Property Name="FPublicacion" Type="varchar" MaxLength="10" />
+          <Property Name="coddep" Type="int" />
+          <Property Name="FFirma" Type="varchar" MaxLength="10" />
+          <Property Name="FErratas" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tipo_resolucion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="descrip_completa" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_TRATAMIENTO">
+          <Key>
+            <PropertyRef Name="id_tipo_tratamiento" />
+          </Key>
+          <Property Name="id_tipo_tratamiento" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_TRAMITE_DOCUMENTARIO.dbo.V_PERSONA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_PERSONA">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ID_SECTOR" />
+            <PropertyRef Name="ID_TIPO_PERSONA" />
+            <PropertyRef Name="CODIGO_DEPARTAMENTO" />
+            <PropertyRef Name="CODIGO_PROVINCIA" />
+            <PropertyRef Name="CODIGO_DISTRITO" />
+            <PropertyRef Name="ID_TIPO_IDENTIFICACION" />
+            <PropertyRef Name="RUBRO" />
+            <PropertyRef Name="RAZON_SOCIAL" />
+            <PropertyRef Name="NOMBRES" />
+            <PropertyRef Name="APELLIDOS" />
+            <PropertyRef Name="NRO_DOCUMENTO" />
+            <PropertyRef Name="DIRECCION" />
+            <PropertyRef Name="AUDIT_MOD" />
+            <PropertyRef Name="FLAG" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_SECTOR" Type="int" Nullable="false" />
+          <Property Name="ID_TIPO_PERSONA" Type="int" Nullable="false" />
+          <Property Name="CODIGO_DEPARTAMENTO" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="CODIGO_PROVINCIA" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="CODIGO_DISTRITO" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="ID_TIPO_IDENTIFICACION" Type="int" Nullable="false" />
+          <Property Name="RUBRO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="RAZON_SOCIAL" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="NOMBRES" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="APELLIDOS" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="NRO_DOCUMENTO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="50" />
+          <Property Name="FAX" Type="varchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="AUDIT_MOD" Type="datetime" Nullable="false" />
+          <Property Name="REPRESENTANTE_LEGAL" Type="varchar" MaxLength="255" />
+          <Property Name="NRO_DOCUMENTO_REPRESENTANTE" Type="varchar" MaxLength="50" />
+          <Property Name="ID_TIPO_IDENTIFICACION_REP_LEG" Type="int" />
+          <Property Name="CODIGO_PUERTO" Type="int" />
+          <Property Name="FLAG" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="255" />
+          <Property Name="OBSERVACIONES" Type="varchar" MaxLength="255" />
+          <Property Name="CELULAR" Type="varchar" MaxLength="50" />
+          <Property Name="ID_AURA" Type="int" />
+          <Property Name="FLAG_OEC" Type="char" MaxLength="1" />
+          <Property Name="NRO_DOCPERNATURAL" Type="varchar" MaxLength="12" />
+          <Property Name="ID_TIPO_ORGANIZACION" Type="int" />
+          <Property Name="DEPARTAMENTO" Type="varchar" MaxLength="50" />
+          <Property Name="PROVINCIA" Type="varchar" MaxLength="50" />
+          <Property Name="DISTRITO" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_TRAMITE_DOCUMENTARIO.usr_std.VW_DAT_TRABAJADOR' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_DAT_TRABAJADOR">
+          <Key>
+            <PropertyRef Name="CODIGO_TRABAJADOR" />
+            <PropertyRef Name="CODIGO_DEPENDENCIA" />
+            <PropertyRef Name="APELLIDOS_TRABAJADOR" />
+            <PropertyRef Name="NOMBRES_TRABAJADOR" />
+            <PropertyRef Name="CONDICION" />
+          </Key>
+          <Property Name="CODIGO_TRABAJADOR" Type="int" Nullable="false" />
+          <Property Name="CODIGO_DEPENDENCIA" Type="int" Nullable="false" />
+          <Property Name="APELLIDOS_TRABAJADOR" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="NOMBRES_TRABAJADOR" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="CONDICION" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="FECHA_NACIMIENTO" Type="varchar" MaxLength="10" />
+          <Property Name="IDENTIFICADOR" Type="varchar" MaxLength="30" />
+          <Property Name="DNI" Type="varchar" MaxLength="8" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="10" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="20" />
+          <Property Name="AUDIT_MOD" Type="int" />
+          <Property Name="PUBLICADO" Type="datetime" />
+          <Property Name="IDPROFESION" Type="int" />
+          <Property Name="IDSUBDEPENDENCIA" Type="int" />
+          <Property Name="CODDEP_PUB" Type="int" />
+          <Property Name="CODIGO_MAESTRO" Type="varchar" MaxLength="10" />
+          <Property Name="DIRECTOR" Type="int" />
+          <Property Name="PUBLICADO_INTRANET" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_TRAMITE_DOCUMENTARIO.web_tramite.VW_DAT_CLASE_TUPA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_DAT_CLASE_TUPA">
+          <Key>
+            <PropertyRef Name="ID_CLASE_TUPA" />
+          </Key>
+          <Property Name="ID_CLASE_TUPA" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_TRAMITE_DOCUMENTARIO.web_tramite.VW_DAT_DEPENDENCIA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_DAT_DEPENDENCIA">
+          <Key>
+            <PropertyRef Name="CODIGO_DEPENDENCIA" />
+          </Key>
+          <Property Name="CODIGO_DEPENDENCIA" Type="int" Nullable="false" />
+          <Property Name="DEPENDENCIA" Type="varchar" MaxLength="255" />
+          <Property Name="SIGLAS" Type="varchar" MaxLength="100" />
+          <Property Name="CONDICION" Type="varchar" MaxLength="15" />
+          <Property Name="ID_TIPO_DEPENDENCIA" Type="int" />
+          <Property Name="SECCION" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_TRAMITE_DOCUMENTARIO.web_tramite.VW_DAT_REQUISITO_TUPA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_DAT_REQUISITO_TUPA">
+          <Key>
+            <PropertyRef Name="ID_REQUISITO" />
+          </Key>
+          <Property Name="ID_REQUISITO" Type="int" Nullable="false" />
+          <Property Name="ID_TUPA" Type="int" />
+          <Property Name="NUMERO_REQUISITO" Type="int" />
+          <Property Name="DESCRIPCION" Type="text" />
+          <Property Name="ESTADO" Type="int" />
+          <Property Name="ID_TIPO_REQUISITO" Type="varchar" MaxLength="1" />
+          <Property Name="VALOR_UIT" Type="numeric" Precision="18" Scale="6" />
+          <Property Name="MONTO" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_TRAMITE_DOCUMENTARIO.web_tramite.VW_DAT_TUPA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_DAT_TUPA">
+          <Key>
+            <PropertyRef Name="ID_TUPA" />
+          </Key>
+          <Property Name="ID_TUPA" Type="int" Nullable="false" />
+          <Property Name="ID_CLASE_TUPA" Type="int" />
+          <Property Name="CODIGO_DEPENDENCIA" Type="int" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="1000" />
+          <Property Name="NUMERO_DIAS" Type="int" />
+          <Property Name="UIT" Type="decimal" Precision="15" Scale="3" />
+          <Property Name="ESTADO_TUPA" Type="int" />
+          <Property Name="TIPO_APROBACION" Type="int" />
+          <Property Name="NUMERO_TUPA" Type="int" />
+          <Property Name="FLAG_CAMBIO" Type="int" />
+          <Property Name="ID_SECTOR" Type="int" />
+          <Property Name="ID_TIPO_SILENCIO" Type="int" />
+          <Property Name="DEPENDENCIA" Type="varchar" MaxLength="255" />
+          <Property Name="SIGLAS" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_TRAMITE_DOCUMENTARIO.web_tramite.vw_documento_estado' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_documento_estado">
+          <Key>
+            <PropertyRef Name="id_documento_estado" />
+            <PropertyRef Name="id_documento" />
+          </Key>
+          <Property Name="id_documento_estado" Type="int" Nullable="false" />
+          <Property Name="id_documento" Type="int" Nullable="false" />
+          <Property Name="id_anexo" Type="int" />
+          <Property Name="audit_fecha" Type="datetime" />
+          <Property Name="user_audit" Type="varchar" MaxLength="50" />
+          <Property Name="ip_audit" Type="varchar" MaxLength="20" />
+          <Property Name="estado" Type="char" MaxLength="1" />
+          <Property Name="id_reporte" Type="int" />
+          <Property Name="numero_reporte" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_TRAMITE_DOCUMENTARIO.web_tramite.vw_documentos_sitradoc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_documentos_sitradoc">
+          <Key>
+            <PropertyRef Name="id_anexo" />
+            <PropertyRef Name="tipo_registro" />
+            <PropertyRef Name="fecha_registro" />
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="id_documento" Type="int" />
+          <Property Name="id_anexo" Type="int" Nullable="false" />
+          <Property Name="tipo_registro" Type="int" Nullable="false" />
+          <Property Name="numero_tramite" Type="varchar" MaxLength="262" />
+          <Property Name="razon_social" Type="varchar" MaxLength="356" />
+          <Property Name="asunto" Type="varchar" MaxLength="1000" />
+          <Property Name="folios" Type="int" />
+          <Property Name="coddep" Type="int" />
+          <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+          <Property Name="fecha_registro_v" Type="varchar" MaxLength="21" />
+          <Property Name="usuario" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="estado_documento" Type="varchar" MaxLength="255" />
+          <Property Name="ruta" Type="varchar" MaxLength="101" />
+          <Property Name="pdf" Type="varchar" MaxLength="115" />
+          <Property Name="audit_rec" Type="datetime" />
+          <Property Name="documento_estado" Type="char" MaxLength="1" />
+          <Property Name="numero_reporte" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_TRAMITE_DOCUMENTARIO.web_tramite.vw_documentos_sitradoc_digitalizacion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_documentos_sitradoc_digitalizacion">
+          <Key>
+            <PropertyRef Name="id_anexo" />
+            <PropertyRef Name="tipo_registro" />
+            <PropertyRef Name="fecha_registro" />
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="id_documento" Type="int" />
+          <Property Name="id_anexo" Type="int" Nullable="false" />
+          <Property Name="tipo_registro" Type="int" Nullable="false" />
+          <Property Name="numero_tramite" Type="varchar" MaxLength="262" />
+          <Property Name="razon_social" Type="varchar" MaxLength="356" />
+          <Property Name="asunto" Type="varchar" MaxLength="1000" />
+          <Property Name="folios" Type="int" />
+          <Property Name="coddep" Type="int" />
+          <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+          <Property Name="fecha_registro_v" Type="varchar" MaxLength="21" />
+          <Property Name="usuario" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="estado_documento" Type="varchar" MaxLength="255" />
+          <Property Name="ruta" Type="varchar" MaxLength="101" />
+          <Property Name="pdf" Type="varchar" MaxLength="115" />
+          <Property Name="audit_rec" Type="datetime" />
+          <Property Name="documento_digitalizado" Type="char" MaxLength="1" />
+          <Property Name="numero_reporte" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_TRAMITE_DOCUMENTARIO.web_tramite.vw_documentos_sitradoc_red' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_documentos_sitradoc_red">
+          <Key>
+            <PropertyRef Name="tipo_registro" />
+            <PropertyRef Name="fecha_registro" />
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="id_documento" Type="int" />
+          <Property Name="id_anexo" Type="int" />
+          <Property Name="tipo_registro" Type="int" Nullable="false" />
+          <Property Name="numero_tramite" Type="varchar" MaxLength="262" />
+          <Property Name="razon_social" Type="varchar" MaxLength="356" />
+          <Property Name="asunto" Type="varchar" MaxLength="1000" />
+          <Property Name="folios" Type="int" />
+          <Property Name="coddep" Type="int" />
+          <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+          <Property Name="fecha_registro_v" Type="varchar" MaxLength="21" />
+          <Property Name="usuario" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="estado_documento" Type="varchar" MaxLength="255" />
+          <Property Name="ruta" Type="varchar" MaxLength="101" />
+          <Property Name="pdf" Type="varchar" MaxLength="115" />
+          <Property Name="audit_recibido_str" Type="varchar" MaxLength="21" />
+          <Property Name="documento_estado" Type="char" MaxLength="1" />
+          <Property Name="numero_reporte" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_TRAMITE_DOCUMENTARIO.web_tramite.vw_documentos_sitradoc_red_digitalizacion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_documentos_sitradoc_red_digitalizacion">
+          <Key>
+            <PropertyRef Name="id_documento" />
+            <PropertyRef Name="tipo_registro" />
+            <PropertyRef Name="fecha_registro" />
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="id_documento" Type="int" Nullable="false" />
+          <Property Name="id_anexo" Type="int" />
+          <Property Name="tipo_registro" Type="int" Nullable="false" />
+          <Property Name="numero_tramite" Type="varchar" MaxLength="255" />
+          <Property Name="razon_social" Type="varchar" MaxLength="356" />
+          <Property Name="asunto" Type="varchar" MaxLength="1000" />
+          <Property Name="folios" Type="int" />
+          <Property Name="coddep" Type="int" />
+          <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+          <Property Name="fecha_registro_v" Type="varchar" MaxLength="21" />
+          <Property Name="usuario" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="estado_documento" Type="varchar" MaxLength="255" />
+          <Property Name="ruta" Type="varchar" MaxLength="101" />
+          <Property Name="pdf" Type="varchar" MaxLength="115" />
+          <Property Name="audit_recibido_str" Type="varchar" MaxLength="21" />
+          <Property Name="dat_documento_digitalizado" Type="char" MaxLength="1" />
+          <Property Name="numero_reporte" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_TRAMITE_DOCUMENTARIO.web_tramite.vw_listado_reportes_digitalizados' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_listado_reportes_digitalizados">
+          <Key>
+            <PropertyRef Name="id_reporte" />
+            <PropertyRef Name="estado" />
+          </Key>
+          <Property Name="id_reporte" Type="int" Nullable="false" />
+          <Property Name="fecha_registro" Type="varchar" MaxLength="16" />
+          <Property Name="user_registro" Type="varchar" MaxLength="50" />
+          <Property Name="ip_user_registro" Type="varchar" MaxLength="20" />
+          <Property Name="numero_reporte" Type="varchar" MaxLength="12" />
+          <Property Name="numero_reporte_int" Type="int" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="coddep_entregado" Type="int" />
+          <Property Name="dep_entregado" Type="varchar" MaxLength="255" />
+          <Property Name="siglas_dep_entregado" Type="varchar" MaxLength="100" />
+          <Property Name="codigo_trabajador_entregado" Type="int" />
+          <Property Name="trabajador_entregado" Type="varchar" MaxLength="61" />
+          <Property Name="coddep_recibido" Type="int" />
+          <Property Name="dep_recibido" Type="varchar" MaxLength="255" />
+          <Property Name="siglas_dep_recibido" Type="varchar" MaxLength="100" />
+          <Property Name="codigo_trabajador_recibido" Type="int" />
+          <Property Name="trabajador_recibido" Type="varchar" MaxLength="61" />
+          <Property Name="fecha_recibido" Type="varchar" MaxLength="10" />
+          <Property Name="hora_recibido" Type="varchar" MaxLength="5" />
+          <Property Name="fecha_audit" Type="varchar" MaxLength="16" />
+          <Property Name="user_audit" Type="varchar" MaxLength="50" />
+          <Property Name="ip_audit" Type="varchar" MaxLength="20" />
+          <Property Name="observacion" Type="text" />
+          <Property Name="fecha_filtro_ini" Type="varchar" MaxLength="20" />
+          <Property Name="fecha_filtro_fin" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_TRAMITE_DOCUMENTARIO.web_tramite.vw_listado_reportes_documentos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_listado_reportes_documentos">
+          <Key>
+            <PropertyRef Name="id_reporte" />
+            <PropertyRef Name="estado" />
+          </Key>
+          <Property Name="id_reporte" Type="int" Nullable="false" />
+          <Property Name="fecha_registro" Type="varchar" MaxLength="16" />
+          <Property Name="user_registro" Type="varchar" MaxLength="50" />
+          <Property Name="ip_user_registro" Type="varchar" MaxLength="20" />
+          <Property Name="numero_reporte" Type="varchar" MaxLength="12" />
+          <Property Name="numero_reporte_int" Type="int" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="coddep_entregado" Type="int" />
+          <Property Name="dep_entregado" Type="varchar" MaxLength="255" />
+          <Property Name="siglas_dep_entregado" Type="varchar" MaxLength="100" />
+          <Property Name="codigo_trabajador_entregado" Type="int" />
+          <Property Name="trabajador_entregado" Type="varchar" MaxLength="61" />
+          <Property Name="coddep_recibido" Type="int" />
+          <Property Name="dep_recibido" Type="varchar" MaxLength="255" />
+          <Property Name="siglas_dep_recibido" Type="varchar" MaxLength="100" />
+          <Property Name="codigo_trabajador_recibido" Type="int" />
+          <Property Name="trabajador_recibido" Type="varchar" MaxLength="61" />
+          <Property Name="fecha_recibido" Type="varchar" MaxLength="10" />
+          <Property Name="hora_recibido" Type="varchar" MaxLength="5" />
+          <Property Name="fecha_audit" Type="varchar" MaxLength="16" />
+          <Property Name="user_audit" Type="varchar" MaxLength="50" />
+          <Property Name="ip_audit" Type="varchar" MaxLength="20" />
+          <Property Name="observacion" Type="text" />
+          <Property Name="fecha_filtro_ini" Type="varchar" MaxLength="20" />
+          <Property Name="fecha_filtro_fin" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__DOCUMENTO__ID_DO__505CB104">
+          <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="1" />
+          <End Role="DOCUMENTO_ADJUNTO" Type="Self.DOCUMENTO_ADJUNTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENTO">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Principal>
+            <Dependent Role="DOCUMENTO_ADJUNTO">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DOCUMENTO__ID_DO__5150D53D">
+          <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="1" />
+          <End Role="DOCUMENTO_DEPDESTINO" Type="Self.DOCUMENTO_DEPDESTINO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENTO">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Principal>
+            <Dependent Role="DOCUMENTO_DEPDESTINO">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DOCUMENTO__ID_DO__5244F976">
+          <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="1" />
+          <End Role="DOCUMENTO_REFERENCIA" Type="Self.DOCUMENTO_REFERENCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENTO">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Principal>
+            <Dependent Role="DOCUMENTO_REFERENCIA">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ANEXO_TIPO_ANEXO">
+          <End Role="TIPO_ANEXO" Type="Self.TIPO_ANEXO" Multiplicity="1" />
+          <End Role="ANEXO" Type="Self.ANEXO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_ANEXO">
+              <PropertyRef Name="ID_TIPO_ANEXO" />
+            </Principal>
+            <Dependent Role="ANEXO">
+              <PropertyRef Name="ID_TIPO_ANEXO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCUMENTO_CLASE_DOCUMENTO_INTERNO">
+          <End Role="CLASE_DOCUMENTO_INTERNO" Type="Self.CLASE_DOCUMENTO_INTERNO" Multiplicity="0..1" />
+          <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLASE_DOCUMENTO_INTERNO">
+              <PropertyRef Name="ID_CLASE_DOCUMENTO_INTERNO" />
+            </Principal>
+            <Dependent Role="DOCUMENTO">
+              <PropertyRef Name="ID_CLASE_DOCUMENTO_INTERNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCUMENTO_ESTADO_DOCUMENTO">
+          <End Role="ESTADO_DOCUMENTO" Type="Self.ESTADO_DOCUMENTO" Multiplicity="1" />
+          <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_DOCUMENTO">
+              <PropertyRef Name="ID_ESTADO_DOCUMENTO" />
+            </Principal>
+            <Dependent Role="DOCUMENTO">
+              <PropertyRef Name="ID_ESTADO_DOCUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMIENTO_DOCUMENTO_DOCUMENTO">
+          <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="1" />
+          <End Role="MOVIMIENTO_DOCUMENTO" Type="Self.MOVIMIENTO_DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENTO">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Principal>
+            <Dependent Role="MOVIMIENTO_DOCUMENTO">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_establecer_fecha_max_plazo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="ID_DOCUMENTO" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="STDModeloStoreContainer">
+          <EntitySet Name="CLASE_DOCUMENTO_INTERNO" EntityType="Self.CLASE_DOCUMENTO_INTERNO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ESTADO_DOCUMENTO" EntityType="Self.ESTADO_DOCUMENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OBSERVACIONES_REQUISITOS_TRAMITE" EntityType="Self.OBSERVACIONES_REQUISITOS_TRAMITE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_ANEXO" EntityType="Self.TIPO_ANEXO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DAT_DOCUMENTO_COPIA" EntityType="Self.DAT_DOCUMENTO_COPIA" Schema="usr_std" store:Type="Tables" />
+          <EntitySet Name="DOCUMENTO_ADJUNTO" EntityType="Self.DOCUMENTO_ADJUNTO" Schema="usr_std" store:Type="Tables" />
+          <EntitySet Name="DOCUMENTO_CONT" EntityType="Self.DOCUMENTO_CONT" Schema="usr_std" store:Type="Tables" />
+          <EntitySet Name="DOCUMENTO_DEPDESTINO" EntityType="Self.DOCUMENTO_DEPDESTINO" Schema="usr_std" store:Type="Tables" />
+          <EntitySet Name="DOCUMENTO_REFERENCIA" EntityType="Self.DOCUMENTO_REFERENCIA" Schema="usr_std" store:Type="Tables" />
+          <EntitySet Name="ANEXO" EntityType="Self.ANEXO" Schema="web_tramite" store:Type="Tables" />
+          <EntitySet Name="contador" EntityType="Self.contador" Schema="web_tramite" store:Type="Tables" />
+          <EntitySet Name="CUENTAINTERNO" EntityType="Self.CUENTAINTERNO" Schema="web_tramite" store:Type="Tables" />
+          <EntitySet Name="DAT_DOCUMENTO_LF" EntityType="Self.DAT_DOCUMENTO_LF" Schema="web_tramite" store:Type="Tables" />
+          <EntitySet Name="DAT_REPORTE_DIGITALIZADO" EntityType="Self.DAT_REPORTE_DIGITALIZADO" Schema="web_tramite" store:Type="Tables" />
+          <EntitySet Name="DAT_REPORTE_DOCUMENTOS" EntityType="Self.DAT_REPORTE_DOCUMENTOS" Schema="web_tramite" store:Type="Tables" />
+          <EntitySet Name="doc_tipo_tratamiento" EntityType="Self.doc_tipo_tratamiento" Schema="web_tramite" store:Type="Tables" />
+          <EntitySet Name="DOCUMENTO" EntityType="Self.DOCUMENTO" Schema="web_tramite" store:Type="Tables" />
+          <EntitySet Name="finaldoc" EntityType="Self.finaldoc" Schema="web_tramite" store:Type="Tables" />
+          <EntitySet Name="MOVIMIENTO_DOCUMENTO" EntityType="Self.MOVIMIENTO_DOCUMENTO" Schema="web_tramite" store:Type="Tables" />
+          <EntitySet Name="resolucion" EntityType="Self.resolucion" Schema="web_tramite" store:Type="Tables" />
+          <EntitySet Name="tipo_resolucion" EntityType="Self.tipo_resolucion" Schema="web_tramite" store:Type="Tables" />
+          <EntitySet Name="TIPO_TRATAMIENTO" EntityType="Self.TIPO_TRATAMIENTO" Schema="web_tramite" store:Type="Tables" />
+          <EntitySet Name="DAT_CONTADOR_INTERNO" EntityType="Self.DAT_CONTADOR_INTERNO" store:Type="Tables" store:Schema="web_tramite">
+            <DefiningQuery>SELECT 
+    [DAT_CONTADOR_INTERNO].[id] AS [id], 
+    [DAT_CONTADOR_INTERNO].[id_documento] AS [id_documento], 
+    [DAT_CONTADOR_INTERNO].[contador] AS [contador], 
+    [DAT_CONTADOR_INTERNO].[fecha_registro] AS [fecha_registro], 
+    [DAT_CONTADOR_INTERNO].[estado] AS [estado], 
+    [DAT_CONTADOR_INTERNO].[usuario] AS [usuario]
+    FROM [web_tramite].[DAT_CONTADOR_INTERNO] AS [DAT_CONTADOR_INTERNO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_PERSONA" EntityType="Self.V_PERSONA" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_PERSONA].[ID] AS [ID], 
+    [V_PERSONA].[ID_SECTOR] AS [ID_SECTOR], 
+    [V_PERSONA].[ID_TIPO_PERSONA] AS [ID_TIPO_PERSONA], 
+    [V_PERSONA].[CODIGO_DEPARTAMENTO] AS [CODIGO_DEPARTAMENTO], 
+    [V_PERSONA].[CODIGO_PROVINCIA] AS [CODIGO_PROVINCIA], 
+    [V_PERSONA].[CODIGO_DISTRITO] AS [CODIGO_DISTRITO], 
+    [V_PERSONA].[ID_TIPO_IDENTIFICACION] AS [ID_TIPO_IDENTIFICACION], 
+    [V_PERSONA].[RUBRO] AS [RUBRO], 
+    [V_PERSONA].[RAZON_SOCIAL] AS [RAZON_SOCIAL], 
+    [V_PERSONA].[NOMBRES] AS [NOMBRES], 
+    [V_PERSONA].[APELLIDOS] AS [APELLIDOS], 
+    [V_PERSONA].[NRO_DOCUMENTO] AS [NRO_DOCUMENTO], 
+    [V_PERSONA].[DIRECCION] AS [DIRECCION], 
+    [V_PERSONA].[TELEFONO] AS [TELEFONO], 
+    [V_PERSONA].[FAX] AS [FAX], 
+    [V_PERSONA].[EMAIL] AS [EMAIL], 
+    [V_PERSONA].[AUDIT_MOD] AS [AUDIT_MOD], 
+    [V_PERSONA].[REPRESENTANTE_LEGAL] AS [REPRESENTANTE_LEGAL], 
+    [V_PERSONA].[NRO_DOCUMENTO_REPRESENTANTE] AS [NRO_DOCUMENTO_REPRESENTANTE], 
+    [V_PERSONA].[ID_TIPO_IDENTIFICACION_REP_LEG] AS [ID_TIPO_IDENTIFICACION_REP_LEG], 
+    [V_PERSONA].[CODIGO_PUERTO] AS [CODIGO_PUERTO], 
+    [V_PERSONA].[FLAG] AS [FLAG], 
+    [V_PERSONA].[usuario] AS [usuario], 
+    [V_PERSONA].[OBSERVACIONES] AS [OBSERVACIONES], 
+    [V_PERSONA].[CELULAR] AS [CELULAR], 
+    [V_PERSONA].[ID_AURA] AS [ID_AURA], 
+    [V_PERSONA].[FLAG_OEC] AS [FLAG_OEC], 
+    [V_PERSONA].[NRO_DOCPERNATURAL] AS [NRO_DOCPERNATURAL], 
+    [V_PERSONA].[ID_TIPO_ORGANIZACION] AS [ID_TIPO_ORGANIZACION], 
+    [V_PERSONA].[DEPARTAMENTO] AS [DEPARTAMENTO], 
+    [V_PERSONA].[PROVINCIA] AS [PROVINCIA], 
+    [V_PERSONA].[DISTRITO] AS [DISTRITO]
+    FROM [dbo].[V_PERSONA] AS [V_PERSONA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_DAT_TRABAJADOR" EntityType="Self.VW_DAT_TRABAJADOR" store:Type="Views" store:Schema="usr_std">
+            <DefiningQuery>SELECT 
+    [VW_DAT_TRABAJADOR].[CODIGO_TRABAJADOR] AS [CODIGO_TRABAJADOR], 
+    [VW_DAT_TRABAJADOR].[CODIGO_DEPENDENCIA] AS [CODIGO_DEPENDENCIA], 
+    [VW_DAT_TRABAJADOR].[APELLIDOS_TRABAJADOR] AS [APELLIDOS_TRABAJADOR], 
+    [VW_DAT_TRABAJADOR].[NOMBRES_TRABAJADOR] AS [NOMBRES_TRABAJADOR], 
+    [VW_DAT_TRABAJADOR].[CONDICION] AS [CONDICION], 
+    [VW_DAT_TRABAJADOR].[EMAIL] AS [EMAIL], 
+    [VW_DAT_TRABAJADOR].[FECHA_NACIMIENTO] AS [FECHA_NACIMIENTO], 
+    [VW_DAT_TRABAJADOR].[IDENTIFICADOR] AS [IDENTIFICADOR], 
+    [VW_DAT_TRABAJADOR].[DNI] AS [DNI], 
+    [VW_DAT_TRABAJADOR].[TELEFONO] AS [TELEFONO], 
+    [VW_DAT_TRABAJADOR].[ESTADO] AS [ESTADO], 
+    [VW_DAT_TRABAJADOR].[AUDIT_MOD] AS [AUDIT_MOD], 
+    [VW_DAT_TRABAJADOR].[PUBLICADO] AS [PUBLICADO], 
+    [VW_DAT_TRABAJADOR].[IDPROFESION] AS [IDPROFESION], 
+    [VW_DAT_TRABAJADOR].[IDSUBDEPENDENCIA] AS [IDSUBDEPENDENCIA], 
+    [VW_DAT_TRABAJADOR].[CODDEP_PUB] AS [CODDEP_PUB], 
+    [VW_DAT_TRABAJADOR].[CODIGO_MAESTRO] AS [CODIGO_MAESTRO], 
+    [VW_DAT_TRABAJADOR].[DIRECTOR] AS [DIRECTOR], 
+    [VW_DAT_TRABAJADOR].[PUBLICADO_INTRANET] AS [PUBLICADO_INTRANET]
+    FROM [usr_std].[VW_DAT_TRABAJADOR] AS [VW_DAT_TRABAJADOR]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_DAT_CLASE_TUPA" EntityType="Self.VW_DAT_CLASE_TUPA" store:Type="Views" store:Schema="web_tramite">
+            <DefiningQuery>SELECT 
+    [VW_DAT_CLASE_TUPA].[ID_CLASE_TUPA] AS [ID_CLASE_TUPA], 
+    [VW_DAT_CLASE_TUPA].[DESCRIPCION] AS [DESCRIPCION]
+    FROM [web_tramite].[VW_DAT_CLASE_TUPA] AS [VW_DAT_CLASE_TUPA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_DAT_DEPENDENCIA" EntityType="Self.VW_DAT_DEPENDENCIA" store:Type="Views" store:Schema="web_tramite">
+            <DefiningQuery>SELECT 
+    [VW_DAT_DEPENDENCIA].[CODIGO_DEPENDENCIA] AS [CODIGO_DEPENDENCIA], 
+    [VW_DAT_DEPENDENCIA].[DEPENDENCIA] AS [DEPENDENCIA], 
+    [VW_DAT_DEPENDENCIA].[SIGLAS] AS [SIGLAS], 
+    [VW_DAT_DEPENDENCIA].[CONDICION] AS [CONDICION], 
+    [VW_DAT_DEPENDENCIA].[ID_TIPO_DEPENDENCIA] AS [ID_TIPO_DEPENDENCIA], 
+    [VW_DAT_DEPENDENCIA].[SECCION] AS [SECCION]
+    FROM [web_tramite].[VW_DAT_DEPENDENCIA] AS [VW_DAT_DEPENDENCIA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_DAT_REQUISITO_TUPA" EntityType="Self.VW_DAT_REQUISITO_TUPA" store:Type="Views" store:Schema="web_tramite">
+            <DefiningQuery>SELECT 
+    [VW_DAT_REQUISITO_TUPA].[ID_REQUISITO] AS [ID_REQUISITO], 
+    [VW_DAT_REQUISITO_TUPA].[ID_TUPA] AS [ID_TUPA], 
+    [VW_DAT_REQUISITO_TUPA].[NUMERO_REQUISITO] AS [NUMERO_REQUISITO], 
+    [VW_DAT_REQUISITO_TUPA].[DESCRIPCION] AS [DESCRIPCION], 
+    [VW_DAT_REQUISITO_TUPA].[ESTADO] AS [ESTADO], 
+    [VW_DAT_REQUISITO_TUPA].[ID_TIPO_REQUISITO] AS [ID_TIPO_REQUISITO], 
+    [VW_DAT_REQUISITO_TUPA].[VALOR_UIT] AS [VALOR_UIT], 
+    [VW_DAT_REQUISITO_TUPA].[MONTO] AS [MONTO]
+    FROM [web_tramite].[VW_DAT_REQUISITO_TUPA] AS [VW_DAT_REQUISITO_TUPA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_DAT_TUPA" EntityType="Self.VW_DAT_TUPA" store:Type="Views" store:Schema="web_tramite">
+            <DefiningQuery>SELECT 
+    [VW_DAT_TUPA].[ID_TUPA] AS [ID_TUPA], 
+    [VW_DAT_TUPA].[ID_CLASE_TUPA] AS [ID_CLASE_TUPA], 
+    [VW_DAT_TUPA].[CODIGO_DEPENDENCIA] AS [CODIGO_DEPENDENCIA], 
+    [VW_DAT_TUPA].[DESCRIPCION] AS [DESCRIPCION], 
+    [VW_DAT_TUPA].[NUMERO_DIAS] AS [NUMERO_DIAS], 
+    [VW_DAT_TUPA].[UIT] AS [UIT], 
+    [VW_DAT_TUPA].[ESTADO_TUPA] AS [ESTADO_TUPA], 
+    [VW_DAT_TUPA].[TIPO_APROBACION] AS [TIPO_APROBACION], 
+    [VW_DAT_TUPA].[NUMERO_TUPA] AS [NUMERO_TUPA], 
+    [VW_DAT_TUPA].[FLAG_CAMBIO] AS [FLAG_CAMBIO], 
+    [VW_DAT_TUPA].[ID_SECTOR] AS [ID_SECTOR], 
+    [VW_DAT_TUPA].[ID_TIPO_SILENCIO] AS [ID_TIPO_SILENCIO], 
+    [VW_DAT_TUPA].[DEPENDENCIA] AS [DEPENDENCIA], 
+    [VW_DAT_TUPA].[SIGLAS] AS [SIGLAS]
+    FROM [web_tramite].[VW_DAT_TUPA] AS [VW_DAT_TUPA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_documento_estado" EntityType="Self.vw_documento_estado" store:Type="Views" store:Schema="web_tramite">
+            <DefiningQuery>SELECT 
+    [vw_documento_estado].[id_documento_estado] AS [id_documento_estado], 
+    [vw_documento_estado].[id_documento] AS [id_documento], 
+    [vw_documento_estado].[id_anexo] AS [id_anexo], 
+    [vw_documento_estado].[audit_fecha] AS [audit_fecha], 
+    [vw_documento_estado].[user_audit] AS [user_audit], 
+    [vw_documento_estado].[ip_audit] AS [ip_audit], 
+    [vw_documento_estado].[estado] AS [estado], 
+    [vw_documento_estado].[id_reporte] AS [id_reporte], 
+    [vw_documento_estado].[numero_reporte] AS [numero_reporte]
+    FROM [web_tramite].[vw_documento_estado] AS [vw_documento_estado]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_documentos_sitradoc" EntityType="Self.vw_documentos_sitradoc" store:Type="Views" store:Schema="web_tramite">
+            <DefiningQuery>SELECT 
+    [vw_documentos_sitradoc].[id_documento] AS [id_documento], 
+    [vw_documentos_sitradoc].[id_anexo] AS [id_anexo], 
+    [vw_documentos_sitradoc].[tipo_registro] AS [tipo_registro], 
+    [vw_documentos_sitradoc].[numero_tramite] AS [numero_tramite], 
+    [vw_documentos_sitradoc].[razon_social] AS [razon_social], 
+    [vw_documentos_sitradoc].[asunto] AS [asunto], 
+    [vw_documentos_sitradoc].[folios] AS [folios], 
+    [vw_documentos_sitradoc].[coddep] AS [coddep], 
+    [vw_documentos_sitradoc].[fecha_registro] AS [fecha_registro], 
+    [vw_documentos_sitradoc].[fecha_registro_v] AS [fecha_registro_v], 
+    [vw_documentos_sitradoc].[usuario] AS [usuario], 
+    [vw_documentos_sitradoc].[estado_documento] AS [estado_documento], 
+    [vw_documentos_sitradoc].[ruta] AS [ruta], 
+    [vw_documentos_sitradoc].[pdf] AS [pdf], 
+    [vw_documentos_sitradoc].[audit_rec] AS [audit_rec], 
+    [vw_documentos_sitradoc].[documento_estado] AS [documento_estado], 
+    [vw_documentos_sitradoc].[numero_reporte] AS [numero_reporte]
+    FROM [web_tramite].[vw_documentos_sitradoc] AS [vw_documentos_sitradoc]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_documentos_sitradoc_digitalizacion" EntityType="Self.vw_documentos_sitradoc_digitalizacion" store:Type="Views" store:Schema="web_tramite">
+            <DefiningQuery>SELECT 
+    [vw_documentos_sitradoc_digitalizacion].[id_documento] AS [id_documento], 
+    [vw_documentos_sitradoc_digitalizacion].[id_anexo] AS [id_anexo], 
+    [vw_documentos_sitradoc_digitalizacion].[tipo_registro] AS [tipo_registro], 
+    [vw_documentos_sitradoc_digitalizacion].[numero_tramite] AS [numero_tramite], 
+    [vw_documentos_sitradoc_digitalizacion].[razon_social] AS [razon_social], 
+    [vw_documentos_sitradoc_digitalizacion].[asunto] AS [asunto], 
+    [vw_documentos_sitradoc_digitalizacion].[folios] AS [folios], 
+    [vw_documentos_sitradoc_digitalizacion].[coddep] AS [coddep], 
+    [vw_documentos_sitradoc_digitalizacion].[fecha_registro] AS [fecha_registro], 
+    [vw_documentos_sitradoc_digitalizacion].[fecha_registro_v] AS [fecha_registro_v], 
+    [vw_documentos_sitradoc_digitalizacion].[usuario] AS [usuario], 
+    [vw_documentos_sitradoc_digitalizacion].[estado_documento] AS [estado_documento], 
+    [vw_documentos_sitradoc_digitalizacion].[ruta] AS [ruta], 
+    [vw_documentos_sitradoc_digitalizacion].[pdf] AS [pdf], 
+    [vw_documentos_sitradoc_digitalizacion].[audit_rec] AS [audit_rec], 
+    [vw_documentos_sitradoc_digitalizacion].[documento_digitalizado] AS [documento_digitalizado], 
+    [vw_documentos_sitradoc_digitalizacion].[numero_reporte] AS [numero_reporte]
+    FROM [web_tramite].[vw_documentos_sitradoc_digitalizacion] AS [vw_documentos_sitradoc_digitalizacion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_documentos_sitradoc_red" EntityType="Self.vw_documentos_sitradoc_red" store:Type="Views" store:Schema="web_tramite">
+            <DefiningQuery>SELECT 
+    [vw_documentos_sitradoc_red].[id_documento] AS [id_documento], 
+    [vw_documentos_sitradoc_red].[id_anexo] AS [id_anexo], 
+    [vw_documentos_sitradoc_red].[tipo_registro] AS [tipo_registro], 
+    [vw_documentos_sitradoc_red].[numero_tramite] AS [numero_tramite], 
+    [vw_documentos_sitradoc_red].[razon_social] AS [razon_social], 
+    [vw_documentos_sitradoc_red].[asunto] AS [asunto], 
+    [vw_documentos_sitradoc_red].[folios] AS [folios], 
+    [vw_documentos_sitradoc_red].[coddep] AS [coddep], 
+    [vw_documentos_sitradoc_red].[fecha_registro] AS [fecha_registro], 
+    [vw_documentos_sitradoc_red].[fecha_registro_v] AS [fecha_registro_v], 
+    [vw_documentos_sitradoc_red].[usuario] AS [usuario], 
+    [vw_documentos_sitradoc_red].[estado_documento] AS [estado_documento], 
+    [vw_documentos_sitradoc_red].[ruta] AS [ruta], 
+    [vw_documentos_sitradoc_red].[pdf] AS [pdf], 
+    [vw_documentos_sitradoc_red].[audit_recibido_str] AS [audit_recibido_str], 
+    [vw_documentos_sitradoc_red].[documento_estado] AS [documento_estado], 
+    [vw_documentos_sitradoc_red].[numero_reporte] AS [numero_reporte]
+    FROM [web_tramite].[vw_documentos_sitradoc_red] AS [vw_documentos_sitradoc_red]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_documentos_sitradoc_red_digitalizacion" EntityType="Self.vw_documentos_sitradoc_red_digitalizacion" store:Type="Views" store:Schema="web_tramite">
+            <DefiningQuery>SELECT 
+    [vw_documentos_sitradoc_red_digitalizacion].[id_documento] AS [id_documento], 
+    [vw_documentos_sitradoc_red_digitalizacion].[id_anexo] AS [id_anexo], 
+    [vw_documentos_sitradoc_red_digitalizacion].[tipo_registro] AS [tipo_registro], 
+    [vw_documentos_sitradoc_red_digitalizacion].[numero_tramite] AS [numero_tramite], 
+    [vw_documentos_sitradoc_red_digitalizacion].[razon_social] AS [razon_social], 
+    [vw_documentos_sitradoc_red_digitalizacion].[asunto] AS [asunto], 
+    [vw_documentos_sitradoc_red_digitalizacion].[folios] AS [folios], 
+    [vw_documentos_sitradoc_red_digitalizacion].[coddep] AS [coddep], 
+    [vw_documentos_sitradoc_red_digitalizacion].[fecha_registro] AS [fecha_registro], 
+    [vw_documentos_sitradoc_red_digitalizacion].[fecha_registro_v] AS [fecha_registro_v], 
+    [vw_documentos_sitradoc_red_digitalizacion].[usuario] AS [usuario], 
+    [vw_documentos_sitradoc_red_digitalizacion].[estado_documento] AS [estado_documento], 
+    [vw_documentos_sitradoc_red_digitalizacion].[ruta] AS [ruta], 
+    [vw_documentos_sitradoc_red_digitalizacion].[pdf] AS [pdf], 
+    [vw_documentos_sitradoc_red_digitalizacion].[audit_recibido_str] AS [audit_recibido_str], 
+    [vw_documentos_sitradoc_red_digitalizacion].[dat_documento_digitalizado] AS [dat_documento_digitalizado], 
+    [vw_documentos_sitradoc_red_digitalizacion].[numero_reporte] AS [numero_reporte]
+    FROM [web_tramite].[vw_documentos_sitradoc_red_digitalizacion] AS [vw_documentos_sitradoc_red_digitalizacion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_listado_reportes_digitalizados" EntityType="Self.vw_listado_reportes_digitalizados" store:Type="Views" store:Schema="web_tramite">
+            <DefiningQuery>SELECT 
+    [vw_listado_reportes_digitalizados].[id_reporte] AS [id_reporte], 
+    [vw_listado_reportes_digitalizados].[fecha_registro] AS [fecha_registro], 
+    [vw_listado_reportes_digitalizados].[user_registro] AS [user_registro], 
+    [vw_listado_reportes_digitalizados].[ip_user_registro] AS [ip_user_registro], 
+    [vw_listado_reportes_digitalizados].[numero_reporte] AS [numero_reporte], 
+    [vw_listado_reportes_digitalizados].[numero_reporte_int] AS [numero_reporte_int], 
+    [vw_listado_reportes_digitalizados].[estado] AS [estado], 
+    [vw_listado_reportes_digitalizados].[coddep_entregado] AS [coddep_entregado], 
+    [vw_listado_reportes_digitalizados].[dep_entregado] AS [dep_entregado], 
+    [vw_listado_reportes_digitalizados].[siglas_dep_entregado] AS [siglas_dep_entregado], 
+    [vw_listado_reportes_digitalizados].[codigo_trabajador_entregado] AS [codigo_trabajador_entregado], 
+    [vw_listado_reportes_digitalizados].[trabajador_entregado] AS [trabajador_entregado], 
+    [vw_listado_reportes_digitalizados].[coddep_recibido] AS [coddep_recibido], 
+    [vw_listado_reportes_digitalizados].[dep_recibido] AS [dep_recibido], 
+    [vw_listado_reportes_digitalizados].[siglas_dep_recibido] AS [siglas_dep_recibido], 
+    [vw_listado_reportes_digitalizados].[codigo_trabajador_recibido] AS [codigo_trabajador_recibido], 
+    [vw_listado_reportes_digitalizados].[trabajador_recibido] AS [trabajador_recibido], 
+    [vw_listado_reportes_digitalizados].[fecha_recibido] AS [fecha_recibido], 
+    [vw_listado_reportes_digitalizados].[hora_recibido] AS [hora_recibido], 
+    [vw_listado_reportes_digitalizados].[fecha_audit] AS [fecha_audit], 
+    [vw_listado_reportes_digitalizados].[user_audit] AS [user_audit], 
+    [vw_listado_reportes_digitalizados].[ip_audit] AS [ip_audit], 
+    [vw_listado_reportes_digitalizados].[observacion] AS [observacion], 
+    [vw_listado_reportes_digitalizados].[fecha_filtro_ini] AS [fecha_filtro_ini], 
+    [vw_listado_reportes_digitalizados].[fecha_filtro_fin] AS [fecha_filtro_fin]
+    FROM [web_tramite].[vw_listado_reportes_digitalizados] AS [vw_listado_reportes_digitalizados]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_listado_reportes_documentos" EntityType="Self.vw_listado_reportes_documentos" store:Type="Views" store:Schema="web_tramite">
+            <DefiningQuery>SELECT 
+    [vw_listado_reportes_documentos].[id_reporte] AS [id_reporte], 
+    [vw_listado_reportes_documentos].[fecha_registro] AS [fecha_registro], 
+    [vw_listado_reportes_documentos].[user_registro] AS [user_registro], 
+    [vw_listado_reportes_documentos].[ip_user_registro] AS [ip_user_registro], 
+    [vw_listado_reportes_documentos].[numero_reporte] AS [numero_reporte], 
+    [vw_listado_reportes_documentos].[numero_reporte_int] AS [numero_reporte_int], 
+    [vw_listado_reportes_documentos].[estado] AS [estado], 
+    [vw_listado_reportes_documentos].[coddep_entregado] AS [coddep_entregado], 
+    [vw_listado_reportes_documentos].[dep_entregado] AS [dep_entregado], 
+    [vw_listado_reportes_documentos].[siglas_dep_entregado] AS [siglas_dep_entregado], 
+    [vw_listado_reportes_documentos].[codigo_trabajador_entregado] AS [codigo_trabajador_entregado], 
+    [vw_listado_reportes_documentos].[trabajador_entregado] AS [trabajador_entregado], 
+    [vw_listado_reportes_documentos].[coddep_recibido] AS [coddep_recibido], 
+    [vw_listado_reportes_documentos].[dep_recibido] AS [dep_recibido], 
+    [vw_listado_reportes_documentos].[siglas_dep_recibido] AS [siglas_dep_recibido], 
+    [vw_listado_reportes_documentos].[codigo_trabajador_recibido] AS [codigo_trabajador_recibido], 
+    [vw_listado_reportes_documentos].[trabajador_recibido] AS [trabajador_recibido], 
+    [vw_listado_reportes_documentos].[fecha_recibido] AS [fecha_recibido], 
+    [vw_listado_reportes_documentos].[hora_recibido] AS [hora_recibido], 
+    [vw_listado_reportes_documentos].[fecha_audit] AS [fecha_audit], 
+    [vw_listado_reportes_documentos].[user_audit] AS [user_audit], 
+    [vw_listado_reportes_documentos].[ip_audit] AS [ip_audit], 
+    [vw_listado_reportes_documentos].[observacion] AS [observacion], 
+    [vw_listado_reportes_documentos].[fecha_filtro_ini] AS [fecha_filtro_ini], 
+    [vw_listado_reportes_documentos].[fecha_filtro_fin] AS [fecha_filtro_fin]
+    FROM [web_tramite].[vw_listado_reportes_documentos] AS [vw_listado_reportes_documentos]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__DOCUMENTO__ID_DO__505CB104" Association="Self.FK__DOCUMENTO__ID_DO__505CB104">
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+            <End Role="DOCUMENTO_ADJUNTO" EntitySet="DOCUMENTO_ADJUNTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DOCUMENTO__ID_DO__5150D53D" Association="Self.FK__DOCUMENTO__ID_DO__5150D53D">
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+            <End Role="DOCUMENTO_DEPDESTINO" EntitySet="DOCUMENTO_DEPDESTINO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DOCUMENTO__ID_DO__5244F976" Association="Self.FK__DOCUMENTO__ID_DO__5244F976">
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+            <End Role="DOCUMENTO_REFERENCIA" EntitySet="DOCUMENTO_REFERENCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ANEXO_TIPO_ANEXO" Association="Self.FK_ANEXO_TIPO_ANEXO">
+            <End Role="TIPO_ANEXO" EntitySet="TIPO_ANEXO" />
+            <End Role="ANEXO" EntitySet="ANEXO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCUMENTO_CLASE_DOCUMENTO_INTERNO" Association="Self.FK_DOCUMENTO_CLASE_DOCUMENTO_INTERNO">
+            <End Role="CLASE_DOCUMENTO_INTERNO" EntitySet="CLASE_DOCUMENTO_INTERNO" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCUMENTO_ESTADO_DOCUMENTO" Association="Self.FK_DOCUMENTO_ESTADO_DOCUMENTO">
+            <End Role="ESTADO_DOCUMENTO" EntitySet="ESTADO_DOCUMENTO" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMIENTO_DOCUMENTO_DOCUMENTO" Association="Self.FK_MOVIMIENTO_DOCUMENTO_DOCUMENTO">
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+            <End Role="MOVIMIENTO_DOCUMENTO" EntitySet="MOVIMIENTO_DOCUMENTO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Modelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="STDDbContext" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="ANEXO" EntityType="Modelo.ANEXO" />
+          <EntitySet Name="MOVIMIENTO_DOCUMENTO" EntityType="Modelo.MOVIMIENTO_DOCUMENTO" />
+          <EntitySet Name="CLASE_DOCUMENTO_INTERNO" EntityType="Modelo.CLASE_DOCUMENTO_INTERNO" />
+          <EntitySet Name="VW_DAT_CLASE_TUPA" EntityType="Modelo.VW_DAT_CLASE_TUPA" />
+          <EntitySet Name="VW_DAT_DEPENDENCIA" EntityType="Modelo.VW_DAT_DEPENDENCIA" />
+          <EntitySet Name="VW_DAT_TUPA" EntityType="Modelo.VW_DAT_TUPA" />
+          <EntitySet Name="resolucion" EntityType="Modelo.resolucion" />
+          <EntitySet Name="tipo_resolucion" EntityType="Modelo.tipo_resolucion" />
+          <EntitySet Name="V_PERSONA" EntityType="Modelo.V_PERSONA" />
+          <EntitySet Name="contador" EntityType="Modelo.contador" />
+          <EntitySet Name="VW_DAT_REQUISITO_TUPA" EntityType="Modelo.VW_DAT_REQUISITO_TUPA" />
+          <EntitySet Name="OBSERVACIONES_REQUISITOS_TRAMITE" EntityType="Modelo.OBSERVACIONES_REQUISITOS_TRAMITE" />
+          <EntitySet Name="ESTADO_DOCUMENTO" EntityType="Modelo.ESTADO_DOCUMENTO" />
+          <EntitySet Name="TIPO_ANEXO" EntityType="Modelo.TIPO_ANEXO" />
+          <AssociationSet Name="FK_ANEXO_TIPO_ANEXO" Association="Modelo.FK_ANEXO_TIPO_ANEXO">
+            <End Role="TIPO_ANEXO" EntitySet="TIPO_ANEXO" />
+            <End Role="ANEXO" EntitySet="ANEXO" />
+          </AssociationSet>
+          <EntitySet Name="VW_DAT_TRABAJADOR" EntityType="Modelo.VW_DAT_TRABAJADOR" />
+          <EntitySet Name="finaldoc" EntityType="Modelo.finaldoc" />
+          <EntitySet Name="DAT_CONTADOR_INTERNO" EntityType="Modelo.DAT_CONTADOR_INTERNO" />
+          <EntitySet Name="vw_documentos_sitradoc" EntityType="Modelo.vw_documentos_sitradoc" />
+          <EntitySet Name="vw_documentos_sitradoc_digitalizacion" EntityType="Modelo.vw_documentos_sitradoc_digitalizacion" />
+          <EntitySet Name="vw_documento_estado" EntityType="Modelo.vw_documento_estado" />
+          <EntitySet Name="DAT_DOCUMENTO_LF" EntityType="Modelo.DAT_DOCUMENTO_LF" />
+          <EntitySet Name="DAT_DOCUMENTO_COPIA" EntityType="Modelo.DAT_DOCUMENTO_COPIA" />
+          <EntitySet Name="DAT_REPORTE_DIGITALIZADO" EntityType="Modelo.DAT_REPORTE_DIGITALIZADO" />
+          <EntitySet Name="vw_documentos_sitradoc_red_digitalizacion" EntityType="Modelo.vw_documentos_sitradoc_red_digitalizacion" />
+          <EntitySet Name="vw_listado_reportes_digitalizados" EntityType="Modelo.vw_listado_reportes_digitalizados" />
+          <EntitySet Name="vw_listado_reportes_documentos" EntityType="Modelo.vw_listado_reportes_documentos" />
+          <EntitySet Name="DAT_REPORTE_DOCUMENTOS" EntityType="Modelo.DAT_REPORTE_DOCUMENTOS" />
+          <EntitySet Name="TIPO_TRATAMIENTO" EntityType="Modelo.TIPO_TRATAMIENTO" />
+          <EntitySet Name="DOCUMENTO_CONT" EntityType="Modelo.DOCUMENTO_CONT" />
+          <EntitySet Name="CUENTAINTERNO" EntityType="Modelo.CUENTAINTERNO" />
+          <EntitySet Name="doc_tipo_tratamiento" EntityType="Modelo.doc_tipo_tratamiento" />
+          <EntitySet Name="vw_documentos_sitradoc_red" EntityType="Modelo.vw_documentos_sitradoc_red" />
+          <EntitySet Name="DOCUMENTO_ADJUNTO" EntityType="Modelo.DOCUMENTO_ADJUNTO" />
+          <EntitySet Name="DOCUMENTO_DEPDESTINO" EntityType="Modelo.DOCUMENTO_DEPDESTINO" />
+          <EntitySet Name="DOCUMENTO_REFERENCIA" EntityType="Modelo.DOCUMENTO_REFERENCIA" />
+          <EntitySet Name="DOCUMENTO" EntityType="Modelo.DOCUMENTO" />
+          <AssociationSet Name="FK_DOCUMENTO_CLASE_DOCUMENTO_INTERNO" Association="Modelo.FK_DOCUMENTO_CLASE_DOCUMENTO_INTERNO">
+            <End Role="CLASE_DOCUMENTO_INTERNO" EntitySet="CLASE_DOCUMENTO_INTERNO" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCUMENTO_ESTADO_DOCUMENTO" Association="Modelo.FK_DOCUMENTO_ESTADO_DOCUMENTO">
+            <End Role="ESTADO_DOCUMENTO" EntitySet="ESTADO_DOCUMENTO" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DOCUMENTO__ID_DO__505CB104" Association="Modelo.FK__DOCUMENTO__ID_DO__505CB104">
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+            <End Role="DOCUMENTO_ADJUNTO" EntitySet="DOCUMENTO_ADJUNTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DOCUMENTO__ID_DO__5150D53D" Association="Modelo.FK__DOCUMENTO__ID_DO__5150D53D">
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+            <End Role="DOCUMENTO_DEPDESTINO" EntitySet="DOCUMENTO_DEPDESTINO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DOCUMENTO__ID_DO__5244F976" Association="Modelo.FK__DOCUMENTO__ID_DO__5244F976">
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+            <End Role="DOCUMENTO_REFERENCIA" EntitySet="DOCUMENTO_REFERENCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMIENTO_DOCUMENTO_DOCUMENTO" Association="Modelo.FK_MOVIMIENTO_DOCUMENTO_DOCUMENTO">
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+            <End Role="MOVIMIENTO_DOCUMENTO" EntitySet="MOVIMIENTO_DOCUMENTO" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="ANEXO">
+          <Key>
+            <PropertyRef Name="ID_ANEXO" />
+          </Key>
+          <Property Name="ID_ANEXO" Type="Int32" Nullable="false" />
+          <Property Name="ID_DOCUMENTO" Type="Int32" Nullable="false" />
+          <Property Name="ID_TIPO_ANEXO" Type="Int32" Nullable="false" />
+          <Property Name="NUM_DOCUMENTO_ANEXO" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ID_PERSONA_DESTINO" Type="Int32" Nullable="false" />
+          <Property Name="FOLIOS" Type="Int32" Nullable="false" />
+          <Property Name="CONTENIDO" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OBSERVACIONES" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AUDIT_MOD" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="coddep" Type="Int32" />
+          <Property Name="modificado" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ID_PERSONA" Type="Int32" />
+          <Property Name="CORRELATIVO" Type="Int32" />
+          <NavigationProperty Name="TIPO_ANEXO" Relationship="Modelo.FK_ANEXO_TIPO_ANEXO" FromRole="ANEXO" ToRole="TIPO_ANEXO" />
+          <Property Name="ID_DOCUMENTO_ADJUNTO" Type="Int32" />
+          <Property Name="ESTADO_ADJUNTO" Type="Int32" Nullable="false" />
+          <Property Name="MOTIVO_ANULACION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MOVIMIENTO_DOCUMENTO">
+          <Key>
+            <PropertyRef Name="ID_MOVIMIENTO_DOCUMENTO" />
+          </Key>
+          <Property Name="ID_MOVIMIENTO_DOCUMENTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_DOCUMENTO" Type="Int32" Nullable="false" />
+          <Property Name="ID_RUTA_TUPA" Type="Int32" />
+          <Property Name="ID_DEPENDENCIA_ORIGEN" Type="Int32" Nullable="false" />
+          <Property Name="ID_DEPENDENCIA_DESTINO" Type="Int32" Nullable="false" />
+          <Property Name="ID_OFICIO" Type="Int32" />
+          <Property Name="FOLIOS" Type="Int32" />
+          <Property Name="OBSERVACIONES" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_RESPUESTA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AUDIT_MOD" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AUDIT_REC" Type="DateTime" Precision="3" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="avance" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="enviado" Type="Int32" Nullable="false" />
+          <Property Name="derivado" Type="Int32" Nullable="false" />
+          <Property Name="finalizado" Type="Int32" Nullable="false" />
+          <Property Name="fecha_plazo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_trabajador" Type="Int32" />
+          <Property Name="fecha_plazo_interno" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AUDIT_TRAB_DER" Type="DateTime" Precision="3" />
+          <Property Name="AUDIT_TRAB_REC" Type="DateTime" Precision="3" />
+          <Property Name="tratamiento" Type="String" MaxLength="21" FixedLength="false" Unicode="false" />
+          <Property Name="condicion" Type="Int32" />
+          <Property Name="ULTIMO_AVANCE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DOCUMENTO" Relationship="Modelo.FK_MOVIMIENTO_DOCUMENTO_DOCUMENTO" FromRole="MOVIMIENTO_DOCUMENTO" ToRole="DOCUMENTO" />
+        </EntityType>
+        <EntityType Name="CLASE_DOCUMENTO_INTERNO">
+          <Key>
+            <PropertyRef Name="ID_CLASE_DOCUMENTO_INTERNO" />
+          </Key>
+          <Property Name="ID_CLASE_DOCUMENTO_INTERNO" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PROCEDENCIA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="categoria" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DOCUMENTO" Relationship="Modelo.FK_DOCUMENTO_CLASE_DOCUMENTO_INTERNO" FromRole="CLASE_DOCUMENTO_INTERNO" ToRole="DOCUMENTO" />
+        </EntityType>
+        <EntityType Name="VW_DAT_CLASE_TUPA">
+          <Key>
+            <PropertyRef Name="ID_CLASE_TUPA" />
+          </Key>
+          <Property Name="ID_CLASE_TUPA" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_DAT_DEPENDENCIA">
+          <Key>
+            <PropertyRef Name="CODIGO_DEPENDENCIA" />
+          </Key>
+          <Property Name="CODIGO_DEPENDENCIA" Type="Int32" Nullable="false" />
+          <Property Name="DEPENDENCIA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SIGLAS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CONDICION" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ID_TIPO_DEPENDENCIA" Type="Int32" />
+          <Property Name="SECCION" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_DAT_TUPA">
+          <Key>
+            <PropertyRef Name="ID_TUPA" />
+          </Key>
+          <Property Name="ID_TUPA" Type="Int32" Nullable="false" />
+          <Property Name="ID_CLASE_TUPA" Type="Int32" />
+          <Property Name="CODIGO_DEPENDENCIA" Type="Int32" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="NUMERO_DIAS" Type="Int32" />
+          <Property Name="UIT" Type="Decimal" Precision="15" Scale="3" />
+          <Property Name="ESTADO_TUPA" Type="Int32" />
+          <Property Name="TIPO_APROBACION" Type="Int32" />
+          <Property Name="NUMERO_TUPA" Type="Int32" />
+          <Property Name="FLAG_CAMBIO" Type="Int32" />
+          <Property Name="ID_SECTOR" Type="Int32" />
+          <Property Name="ID_TIPO_SILENCIO" Type="Int32" />
+          <Property Name="DEPENDENCIA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SIGLAS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="resolucion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nro_resol" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="id_documento" Type="Int32" />
+          <Property Name="flag" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="sumilla" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="id_tipo_resolucion" Type="Int32" />
+          <Property Name="auditmod" Type="DateTime" Precision="3" />
+          <Property Name="usuario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="auditmod2" Type="DateTime" Precision="3" />
+          <Property Name="usuario2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FIni" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FFin" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FPublicacion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="coddep" Type="Int32" />
+          <Property Name="FFirma" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FErratas" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tipo_resolucion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="descrip_completa" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_PERSONA">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ID_SECTOR" />
+            <PropertyRef Name="ID_TIPO_PERSONA" />
+            <PropertyRef Name="CODIGO_DEPARTAMENTO" />
+            <PropertyRef Name="CODIGO_PROVINCIA" />
+            <PropertyRef Name="CODIGO_DISTRITO" />
+            <PropertyRef Name="ID_TIPO_IDENTIFICACION" />
+            <PropertyRef Name="RUBRO" />
+            <PropertyRef Name="RAZON_SOCIAL" />
+            <PropertyRef Name="NOMBRES" />
+            <PropertyRef Name="APELLIDOS" />
+            <PropertyRef Name="NRO_DOCUMENTO" />
+            <PropertyRef Name="DIRECCION" />
+            <PropertyRef Name="AUDIT_MOD" />
+            <PropertyRef Name="FLAG" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_SECTOR" Type="Int32" Nullable="false" />
+          <Property Name="ID_TIPO_PERSONA" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_DEPARTAMENTO" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGO_PROVINCIA" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGO_DISTRITO" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ID_TIPO_IDENTIFICACION" Type="Int32" Nullable="false" />
+          <Property Name="RUBRO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="RAZON_SOCIAL" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRES" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDOS" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NRO_DOCUMENTO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FAX" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AUDIT_MOD" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="REPRESENTANTE_LEGAL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NRO_DOCUMENTO_REPRESENTANTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_TIPO_IDENTIFICACION_REP_LEG" Type="Int32" />
+          <Property Name="CODIGO_PUERTO" Type="Int32" />
+          <Property Name="FLAG" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OBSERVACIONES" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CELULAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_AURA" Type="Int32" />
+          <Property Name="FLAG_OEC" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="NRO_DOCPERNATURAL" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="ID_TIPO_ORGANIZACION" Type="Int32" />
+          <Property Name="DEPARTAMENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PROVINCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DISTRITO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="contador">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="cont" Type="Int32" Nullable="false" />
+          <Property Name="anio" Type="Int32" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="hostname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AUDITMOD" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="VW_DAT_REQUISITO_TUPA">
+          <Key>
+            <PropertyRef Name="ID_REQUISITO" />
+          </Key>
+          <Property Name="ID_REQUISITO" Type="Int32" Nullable="false" />
+          <Property Name="ID_TUPA" Type="Int32" />
+          <Property Name="NUMERO_REQUISITO" Type="Int32" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="Int32" />
+          <Property Name="ID_TIPO_REQUISITO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="VALOR_UIT" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="MONTO" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="OBSERVACIONES_REQUISITOS_TRAMITE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_DOCUMENTO" Type="Int32" />
+          <Property Name="ID_REQUISITO_TUPA" Type="Int32" />
+          <Property Name="OBSERVACIONES" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ESTADO_DOCUMENTO">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_DOCUMENTO" />
+          </Key>
+          <Property Name="ID_ESTADO_DOCUMENTO" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DOCUMENTO" Relationship="Modelo.FK_DOCUMENTO_ESTADO_DOCUMENTO" FromRole="ESTADO_DOCUMENTO" ToRole="DOCUMENTO" />
+        </EntityType>
+        <EntityType Name="TIPO_ANEXO">
+          <Key>
+            <PropertyRef Name="ID_TIPO_ANEXO" />
+          </Key>
+          <Property Name="ID_TIPO_ANEXO" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ANEXO" Relationship="Modelo.FK_ANEXO_TIPO_ANEXO" FromRole="TIPO_ANEXO" ToRole="ANEXO" />
+        </EntityType>
+        <Association Name="FK_ANEXO_TIPO_ANEXO">
+          <End Type="Modelo.TIPO_ANEXO" Role="TIPO_ANEXO" Multiplicity="1" />
+          <End Type="Modelo.ANEXO" Role="ANEXO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_ANEXO">
+              <PropertyRef Name="ID_TIPO_ANEXO" />
+            </Principal>
+            <Dependent Role="ANEXO">
+              <PropertyRef Name="ID_TIPO_ANEXO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VW_DAT_TRABAJADOR">
+          <Key>
+            <PropertyRef Name="CODIGO_TRABAJADOR" />
+            <PropertyRef Name="CODIGO_DEPENDENCIA" />
+            <PropertyRef Name="APELLIDOS_TRABAJADOR" />
+            <PropertyRef Name="NOMBRES_TRABAJADOR" />
+            <PropertyRef Name="CONDICION" />
+          </Key>
+          <Property Name="CODIGO_TRABAJADOR" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_DEPENDENCIA" Type="Int32" Nullable="false" />
+          <Property Name="APELLIDOS_TRABAJADOR" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRES_TRABAJADOR" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CONDICION" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_NACIMIENTO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IDENTIFICADOR" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DNI" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AUDIT_MOD" Type="Int32" />
+          <Property Name="PUBLICADO" Type="DateTime" Precision="3" />
+          <Property Name="IDPROFESION" Type="Int32" />
+          <Property Name="IDSUBDEPENDENCIA" Type="Int32" />
+          <Property Name="CODDEP_PUB" Type="Int32" />
+          <Property Name="CODIGO_MAESTRO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECTOR" Type="Int32" />
+          <Property Name="PUBLICADO_INTRANET" Type="Int32" />
+        </EntityType>
+        <EntityType Name="finaldoc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_documento" Type="Int32" Nullable="false" />
+          <Property Name="observaciones" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="coddep" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="auditmod" Type="DateTime" Precision="3" />
+          <Property Name="usuario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FLAG" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="audit_reactiva" Type="DateTime" Precision="3" />
+          <Property Name="observaciones_reactiva" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="usuario_reactiva" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DAT_CONTADOR_INTERNO">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_documento" />
+            <PropertyRef Name="contador" />
+            <PropertyRef Name="fecha_registro" />
+            <PropertyRef Name="estado" />
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_documento" Type="Int32" Nullable="false" />
+          <Property Name="contador" Type="Int32" Nullable="false" />
+          <Property Name="fecha_registro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_documentos_sitradoc">
+          <Key>
+            <PropertyRef Name="id_anexo" />
+            <PropertyRef Name="tipo_registro" />
+            <PropertyRef Name="fecha_registro" />
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="id_documento" Type="Int32" />
+          <Property Name="id_anexo" Type="Int32" Nullable="false" />
+          <Property Name="tipo_registro" Type="Int32" Nullable="false" />
+          <Property Name="numero_tramite" Type="String" MaxLength="262" FixedLength="false" Unicode="false" />
+          <Property Name="razon_social" Type="String" MaxLength="356" FixedLength="false" Unicode="false" />
+          <Property Name="asunto" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="folios" Type="Int32" />
+          <Property Name="coddep" Type="Int32" />
+          <Property Name="fecha_registro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_registro_v" Type="String" MaxLength="21" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="estado_documento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ruta" Type="String" MaxLength="101" FixedLength="false" Unicode="false" />
+          <Property Name="pdf" Type="String" MaxLength="115" FixedLength="false" Unicode="false" />
+          <Property Name="audit_rec" Type="DateTime" Precision="3" />
+          <Property Name="documento_estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="numero_reporte" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_documentos_sitradoc_digitalizacion">
+          <Key>
+            <PropertyRef Name="id_anexo" />
+            <PropertyRef Name="tipo_registro" />
+            <PropertyRef Name="fecha_registro" />
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="id_documento" Type="Int32" />
+          <Property Name="id_anexo" Type="Int32" Nullable="false" />
+          <Property Name="tipo_registro" Type="Int32" Nullable="false" />
+          <Property Name="numero_tramite" Type="String" MaxLength="262" FixedLength="false" Unicode="false" />
+          <Property Name="razon_social" Type="String" MaxLength="356" FixedLength="false" Unicode="false" />
+          <Property Name="asunto" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="folios" Type="Int32" />
+          <Property Name="coddep" Type="Int32" />
+          <Property Name="fecha_registro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_registro_v" Type="String" MaxLength="21" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="estado_documento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ruta" Type="String" MaxLength="101" FixedLength="false" Unicode="false" />
+          <Property Name="pdf" Type="String" MaxLength="115" FixedLength="false" Unicode="false" />
+          <Property Name="audit_rec" Type="DateTime" Precision="3" />
+          <Property Name="documento_digitalizado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="numero_reporte" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_documento_estado">
+          <Key>
+            <PropertyRef Name="id_documento_estado" />
+            <PropertyRef Name="id_documento" />
+          </Key>
+          <Property Name="id_documento_estado" Type="Int32" Nullable="false" />
+          <Property Name="id_documento" Type="Int32" Nullable="false" />
+          <Property Name="id_anexo" Type="Int32" />
+          <Property Name="audit_fecha" Type="DateTime" Precision="3" />
+          <Property Name="user_audit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ip_audit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="id_reporte" Type="Int32" />
+          <Property Name="numero_reporte" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DAT_DOCUMENTO_LF">
+          <Key>
+            <PropertyRef Name="ID_LF" />
+          </Key>
+          <Property Name="ID_LF" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_LASERFICHE" Type="Int32" />
+          <Property Name="TIPO_DOCLF" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ID_DOCUMENTO" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DAT_DOCUMENTO_COPIA">
+          <Key>
+            <PropertyRef Name="ID_DOCUMENTO_COPIA" />
+          </Key>
+          <Property Name="ID_DOCUMENTO_COPIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_DOCUMENTO" Type="Int32" Nullable="false" />
+          <Property Name="CODDEP" Type="Int32" Nullable="false" />
+          <Property Name="LEIDO" Type="Int32" Nullable="false" />
+          <Property Name="ESTADO" Type="Int32" Nullable="false" />
+          <Property Name="AUDITCREA" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="DAT_REPORTE_DIGITALIZADO">
+          <Key>
+            <PropertyRef Name="id_reporte" />
+          </Key>
+          <Property Name="id_reporte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <Property Name="user_registro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ip_user_registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="numero_reporte" Type="Int32" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="coddep_entregado" Type="Int32" />
+          <Property Name="codigo_trabajador_entregado" Type="Int32" />
+          <Property Name="coddep_recibido" Type="Int32" />
+          <Property Name="codigo_trabajador_recibido" Type="Int32" />
+          <Property Name="fecha_recibido" Type="DateTime" Precision="3" />
+          <Property Name="fecha_audit" Type="DateTime" Precision="3" />
+          <Property Name="user_audit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ip_audit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_filtro_ini" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_filtro_fin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_documentos_sitradoc_red_digitalizacion">
+          <Key>
+            <PropertyRef Name="id_documento" />
+            <PropertyRef Name="tipo_registro" />
+            <PropertyRef Name="fecha_registro" />
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="id_documento" Type="Int32" Nullable="false" />
+          <Property Name="id_anexo" Type="Int32" />
+          <Property Name="tipo_registro" Type="Int32" Nullable="false" />
+          <Property Name="numero_tramite" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="razon_social" Type="String" MaxLength="356" FixedLength="false" Unicode="false" />
+          <Property Name="asunto" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="folios" Type="Int32" />
+          <Property Name="coddep" Type="Int32" />
+          <Property Name="fecha_registro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_registro_v" Type="String" MaxLength="21" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="estado_documento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ruta" Type="String" MaxLength="101" FixedLength="false" Unicode="false" />
+          <Property Name="pdf" Type="String" MaxLength="115" FixedLength="false" Unicode="false" />
+          <Property Name="audit_recibido_str" Type="String" MaxLength="21" FixedLength="false" Unicode="false" />
+          <Property Name="dat_documento_digitalizado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="numero_reporte" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_listado_reportes_digitalizados">
+          <Key>
+            <PropertyRef Name="id_reporte" />
+            <PropertyRef Name="estado" />
+          </Key>
+          <Property Name="id_reporte" Type="Int32" Nullable="false" />
+          <Property Name="fecha_registro" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="user_registro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ip_user_registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="numero_reporte" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="numero_reporte_int" Type="Int32" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="coddep_entregado" Type="Int32" />
+          <Property Name="dep_entregado" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="siglas_dep_entregado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_trabajador_entregado" Type="Int32" />
+          <Property Name="trabajador_entregado" Type="String" MaxLength="61" FixedLength="false" Unicode="false" />
+          <Property Name="coddep_recibido" Type="Int32" />
+          <Property Name="dep_recibido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="siglas_dep_recibido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_trabajador_recibido" Type="Int32" />
+          <Property Name="trabajador_recibido" Type="String" MaxLength="61" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_recibido" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="hora_recibido" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_audit" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="user_audit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ip_audit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_filtro_ini" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_filtro_fin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_listado_reportes_documentos">
+          <Key>
+            <PropertyRef Name="id_reporte" />
+            <PropertyRef Name="estado" />
+          </Key>
+          <Property Name="id_reporte" Type="Int32" Nullable="false" />
+          <Property Name="fecha_registro" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="user_registro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ip_user_registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="numero_reporte" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="numero_reporte_int" Type="Int32" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="coddep_entregado" Type="Int32" />
+          <Property Name="dep_entregado" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="siglas_dep_entregado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_trabajador_entregado" Type="Int32" />
+          <Property Name="trabajador_entregado" Type="String" MaxLength="61" FixedLength="false" Unicode="false" />
+          <Property Name="coddep_recibido" Type="Int32" />
+          <Property Name="dep_recibido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="siglas_dep_recibido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_trabajador_recibido" Type="Int32" />
+          <Property Name="trabajador_recibido" Type="String" MaxLength="61" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_recibido" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="hora_recibido" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_audit" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="user_audit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ip_audit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_filtro_ini" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_filtro_fin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DAT_REPORTE_DOCUMENTOS">
+          <Key>
+            <PropertyRef Name="id_reporte" />
+          </Key>
+          <Property Name="id_reporte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <Property Name="user_registro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ip_user_registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="numero_reporte" Type="Int32" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="coddep_entregado" Type="Int32" />
+          <Property Name="codigo_trabajador_entregado" Type="Int32" />
+          <Property Name="coddep_recibido" Type="Int32" />
+          <Property Name="codigo_trabajador_recibido" Type="Int32" />
+          <Property Name="fecha_recibido" Type="DateTime" Precision="3" />
+          <Property Name="fecha_audit" Type="DateTime" Precision="3" />
+          <Property Name="user_audit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ip_audit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_filtro_ini" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_filtro_fin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TIPO_TRATAMIENTO">
+          <Key>
+            <PropertyRef Name="id_tipo_tratamiento" />
+          </Key>
+          <Property Name="id_tipo_tratamiento" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DOCUMENTO_CONT">
+          <Key>
+            <PropertyRef Name="ID_DOCUMENTO" />
+          </Key>
+          <Property Name="ID_DOCUMENTO" Type="Int32" Nullable="false" />
+          <Property Name="CANT_COPIAS" Type="Int32" Nullable="false" />
+          <Property Name="CANT_ADJUNTOS" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CUENTAINTERNO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="coddep" Type="Int32" Nullable="false" />
+          <Property Name="id_tipo_documento" Type="Int32" Nullable="false" />
+          <Property Name="contador" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="doc_tipo_tratamiento">
+          <Key>
+            <PropertyRef Name="ID_DOC_TIPO_TRATAMIENTO" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_documento" Type="Int32" Nullable="false" />
+          <Property Name="id_tipo_tratamiento" Type="Int32" Nullable="false" />
+          <Property Name="dependencia" Type="Int32" />
+          <Property Name="ID_DOC_TIPO_TRATAMIENTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="vw_documentos_sitradoc_red">
+          <Key>
+            <PropertyRef Name="tipo_registro" />
+            <PropertyRef Name="fecha_registro" />
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="id_documento" Type="Int32" />
+          <Property Name="id_anexo" Type="Int32" />
+          <Property Name="tipo_registro" Type="Int32" Nullable="false" />
+          <Property Name="numero_tramite" Type="String" MaxLength="262" FixedLength="false" Unicode="false" />
+          <Property Name="razon_social" Type="String" MaxLength="356" FixedLength="false" Unicode="false" />
+          <Property Name="asunto" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="folios" Type="Int32" />
+          <Property Name="coddep" Type="Int32" />
+          <Property Name="fecha_registro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_registro_v" Type="String" MaxLength="21" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="estado_documento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ruta" Type="String" MaxLength="101" FixedLength="false" Unicode="false" />
+          <Property Name="pdf" Type="String" MaxLength="115" FixedLength="false" Unicode="false" />
+          <Property Name="audit_recibido_str" Type="String" MaxLength="21" FixedLength="false" Unicode="false" />
+          <Property Name="documento_estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="numero_reporte" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DOCUMENTO_ADJUNTO">
+          <Key>
+            <PropertyRef Name="ID_DOCUMENTO_ADJUNTO" />
+          </Key>
+          <Property Name="ID_DOCUMENTO_ADJUNTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_DOCUMENTO" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE_ADJUNTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FLAG" Type="Boolean" />
+          <Property Name="MIMETYPE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SIZE" Type="Int32" />
+          <NavigationProperty Name="DOCUMENTO" Relationship="Modelo.FK__DOCUMENTO__ID_DO__505CB104" FromRole="DOCUMENTO_ADJUNTO" ToRole="DOCUMENTO" />
+        </EntityType>
+        <EntityType Name="DOCUMENTO_DEPDESTINO">
+          <Key>
+            <PropertyRef Name="ID_DOCUMENTO_DEPDESTINO" />
+          </Key>
+          <Property Name="ID_DOCUMENTO" Type="Int32" Nullable="false" />
+          <Property Name="CODDEP_DESTINO" Type="Int32" />
+          <Property Name="FLAG" Type="Boolean" />
+          <Property Name="ID_DOCUMENTO_DEPDESTINO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="DOCUMENTO" Relationship="Modelo.FK__DOCUMENTO__ID_DO__5150D53D" FromRole="DOCUMENTO_DEPDESTINO" ToRole="DOCUMENTO" />
+        </EntityType>
+        <EntityType Name="DOCUMENTO_REFERENCIA">
+          <Key>
+            <PropertyRef Name="ID_DOCUMENTO_REFERENCIA" />
+          </Key>
+          <Property Name="ID_DOCUMENTO" Type="Int32" Nullable="false" />
+          <Property Name="ID_DOCUMENTO_REFERENCIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPO_HOJA_TRAMITE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="NUMERO_HOJA_TRAMITE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FLAG" Type="Boolean" />
+          <Property Name="ID_HOJA_TRAMITE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DOCUMENTO" Relationship="Modelo.FK__DOCUMENTO__ID_DO__5244F976" FromRole="DOCUMENTO_REFERENCIA" ToRole="DOCUMENTO" />
+        </EntityType>
+        <EntityType Name="DOCUMENTO">
+          <Key>
+            <PropertyRef Name="ID_DOCUMENTO" />
+          </Key>
+          <Property Name="ID_DOCUMENTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PERSONA" Type="Int32" />
+          <Property Name="ID_TUP" Type="Int32" />
+          <Property Name="ID_TIPO_DOCUMENTO" Type="Int32" Nullable="false" />
+          <Property Name="ID_ESTADO_DOCUMENTO" Type="Int32" Nullable="false" />
+          <Property Name="ID_CLASE_DOCUMENTO_INTERNO" Type="Int32" />
+          <Property Name="NUM_TRAM_DOCUMENTARIO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="INDICATIVO_OFICIO" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ASUNTO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="FOLIOS" Type="Int32" />
+          <Property Name="OBSERVACIONES" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_RECEPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PRIORIDAD" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AUDITMOD" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ESTADO_REQUISITO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="coddep" Type="Int32" />
+          <Property Name="OBSFIN" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="fecha3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="modificacion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="referencia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Max_Plazo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="v_asesor" Type="Int32" />
+          <Property Name="requerimiento" Type="Int32" />
+          <Property Name="coddep_responsable" Type="Int32" />
+          <Property Name="ESTADO_EXPEDIENTE" Type="Int32" />
+          <Property Name="SUJETO_PROCESO_JUDICIAL" Type="Int32" />
+          <Property Name="REPORTE_OCURRENCIA" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="id_docbak" Type="Int32" />
+          <Property Name="clave" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CLASE_DOCUMENTO_INTERNO" Relationship="Modelo.FK_DOCUMENTO_CLASE_DOCUMENTO_INTERNO" FromRole="DOCUMENTO" ToRole="CLASE_DOCUMENTO_INTERNO" />
+          <NavigationProperty Name="ESTADO_DOCUMENTO" Relationship="Modelo.FK_DOCUMENTO_ESTADO_DOCUMENTO" FromRole="DOCUMENTO" ToRole="ESTADO_DOCUMENTO" />
+          <NavigationProperty Name="DOCUMENTO_ADJUNTO" Relationship="Modelo.FK__DOCUMENTO__ID_DO__505CB104" FromRole="DOCUMENTO" ToRole="DOCUMENTO_ADJUNTO" />
+          <NavigationProperty Name="DOCUMENTO_DEPDESTINO" Relationship="Modelo.FK__DOCUMENTO__ID_DO__5150D53D" FromRole="DOCUMENTO" ToRole="DOCUMENTO_DEPDESTINO" />
+          <NavigationProperty Name="DOCUMENTO_REFERENCIA" Relationship="Modelo.FK__DOCUMENTO__ID_DO__5244F976" FromRole="DOCUMENTO" ToRole="DOCUMENTO_REFERENCIA" />
+          <NavigationProperty Name="MOVIMIENTO_DOCUMENTO" Relationship="Modelo.FK_MOVIMIENTO_DOCUMENTO_DOCUMENTO" FromRole="DOCUMENTO" ToRole="MOVIMIENTO_DOCUMENTO" />
+        </EntityType>
+        <Association Name="FK_DOCUMENTO_CLASE_DOCUMENTO_INTERNO">
+          <End Type="Modelo.CLASE_DOCUMENTO_INTERNO" Role="CLASE_DOCUMENTO_INTERNO" Multiplicity="0..1" />
+          <End Type="Modelo.DOCUMENTO" Role="DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLASE_DOCUMENTO_INTERNO">
+              <PropertyRef Name="ID_CLASE_DOCUMENTO_INTERNO" />
+            </Principal>
+            <Dependent Role="DOCUMENTO">
+              <PropertyRef Name="ID_CLASE_DOCUMENTO_INTERNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCUMENTO_ESTADO_DOCUMENTO">
+          <End Type="Modelo.ESTADO_DOCUMENTO" Role="ESTADO_DOCUMENTO" Multiplicity="1" />
+          <End Type="Modelo.DOCUMENTO" Role="DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_DOCUMENTO">
+              <PropertyRef Name="ID_ESTADO_DOCUMENTO" />
+            </Principal>
+            <Dependent Role="DOCUMENTO">
+              <PropertyRef Name="ID_ESTADO_DOCUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DOCUMENTO__ID_DO__505CB104">
+          <End Type="Modelo.DOCUMENTO" Role="DOCUMENTO" Multiplicity="1" />
+          <End Type="Modelo.DOCUMENTO_ADJUNTO" Role="DOCUMENTO_ADJUNTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENTO">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Principal>
+            <Dependent Role="DOCUMENTO_ADJUNTO">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DOCUMENTO__ID_DO__5150D53D">
+          <End Type="Modelo.DOCUMENTO" Role="DOCUMENTO" Multiplicity="1" />
+          <End Type="Modelo.DOCUMENTO_DEPDESTINO" Role="DOCUMENTO_DEPDESTINO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENTO">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Principal>
+            <Dependent Role="DOCUMENTO_DEPDESTINO">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DOCUMENTO__ID_DO__5244F976">
+          <End Type="Modelo.DOCUMENTO" Role="DOCUMENTO" Multiplicity="1" />
+          <End Type="Modelo.DOCUMENTO_REFERENCIA" Role="DOCUMENTO_REFERENCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENTO">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Principal>
+            <Dependent Role="DOCUMENTO_REFERENCIA">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMIENTO_DOCUMENTO_DOCUMENTO">
+          <End Type="Modelo.DOCUMENTO" Role="DOCUMENTO" Multiplicity="1" />
+          <End Type="Modelo.MOVIMIENTO_DOCUMENTO" Role="MOVIMIENTO_DOCUMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENTO">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Principal>
+            <Dependent Role="MOVIMIENTO_DOCUMENTO">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="STDModeloStoreContainer" CdmEntityContainer="STDDbContext">
+          <EntitySetMapping Name="ANEXO">
+            <EntityTypeMapping TypeName="Modelo.ANEXO">
+              <MappingFragment StoreEntitySet="ANEXO">
+                <ScalarProperty Name="MOTIVO_ANULACION" ColumnName="MOTIVO_ANULACION" />
+                <ScalarProperty Name="ESTADO_ADJUNTO" ColumnName="ESTADO_ADJUNTO" />
+                <ScalarProperty Name="ID_DOCUMENTO_ADJUNTO" ColumnName="ID_DOCUMENTO_ADJUNTO" />
+                <ScalarProperty Name="CORRELATIVO" ColumnName="CORRELATIVO" />
+                <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
+                <ScalarProperty Name="modificado" ColumnName="modificado" />
+                <ScalarProperty Name="coddep" ColumnName="coddep" />
+                <ScalarProperty Name="AUDIT_MOD" ColumnName="AUDIT_MOD" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+                <ScalarProperty Name="CONTENIDO" ColumnName="CONTENIDO" />
+                <ScalarProperty Name="FOLIOS" ColumnName="FOLIOS" />
+                <ScalarProperty Name="ID_PERSONA_DESTINO" ColumnName="ID_PERSONA_DESTINO" />
+                <ScalarProperty Name="NUM_DOCUMENTO_ANEXO" ColumnName="NUM_DOCUMENTO_ANEXO" />
+                <ScalarProperty Name="ID_TIPO_ANEXO" ColumnName="ID_TIPO_ANEXO" />
+                <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
+                <ScalarProperty Name="ID_ANEXO" ColumnName="ID_ANEXO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MOVIMIENTO_DOCUMENTO">
+            <EntityTypeMapping TypeName="Modelo.MOVIMIENTO_DOCUMENTO">
+              <MappingFragment StoreEntitySet="MOVIMIENTO_DOCUMENTO">
+                <ScalarProperty Name="ULTIMO_AVANCE" ColumnName="ULTIMO_AVANCE" />
+                <ScalarProperty Name="condicion" ColumnName="condicion" />
+                <ScalarProperty Name="tratamiento" ColumnName="tratamiento" />
+                <ScalarProperty Name="AUDIT_TRAB_REC" ColumnName="AUDIT_TRAB_REC" />
+                <ScalarProperty Name="AUDIT_TRAB_DER" ColumnName="AUDIT_TRAB_DER" />
+                <ScalarProperty Name="fecha_plazo_interno" ColumnName="fecha_plazo_interno" />
+                <ScalarProperty Name="codigo_trabajador" ColumnName="codigo_trabajador" />
+                <ScalarProperty Name="fecha_plazo" ColumnName="fecha_plazo" />
+                <ScalarProperty Name="finalizado" ColumnName="finalizado" />
+                <ScalarProperty Name="derivado" ColumnName="derivado" />
+                <ScalarProperty Name="enviado" ColumnName="enviado" />
+                <ScalarProperty Name="avance" ColumnName="avance" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="AUDIT_REC" ColumnName="AUDIT_REC" />
+                <ScalarProperty Name="AUDIT_MOD" ColumnName="AUDIT_MOD" />
+                <ScalarProperty Name="FECHA_RESPUESTA" ColumnName="FECHA_RESPUESTA" />
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+                <ScalarProperty Name="FOLIOS" ColumnName="FOLIOS" />
+                <ScalarProperty Name="ID_OFICIO" ColumnName="ID_OFICIO" />
+                <ScalarProperty Name="ID_DEPENDENCIA_DESTINO" ColumnName="ID_DEPENDENCIA_DESTINO" />
+                <ScalarProperty Name="ID_DEPENDENCIA_ORIGEN" ColumnName="ID_DEPENDENCIA_ORIGEN" />
+                <ScalarProperty Name="ID_RUTA_TUPA" ColumnName="ID_RUTA_TUPA" />
+                <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
+                <ScalarProperty Name="ID_MOVIMIENTO_DOCUMENTO" ColumnName="ID_MOVIMIENTO_DOCUMENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLASE_DOCUMENTO_INTERNO">
+            <EntityTypeMapping TypeName="Modelo.CLASE_DOCUMENTO_INTERNO">
+              <MappingFragment StoreEntitySet="CLASE_DOCUMENTO_INTERNO">
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="PROCEDENCIA" ColumnName="PROCEDENCIA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID_CLASE_DOCUMENTO_INTERNO" ColumnName="ID_CLASE_DOCUMENTO_INTERNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_DAT_CLASE_TUPA">
+            <EntityTypeMapping TypeName="Modelo.VW_DAT_CLASE_TUPA">
+              <MappingFragment StoreEntitySet="VW_DAT_CLASE_TUPA">
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID_CLASE_TUPA" ColumnName="ID_CLASE_TUPA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_DAT_DEPENDENCIA">
+            <EntityTypeMapping TypeName="Modelo.VW_DAT_DEPENDENCIA">
+              <MappingFragment StoreEntitySet="VW_DAT_DEPENDENCIA">
+                <ScalarProperty Name="SECCION" ColumnName="SECCION" />
+                <ScalarProperty Name="ID_TIPO_DEPENDENCIA" ColumnName="ID_TIPO_DEPENDENCIA" />
+                <ScalarProperty Name="CONDICION" ColumnName="CONDICION" />
+                <ScalarProperty Name="SIGLAS" ColumnName="SIGLAS" />
+                <ScalarProperty Name="DEPENDENCIA" ColumnName="DEPENDENCIA" />
+                <ScalarProperty Name="CODIGO_DEPENDENCIA" ColumnName="CODIGO_DEPENDENCIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_DAT_TUPA">
+            <EntityTypeMapping TypeName="Modelo.VW_DAT_TUPA">
+              <MappingFragment StoreEntitySet="VW_DAT_TUPA">
+                <ScalarProperty Name="SIGLAS" ColumnName="SIGLAS" />
+                <ScalarProperty Name="DEPENDENCIA" ColumnName="DEPENDENCIA" />
+                <ScalarProperty Name="ID_TIPO_SILENCIO" ColumnName="ID_TIPO_SILENCIO" />
+                <ScalarProperty Name="ID_SECTOR" ColumnName="ID_SECTOR" />
+                <ScalarProperty Name="FLAG_CAMBIO" ColumnName="FLAG_CAMBIO" />
+                <ScalarProperty Name="NUMERO_TUPA" ColumnName="NUMERO_TUPA" />
+                <ScalarProperty Name="TIPO_APROBACION" ColumnName="TIPO_APROBACION" />
+                <ScalarProperty Name="ESTADO_TUPA" ColumnName="ESTADO_TUPA" />
+                <ScalarProperty Name="UIT" ColumnName="UIT" />
+                <ScalarProperty Name="NUMERO_DIAS" ColumnName="NUMERO_DIAS" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="CODIGO_DEPENDENCIA" ColumnName="CODIGO_DEPENDENCIA" />
+                <ScalarProperty Name="ID_CLASE_TUPA" ColumnName="ID_CLASE_TUPA" />
+                <ScalarProperty Name="ID_TUPA" ColumnName="ID_TUPA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="resolucion">
+            <EntityTypeMapping TypeName="Modelo.resolucion">
+              <MappingFragment StoreEntitySet="resolucion">
+                <ScalarProperty Name="FErratas" ColumnName="FErratas" />
+                <ScalarProperty Name="FFirma" ColumnName="FFirma" />
+                <ScalarProperty Name="coddep" ColumnName="coddep" />
+                <ScalarProperty Name="FPublicacion" ColumnName="FPublicacion" />
+                <ScalarProperty Name="FFin" ColumnName="FFin" />
+                <ScalarProperty Name="FIni" ColumnName="FIni" />
+                <ScalarProperty Name="usuario2" ColumnName="usuario2" />
+                <ScalarProperty Name="auditmod2" ColumnName="auditmod2" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="auditmod" ColumnName="auditmod" />
+                <ScalarProperty Name="id_tipo_resolucion" ColumnName="id_tipo_resolucion" />
+                <ScalarProperty Name="sumilla" ColumnName="sumilla" />
+                <ScalarProperty Name="flag" ColumnName="flag" />
+                <ScalarProperty Name="id_documento" ColumnName="id_documento" />
+                <ScalarProperty Name="nro_resol" ColumnName="nro_resol" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_resolucion">
+            <EntityTypeMapping TypeName="Modelo.tipo_resolucion">
+              <MappingFragment StoreEntitySet="tipo_resolucion">
+                <ScalarProperty Name="descrip_completa" ColumnName="descrip_completa" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_PERSONA">
+            <EntityTypeMapping TypeName="Modelo.V_PERSONA">
+              <MappingFragment StoreEntitySet="V_PERSONA">
+                <ScalarProperty Name="DISTRITO" ColumnName="DISTRITO" />
+                <ScalarProperty Name="PROVINCIA" ColumnName="PROVINCIA" />
+                <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+                <ScalarProperty Name="ID_TIPO_ORGANIZACION" ColumnName="ID_TIPO_ORGANIZACION" />
+                <ScalarProperty Name="NRO_DOCPERNATURAL" ColumnName="NRO_DOCPERNATURAL" />
+                <ScalarProperty Name="FLAG_OEC" ColumnName="FLAG_OEC" />
+                <ScalarProperty Name="ID_AURA" ColumnName="ID_AURA" />
+                <ScalarProperty Name="CELULAR" ColumnName="CELULAR" />
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="FLAG" ColumnName="FLAG" />
+                <ScalarProperty Name="CODIGO_PUERTO" ColumnName="CODIGO_PUERTO" />
+                <ScalarProperty Name="ID_TIPO_IDENTIFICACION_REP_LEG" ColumnName="ID_TIPO_IDENTIFICACION_REP_LEG" />
+                <ScalarProperty Name="NRO_DOCUMENTO_REPRESENTANTE" ColumnName="NRO_DOCUMENTO_REPRESENTANTE" />
+                <ScalarProperty Name="REPRESENTANTE_LEGAL" ColumnName="REPRESENTANTE_LEGAL" />
+                <ScalarProperty Name="AUDIT_MOD" ColumnName="AUDIT_MOD" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="NRO_DOCUMENTO" ColumnName="NRO_DOCUMENTO" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="RAZON_SOCIAL" ColumnName="RAZON_SOCIAL" />
+                <ScalarProperty Name="RUBRO" ColumnName="RUBRO" />
+                <ScalarProperty Name="ID_TIPO_IDENTIFICACION" ColumnName="ID_TIPO_IDENTIFICACION" />
+                <ScalarProperty Name="CODIGO_DISTRITO" ColumnName="CODIGO_DISTRITO" />
+                <ScalarProperty Name="CODIGO_PROVINCIA" ColumnName="CODIGO_PROVINCIA" />
+                <ScalarProperty Name="CODIGO_DEPARTAMENTO" ColumnName="CODIGO_DEPARTAMENTO" />
+                <ScalarProperty Name="ID_TIPO_PERSONA" ColumnName="ID_TIPO_PERSONA" />
+                <ScalarProperty Name="ID_SECTOR" ColumnName="ID_SECTOR" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contador">
+            <EntityTypeMapping TypeName="Modelo.contador">
+              <MappingFragment StoreEntitySet="contador">
+                <ScalarProperty Name="AUDITMOD" ColumnName="AUDITMOD" />
+                <ScalarProperty Name="hostname" ColumnName="hostname" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="anio" ColumnName="anio" />
+                <ScalarProperty Name="cont" ColumnName="cont" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_DAT_REQUISITO_TUPA">
+            <EntityTypeMapping TypeName="Modelo.VW_DAT_REQUISITO_TUPA">
+              <MappingFragment StoreEntitySet="VW_DAT_REQUISITO_TUPA">
+                <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+                <ScalarProperty Name="VALOR_UIT" ColumnName="VALOR_UIT" />
+                <ScalarProperty Name="ID_TIPO_REQUISITO" ColumnName="ID_TIPO_REQUISITO" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="NUMERO_REQUISITO" ColumnName="NUMERO_REQUISITO" />
+                <ScalarProperty Name="ID_TUPA" ColumnName="ID_TUPA" />
+                <ScalarProperty Name="ID_REQUISITO" ColumnName="ID_REQUISITO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OBSERVACIONES_REQUISITOS_TRAMITE">
+            <EntityTypeMapping TypeName="Modelo.OBSERVACIONES_REQUISITOS_TRAMITE">
+              <MappingFragment StoreEntitySet="OBSERVACIONES_REQUISITOS_TRAMITE">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+                <ScalarProperty Name="ID_REQUISITO_TUPA" ColumnName="ID_REQUISITO_TUPA" />
+                <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO_DOCUMENTO">
+            <EntityTypeMapping TypeName="Modelo.ESTADO_DOCUMENTO">
+              <MappingFragment StoreEntitySet="ESTADO_DOCUMENTO">
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID_ESTADO_DOCUMENTO" ColumnName="ID_ESTADO_DOCUMENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_ANEXO">
+            <EntityTypeMapping TypeName="Modelo.TIPO_ANEXO">
+              <MappingFragment StoreEntitySet="TIPO_ANEXO">
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID_TIPO_ANEXO" ColumnName="ID_TIPO_ANEXO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_DAT_TRABAJADOR">
+            <EntityTypeMapping TypeName="Modelo.VW_DAT_TRABAJADOR">
+              <MappingFragment StoreEntitySet="VW_DAT_TRABAJADOR">
+                <ScalarProperty Name="PUBLICADO_INTRANET" ColumnName="PUBLICADO_INTRANET" />
+                <ScalarProperty Name="DIRECTOR" ColumnName="DIRECTOR" />
+                <ScalarProperty Name="CODIGO_MAESTRO" ColumnName="CODIGO_MAESTRO" />
+                <ScalarProperty Name="CODDEP_PUB" ColumnName="CODDEP_PUB" />
+                <ScalarProperty Name="IDSUBDEPENDENCIA" ColumnName="IDSUBDEPENDENCIA" />
+                <ScalarProperty Name="IDPROFESION" ColumnName="IDPROFESION" />
+                <ScalarProperty Name="PUBLICADO" ColumnName="PUBLICADO" />
+                <ScalarProperty Name="AUDIT_MOD" ColumnName="AUDIT_MOD" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="FECHA_NACIMIENTO" ColumnName="FECHA_NACIMIENTO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="CONDICION" ColumnName="CONDICION" />
+                <ScalarProperty Name="NOMBRES_TRABAJADOR" ColumnName="NOMBRES_TRABAJADOR" />
+                <ScalarProperty Name="APELLIDOS_TRABAJADOR" ColumnName="APELLIDOS_TRABAJADOR" />
+                <ScalarProperty Name="CODIGO_DEPENDENCIA" ColumnName="CODIGO_DEPENDENCIA" />
+                <ScalarProperty Name="CODIGO_TRABAJADOR" ColumnName="CODIGO_TRABAJADOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="finaldoc">
+            <EntityTypeMapping TypeName="Modelo.finaldoc">
+              <MappingFragment StoreEntitySet="finaldoc">
+                <ScalarProperty Name="usuario_reactiva" ColumnName="usuario_reactiva" />
+                <ScalarProperty Name="observaciones_reactiva" ColumnName="observaciones_reactiva" />
+                <ScalarProperty Name="audit_reactiva" ColumnName="audit_reactiva" />
+                <ScalarProperty Name="FLAG" ColumnName="FLAG" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="auditmod" ColumnName="auditmod" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="coddep" ColumnName="coddep" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="id_documento" ColumnName="id_documento" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DAT_CONTADOR_INTERNO">
+            <EntityTypeMapping TypeName="Modelo.DAT_CONTADOR_INTERNO">
+              <MappingFragment StoreEntitySet="DAT_CONTADOR_INTERNO">
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="contador" ColumnName="contador" />
+                <ScalarProperty Name="id_documento" ColumnName="id_documento" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_documentos_sitradoc">
+            <EntityTypeMapping TypeName="Modelo.vw_documentos_sitradoc">
+              <MappingFragment StoreEntitySet="vw_documentos_sitradoc">
+                <ScalarProperty Name="numero_reporte" ColumnName="numero_reporte" />
+                <ScalarProperty Name="documento_estado" ColumnName="documento_estado" />
+                <ScalarProperty Name="audit_rec" ColumnName="audit_rec" />
+                <ScalarProperty Name="pdf" ColumnName="pdf" />
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+                <ScalarProperty Name="estado_documento" ColumnName="estado_documento" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="fecha_registro_v" ColumnName="fecha_registro_v" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="coddep" ColumnName="coddep" />
+                <ScalarProperty Name="folios" ColumnName="folios" />
+                <ScalarProperty Name="asunto" ColumnName="asunto" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="numero_tramite" ColumnName="numero_tramite" />
+                <ScalarProperty Name="tipo_registro" ColumnName="tipo_registro" />
+                <ScalarProperty Name="id_anexo" ColumnName="id_anexo" />
+                <ScalarProperty Name="id_documento" ColumnName="id_documento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_documentos_sitradoc_digitalizacion">
+            <EntityTypeMapping TypeName="Modelo.vw_documentos_sitradoc_digitalizacion">
+              <MappingFragment StoreEntitySet="vw_documentos_sitradoc_digitalizacion">
+                <ScalarProperty Name="numero_reporte" ColumnName="numero_reporte" />
+                <ScalarProperty Name="documento_digitalizado" ColumnName="documento_digitalizado" />
+                <ScalarProperty Name="audit_rec" ColumnName="audit_rec" />
+                <ScalarProperty Name="pdf" ColumnName="pdf" />
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+                <ScalarProperty Name="estado_documento" ColumnName="estado_documento" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="fecha_registro_v" ColumnName="fecha_registro_v" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="coddep" ColumnName="coddep" />
+                <ScalarProperty Name="folios" ColumnName="folios" />
+                <ScalarProperty Name="asunto" ColumnName="asunto" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="numero_tramite" ColumnName="numero_tramite" />
+                <ScalarProperty Name="tipo_registro" ColumnName="tipo_registro" />
+                <ScalarProperty Name="id_anexo" ColumnName="id_anexo" />
+                <ScalarProperty Name="id_documento" ColumnName="id_documento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_documento_estado">
+            <EntityTypeMapping TypeName="Modelo.vw_documento_estado">
+              <MappingFragment StoreEntitySet="vw_documento_estado">
+                <ScalarProperty Name="numero_reporte" ColumnName="numero_reporte" />
+                <ScalarProperty Name="id_reporte" ColumnName="id_reporte" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="ip_audit" ColumnName="ip_audit" />
+                <ScalarProperty Name="user_audit" ColumnName="user_audit" />
+                <ScalarProperty Name="audit_fecha" ColumnName="audit_fecha" />
+                <ScalarProperty Name="id_anexo" ColumnName="id_anexo" />
+                <ScalarProperty Name="id_documento" ColumnName="id_documento" />
+                <ScalarProperty Name="id_documento_estado" ColumnName="id_documento_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DAT_DOCUMENTO_LF">
+            <EntityTypeMapping TypeName="Modelo.DAT_DOCUMENTO_LF">
+              <MappingFragment StoreEntitySet="DAT_DOCUMENTO_LF">
+                <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
+                <ScalarProperty Name="TIPO_DOCLF" ColumnName="TIPO_DOCLF" />
+                <ScalarProperty Name="ID_LASERFICHE" ColumnName="ID_LASERFICHE" />
+                <ScalarProperty Name="ID_LF" ColumnName="ID_LF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DAT_DOCUMENTO_COPIA">
+            <EntityTypeMapping TypeName="Modelo.DAT_DOCUMENTO_COPIA">
+              <MappingFragment StoreEntitySet="DAT_DOCUMENTO_COPIA">
+                <ScalarProperty Name="AUDITCREA" ColumnName="AUDITCREA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="LEIDO" ColumnName="LEIDO" />
+                <ScalarProperty Name="CODDEP" ColumnName="CODDEP" />
+                <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
+                <ScalarProperty Name="ID_DOCUMENTO_COPIA" ColumnName="ID_DOCUMENTO_COPIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DAT_REPORTE_DIGITALIZADO">
+            <EntityTypeMapping TypeName="Modelo.DAT_REPORTE_DIGITALIZADO">
+              <MappingFragment StoreEntitySet="DAT_REPORTE_DIGITALIZADO">
+                <ScalarProperty Name="fecha_filtro_fin" ColumnName="fecha_filtro_fin" />
+                <ScalarProperty Name="fecha_filtro_ini" ColumnName="fecha_filtro_ini" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="ip_audit" ColumnName="ip_audit" />
+                <ScalarProperty Name="user_audit" ColumnName="user_audit" />
+                <ScalarProperty Name="fecha_audit" ColumnName="fecha_audit" />
+                <ScalarProperty Name="fecha_recibido" ColumnName="fecha_recibido" />
+                <ScalarProperty Name="codigo_trabajador_recibido" ColumnName="codigo_trabajador_recibido" />
+                <ScalarProperty Name="coddep_recibido" ColumnName="coddep_recibido" />
+                <ScalarProperty Name="codigo_trabajador_entregado" ColumnName="codigo_trabajador_entregado" />
+                <ScalarProperty Name="coddep_entregado" ColumnName="coddep_entregado" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="numero_reporte" ColumnName="numero_reporte" />
+                <ScalarProperty Name="ip_user_registro" ColumnName="ip_user_registro" />
+                <ScalarProperty Name="user_registro" ColumnName="user_registro" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="id_reporte" ColumnName="id_reporte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_documentos_sitradoc_red_digitalizacion">
+            <EntityTypeMapping TypeName="Modelo.vw_documentos_sitradoc_red_digitalizacion">
+              <MappingFragment StoreEntitySet="vw_documentos_sitradoc_red_digitalizacion">
+                <ScalarProperty Name="numero_reporte" ColumnName="numero_reporte" />
+                <ScalarProperty Name="dat_documento_digitalizado" ColumnName="dat_documento_digitalizado" />
+                <ScalarProperty Name="audit_recibido_str" ColumnName="audit_recibido_str" />
+                <ScalarProperty Name="pdf" ColumnName="pdf" />
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+                <ScalarProperty Name="estado_documento" ColumnName="estado_documento" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="fecha_registro_v" ColumnName="fecha_registro_v" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="coddep" ColumnName="coddep" />
+                <ScalarProperty Name="folios" ColumnName="folios" />
+                <ScalarProperty Name="asunto" ColumnName="asunto" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="numero_tramite" ColumnName="numero_tramite" />
+                <ScalarProperty Name="tipo_registro" ColumnName="tipo_registro" />
+                <ScalarProperty Name="id_anexo" ColumnName="id_anexo" />
+                <ScalarProperty Name="id_documento" ColumnName="id_documento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_listado_reportes_digitalizados">
+            <EntityTypeMapping TypeName="Modelo.vw_listado_reportes_digitalizados">
+              <MappingFragment StoreEntitySet="vw_listado_reportes_digitalizados">
+                <ScalarProperty Name="fecha_filtro_fin" ColumnName="fecha_filtro_fin" />
+                <ScalarProperty Name="fecha_filtro_ini" ColumnName="fecha_filtro_ini" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="ip_audit" ColumnName="ip_audit" />
+                <ScalarProperty Name="user_audit" ColumnName="user_audit" />
+                <ScalarProperty Name="fecha_audit" ColumnName="fecha_audit" />
+                <ScalarProperty Name="hora_recibido" ColumnName="hora_recibido" />
+                <ScalarProperty Name="fecha_recibido" ColumnName="fecha_recibido" />
+                <ScalarProperty Name="trabajador_recibido" ColumnName="trabajador_recibido" />
+                <ScalarProperty Name="codigo_trabajador_recibido" ColumnName="codigo_trabajador_recibido" />
+                <ScalarProperty Name="siglas_dep_recibido" ColumnName="siglas_dep_recibido" />
+                <ScalarProperty Name="dep_recibido" ColumnName="dep_recibido" />
+                <ScalarProperty Name="coddep_recibido" ColumnName="coddep_recibido" />
+                <ScalarProperty Name="trabajador_entregado" ColumnName="trabajador_entregado" />
+                <ScalarProperty Name="codigo_trabajador_entregado" ColumnName="codigo_trabajador_entregado" />
+                <ScalarProperty Name="siglas_dep_entregado" ColumnName="siglas_dep_entregado" />
+                <ScalarProperty Name="dep_entregado" ColumnName="dep_entregado" />
+                <ScalarProperty Name="coddep_entregado" ColumnName="coddep_entregado" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="numero_reporte_int" ColumnName="numero_reporte_int" />
+                <ScalarProperty Name="numero_reporte" ColumnName="numero_reporte" />
+                <ScalarProperty Name="ip_user_registro" ColumnName="ip_user_registro" />
+                <ScalarProperty Name="user_registro" ColumnName="user_registro" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="id_reporte" ColumnName="id_reporte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_listado_reportes_documentos">
+            <EntityTypeMapping TypeName="Modelo.vw_listado_reportes_documentos">
+              <MappingFragment StoreEntitySet="vw_listado_reportes_documentos">
+                <ScalarProperty Name="fecha_filtro_fin" ColumnName="fecha_filtro_fin" />
+                <ScalarProperty Name="fecha_filtro_ini" ColumnName="fecha_filtro_ini" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="ip_audit" ColumnName="ip_audit" />
+                <ScalarProperty Name="user_audit" ColumnName="user_audit" />
+                <ScalarProperty Name="fecha_audit" ColumnName="fecha_audit" />
+                <ScalarProperty Name="hora_recibido" ColumnName="hora_recibido" />
+                <ScalarProperty Name="fecha_recibido" ColumnName="fecha_recibido" />
+                <ScalarProperty Name="trabajador_recibido" ColumnName="trabajador_recibido" />
+                <ScalarProperty Name="codigo_trabajador_recibido" ColumnName="codigo_trabajador_recibido" />
+                <ScalarProperty Name="siglas_dep_recibido" ColumnName="siglas_dep_recibido" />
+                <ScalarProperty Name="dep_recibido" ColumnName="dep_recibido" />
+                <ScalarProperty Name="coddep_recibido" ColumnName="coddep_recibido" />
+                <ScalarProperty Name="trabajador_entregado" ColumnName="trabajador_entregado" />
+                <ScalarProperty Name="codigo_trabajador_entregado" ColumnName="codigo_trabajador_entregado" />
+                <ScalarProperty Name="siglas_dep_entregado" ColumnName="siglas_dep_entregado" />
+                <ScalarProperty Name="dep_entregado" ColumnName="dep_entregado" />
+                <ScalarProperty Name="coddep_entregado" ColumnName="coddep_entregado" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="numero_reporte_int" ColumnName="numero_reporte_int" />
+                <ScalarProperty Name="numero_reporte" ColumnName="numero_reporte" />
+                <ScalarProperty Name="ip_user_registro" ColumnName="ip_user_registro" />
+                <ScalarProperty Name="user_registro" ColumnName="user_registro" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="id_reporte" ColumnName="id_reporte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DAT_REPORTE_DOCUMENTOS">
+            <EntityTypeMapping TypeName="Modelo.DAT_REPORTE_DOCUMENTOS">
+              <MappingFragment StoreEntitySet="DAT_REPORTE_DOCUMENTOS">
+                <ScalarProperty Name="fecha_filtro_fin" ColumnName="fecha_filtro_fin" />
+                <ScalarProperty Name="fecha_filtro_ini" ColumnName="fecha_filtro_ini" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="ip_audit" ColumnName="ip_audit" />
+                <ScalarProperty Name="user_audit" ColumnName="user_audit" />
+                <ScalarProperty Name="fecha_audit" ColumnName="fecha_audit" />
+                <ScalarProperty Name="fecha_recibido" ColumnName="fecha_recibido" />
+                <ScalarProperty Name="codigo_trabajador_recibido" ColumnName="codigo_trabajador_recibido" />
+                <ScalarProperty Name="coddep_recibido" ColumnName="coddep_recibido" />
+                <ScalarProperty Name="codigo_trabajador_entregado" ColumnName="codigo_trabajador_entregado" />
+                <ScalarProperty Name="coddep_entregado" ColumnName="coddep_entregado" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="numero_reporte" ColumnName="numero_reporte" />
+                <ScalarProperty Name="ip_user_registro" ColumnName="ip_user_registro" />
+                <ScalarProperty Name="user_registro" ColumnName="user_registro" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="id_reporte" ColumnName="id_reporte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_TRATAMIENTO">
+            <EntityTypeMapping TypeName="Modelo.TIPO_TRATAMIENTO">
+              <MappingFragment StoreEntitySet="TIPO_TRATAMIENTO">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_tipo_tratamiento" ColumnName="id_tipo_tratamiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCUMENTO_CONT">
+            <EntityTypeMapping TypeName="Modelo.DOCUMENTO_CONT">
+              <MappingFragment StoreEntitySet="DOCUMENTO_CONT">
+                <ScalarProperty Name="CANT_ADJUNTOS" ColumnName="CANT_ADJUNTOS" />
+                <ScalarProperty Name="CANT_COPIAS" ColumnName="CANT_COPIAS" />
+                <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUENTAINTERNO">
+            <EntityTypeMapping TypeName="Modelo.CUENTAINTERNO">
+              <MappingFragment StoreEntitySet="CUENTAINTERNO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="contador" ColumnName="contador" />
+                <ScalarProperty Name="id_tipo_documento" ColumnName="id_tipo_documento" />
+                <ScalarProperty Name="coddep" ColumnName="coddep" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doc_tipo_tratamiento">
+            <EntityTypeMapping TypeName="Modelo.doc_tipo_tratamiento">
+              <MappingFragment StoreEntitySet="doc_tipo_tratamiento">
+                <ScalarProperty Name="ID_DOC_TIPO_TRATAMIENTO" ColumnName="ID_DOC_TIPO_TRATAMIENTO" />
+                <ScalarProperty Name="dependencia" ColumnName="dependencia" />
+                <ScalarProperty Name="id_tipo_tratamiento" ColumnName="id_tipo_tratamiento" />
+                <ScalarProperty Name="id_documento" ColumnName="id_documento" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_documentos_sitradoc_red">
+            <EntityTypeMapping TypeName="Modelo.vw_documentos_sitradoc_red">
+              <MappingFragment StoreEntitySet="vw_documentos_sitradoc_red">
+                <ScalarProperty Name="numero_reporte" ColumnName="numero_reporte" />
+                <ScalarProperty Name="documento_estado" ColumnName="documento_estado" />
+                <ScalarProperty Name="audit_recibido_str" ColumnName="audit_recibido_str" />
+                <ScalarProperty Name="pdf" ColumnName="pdf" />
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+                <ScalarProperty Name="estado_documento" ColumnName="estado_documento" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="fecha_registro_v" ColumnName="fecha_registro_v" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="coddep" ColumnName="coddep" />
+                <ScalarProperty Name="folios" ColumnName="folios" />
+                <ScalarProperty Name="asunto" ColumnName="asunto" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="numero_tramite" ColumnName="numero_tramite" />
+                <ScalarProperty Name="tipo_registro" ColumnName="tipo_registro" />
+                <ScalarProperty Name="id_anexo" ColumnName="id_anexo" />
+                <ScalarProperty Name="id_documento" ColumnName="id_documento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCUMENTO_ADJUNTO">
+            <EntityTypeMapping TypeName="Modelo.DOCUMENTO_ADJUNTO">
+              <MappingFragment StoreEntitySet="DOCUMENTO_ADJUNTO">
+                <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="MIMETYPE" ColumnName="MIMETYPE" />
+                <ScalarProperty Name="FLAG" ColumnName="FLAG" />
+                <ScalarProperty Name="NOMBRE_ADJUNTO" ColumnName="NOMBRE_ADJUNTO" />
+                <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
+                <ScalarProperty Name="ID_DOCUMENTO_ADJUNTO" ColumnName="ID_DOCUMENTO_ADJUNTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCUMENTO_DEPDESTINO">
+            <EntityTypeMapping TypeName="Modelo.DOCUMENTO_DEPDESTINO">
+              <MappingFragment StoreEntitySet="DOCUMENTO_DEPDESTINO">
+                <ScalarProperty Name="ID_DOCUMENTO_DEPDESTINO" ColumnName="ID_DOCUMENTO_DEPDESTINO" />
+                <ScalarProperty Name="FLAG" ColumnName="FLAG" />
+                <ScalarProperty Name="CODDEP_DESTINO" ColumnName="CODDEP_DESTINO" />
+                <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCUMENTO_REFERENCIA">
+            <EntityTypeMapping TypeName="Modelo.DOCUMENTO_REFERENCIA">
+              <MappingFragment StoreEntitySet="DOCUMENTO_REFERENCIA">
+                <ScalarProperty Name="ID_HOJA_TRAMITE" ColumnName="ID_HOJA_TRAMITE" />
+                <ScalarProperty Name="FLAG" ColumnName="FLAG" />
+                <ScalarProperty Name="NUMERO_HOJA_TRAMITE" ColumnName="NUMERO_HOJA_TRAMITE" />
+                <ScalarProperty Name="TIPO_HOJA_TRAMITE" ColumnName="TIPO_HOJA_TRAMITE" />
+                <ScalarProperty Name="ID_DOCUMENTO_REFERENCIA" ColumnName="ID_DOCUMENTO_REFERENCIA" />
+                <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCUMENTO">
+            <EntityTypeMapping TypeName="Modelo.DOCUMENTO">
+              <MappingFragment StoreEntitySet="DOCUMENTO">
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="id_docbak" ColumnName="id_docbak" />
+                <ScalarProperty Name="REPORTE_OCURRENCIA" ColumnName="REPORTE_OCURRENCIA" />
+                <ScalarProperty Name="SUJETO_PROCESO_JUDICIAL" ColumnName="SUJETO_PROCESO_JUDICIAL" />
+                <ScalarProperty Name="ESTADO_EXPEDIENTE" ColumnName="ESTADO_EXPEDIENTE" />
+                <ScalarProperty Name="coddep_responsable" ColumnName="coddep_responsable" />
+                <ScalarProperty Name="requerimiento" ColumnName="requerimiento" />
+                <ScalarProperty Name="v_asesor" ColumnName="v_asesor" />
+                <ScalarProperty Name="Fecha_Max_Plazo" ColumnName="Fecha_Max_Plazo" />
+                <ScalarProperty Name="referencia" ColumnName="referencia" />
+                <ScalarProperty Name="modificacion" ColumnName="modificacion" />
+                <ScalarProperty Name="fecha3" ColumnName="fecha3" />
+                <ScalarProperty Name="OBSFIN" ColumnName="OBSFIN" />
+                <ScalarProperty Name="coddep" ColumnName="coddep" />
+                <ScalarProperty Name="FECHA2" ColumnName="FECHA2" />
+                <ScalarProperty Name="ESTADO_REQUISITO" ColumnName="ESTADO_REQUISITO" />
+                <ScalarProperty Name="AUDITMOD" ColumnName="AUDITMOD" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="PRIORIDAD" ColumnName="PRIORIDAD" />
+                <ScalarProperty Name="FECHA_RECEPCION" ColumnName="FECHA_RECEPCION" />
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+                <ScalarProperty Name="FOLIOS" ColumnName="FOLIOS" />
+                <ScalarProperty Name="ASUNTO" ColumnName="ASUNTO" />
+                <ScalarProperty Name="INDICATIVO_OFICIO" ColumnName="INDICATIVO_OFICIO" />
+                <ScalarProperty Name="NUM_TRAM_DOCUMENTARIO" ColumnName="NUM_TRAM_DOCUMENTARIO" />
+                <ScalarProperty Name="ID_CLASE_DOCUMENTO_INTERNO" ColumnName="ID_CLASE_DOCUMENTO_INTERNO" />
+                <ScalarProperty Name="ID_ESTADO_DOCUMENTO" ColumnName="ID_ESTADO_DOCUMENTO" />
+                <ScalarProperty Name="ID_TIPO_DOCUMENTO" ColumnName="ID_TIPO_DOCUMENTO" />
+                <ScalarProperty Name="ID_TUP" ColumnName="ID_TUP" />
+                <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
+                <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

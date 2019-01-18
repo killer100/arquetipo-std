@@ -1,0 +1,179 @@
+<form class="form-horizontal" (ngSubmit)="handleSubmit()">
+    <div class="panel panel-default panel-custom">
+        <div class="panel-heading">Buscar documento</div>
+        <div class="panel-body">
+            <div class="panel panel-default mb-15">
+                <div class="panel-body pb-0">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Término
+                            a buscar</label>
+                        <div class="col-sm-10">
+                            <input type="text" [(ngModel)]="form.num_tram_documentario"
+                                name="term" [disabled]="disabled" class="form-control"
+                                placeholder="Ingrese término a buscar" (change)="search()"
+                                maxlength="20" />
+                            <label class="radio-inline">
+                                <input type="radio" name="estado" [(ngModel)]="form.estado"
+                                    [disabled]="disabled" [value]="null"
+                                    (change)="search()" />
+                                Todos
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="estado" [(ngModel)]="form.estado"
+                                    [disabled]="disabled" [value]="1" (change)="search()" />
+                                Registrado
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="estado" [(ngModel)]="form.estado"
+                                    [disabled]="disabled" [value]="1000"
+                                    (change)="search()" />
+                                Por Digitalizar
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="estado" [(ngModel)]="form.estado"
+                                    [disabled]="disabled" [value]="4" (change)="search()" />
+                                Observado
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="estado" [(ngModel)]="form.estado"
+                                    [disabled]="disabled" [value]="2" (change)="search()" />
+                                Derivado
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="estado" [(ngModel)]="form.estado"
+                                    [value]="10" [disabled]="disabled" (change)="search()" />
+                                Finalizado
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default mb-15">
+                <div class="panel-body pb-0">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Fecha Inicio</label>
+                        <div class="col-sm-4">
+                            <app-datepicker [(Model)]="form.fecha_inicio"
+                                [disabled]="disabled"></app-datepicker>
+                        </div>
+                        <label class="col-sm-2 control-label">Fecha Fin</label>
+                        <div class="col-sm-4">
+                            <app-datepicker [(Model)]="form.fecha_fin"
+                                [disabled]="disabled"></app-datepicker>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <accordion class="panel-group panel-busqueda">
+                <accordion-group panelClass="panel panel-default">
+                    <div accordion-heading>
+                        <h4 class="panel-title">
+                            <a role="button">
+                                <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                                Opciones
+                                de Búsqueda Avanzada
+                                <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div class="form-group mb-0">
+                        <label class="col-sm-2 control-label">Resolución</label>
+                        <div class="col-sm-10">
+                            <div class="form-inline">
+                                <div class="form-group-doc">
+                                    <app-select [items]="enum_tipos_resolucion"
+                                        [(Model)]="form.id_tipo_resolucion"
+                                        [disabled]="disabled"></app-select>
+                                </div>
+                                <div class="form-group-doc">
+                                    <input type="text" class="form-control"
+                                        [(ngModel)]="form.numero_resolucion"
+                                        name="numero_resolucion" maxlength="10"
+                                        number-only [disabled]="disabled" />
+                                </div>
+                                <div class="form-group-doc"><label>-</label></div>
+                                <div class="form-group-doc">
+                                    <app-select [items]="enum_anios" [(Model)]="form.anio_resolucion"
+                                        [disabled]="disabled"></app-select>
+                                </div>
+                                <div class="form-group-doc"><label>- PRODUCE /</label></div>
+                                <div class="form-group-doc">
+                                    <app-typed-select [items]="enum_siglas_oficina"
+                                        bindValue="label" [(Model)]="form.oficina_resolucion"
+                                        [disabled]="disabled"></app-typed-select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-0">
+                        <label class="col-sm-2 control-label">Documento</label>
+                        <div class="col-sm-10">
+                            <div class="form-inline Reg-Doc">
+                                <div class="form-group-doc">
+                                    <app-select [items]="enum_clases_documento"
+                                        [(Model)]="form.id_clase_documento"
+                                        [disabled]="disabled"></app-select>
+                                </div>
+                                <div class="form-group-doc">
+                                    <input type="text" class="form-control"
+                                        [(ngModel)]="form.numero_documento"
+                                        name="numero_documento" [disabled]="disabled"
+                                        maxlength="10" number-only />
+                                </div>
+                                <div class="form-group-doc"><label>-</label></div>
+                                <div class="form-group-doc">
+                                    <app-select [items]="enum_anios" [(Model)]="form.anio_documento"
+                                        [disabled]="disabled"></app-select>
+                                </div>
+                                <div class="form-group-doc"><label>- PRODUCE /</label></div>
+                                <div class="form-group-doc">
+                                    <app-typed-select [items]="enum_siglas_oficina"
+                                        bindValue="label" [(Model)]="form.oficina_documento"
+                                        [disabled]="disabled"></app-typed-select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Razón
+                            Social</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Razón Social"
+                                [(ngModel)]="form.razon_social" name="razon_social"
+                                maxlength="100" [disabled]="disabled" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Oficina
+                            Derivada</label>
+                        <div class="col-sm-4">
+                            <app-typed-select [items]="enum_dependencias"
+                                [(Model)]="form.coddep_oficina_derivada"
+                                [disabled]="disabled"></app-typed-select>
+                        </div>
+                        <label class="col-sm-1 control-label">TUPA</label>
+                        <div class="col-sm-5">
+                            <app-typed-select [items]="enum_tupas" [(Model)]="form.id_tupa"
+                                bindValue="id_tupa" bindLabel="descripcion"
+                                [disabled]="disabled"></app-typed-select>
+                        </div>
+                    </div>
+                    <div class="form-group mb-0">
+                        <label class="col-sm-2 control-label">Asunto</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Asunto"
+                                [(ngModel)]="form.asunto" name="asunto"
+                                maxlength="100" [disabled]="disabled" />
+                        </div>
+                    </div>
+                </accordion-group>
+            </accordion>
+        </div>
+        <div class="panel-footer text-center">
+            <button type="submit" class="btn btn-primary-custom" [disabled]="disabled"> <i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+            <button type="button" class="btn btn-default-custom" (click)="handleClear()" [disabled]="disabled"> <i class="fa fa-eraser" aria-hidden="true"></i> Limpiar</button>
+        </div>
+    </div>
+</form>

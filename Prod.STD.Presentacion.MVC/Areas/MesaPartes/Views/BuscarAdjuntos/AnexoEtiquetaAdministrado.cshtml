@@ -1,0 +1,98 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model Prod.STD.Entidades.Anexo.AnexoResponse
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>STD</title>
+</head>
+<body onload="window.print();window.close()">
+
+    <div align="center">
+        <strong><font size="-2" face="Arial, Helvetica, sans-serif">Ministerio de la Producción</font></strong>
+    </div>
+
+    <table border="1" align="center" cellspacing="0" width="280">
+        <tbody>
+            <tr>
+                <td align="center" bgcolor="cyan">
+                    <img id="barcode" alt="@Model.id_anexo" height="35" />
+                </td>
+                <td align="center" bgcolor="cyan" border="0">
+                    <font size="-4" face="Arial, Helvetica, sans-serif"><strong>N° Folios:</strong> @Model.folios</font>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <font size="-1" face="Arial, Helvetica, sans-serif"><strong>ADJUNTO N°</strong></font><strong>
+                        <font size="-1" face="Arial, Helvetica, sans-serif">@Model.num_documento_anexo</font>
+                    </strong>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="left">
+                    <font size="-2" face="Arial, Helvetica, sans-serif"><strong>RAZÓN SOCIAL:</strong></font><strong>
+                        <font size="-2" face="Arial, Helvetica, sans-serif">@(Model.persona != null ? (Model.persona.razon_social_format.Length > 25 ? Model.persona.razon_social_format.Substring(0, 25) + "..." : Model.persona.razon_social_format) : "-")</font>
+                    </strong>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="left">
+                    <font size="-2" face="Arial, Helvetica, sans-serif"><strong>ASUNTO:</strong></font><strong>
+                        <font size="-2" face="Arial, Helvetica, sans-serif">@(Model.contenido.Length > 25 ? @Model.contenido.Substring(0, 25) + "..." : @Model.contenido)</font>
+                    </strong>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <font size="-2" face="Arial, Helvetica, sans-serif"><strong>REGISTRADO POR:</strong> <strong>@Model.usuario</strong></font>
+                </td>
+                <td align="center">
+                    <strong> <font size="-2" face="Arial, Helvetica, sans-serif">FECHA: @Model.audit_mod.Value.ToString("dd/MM/yyyy hh:mm:ss")</font></strong>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <strong><font size="-2" face="Arial, Helvetica, sans-serif">https://www.produce.gob.pe/consulta-tramite</font></strong><br>
+                    <strong><font size="-2" face="Arial, Helvetica, sans-serif">616-2222 Anexos: 2460 - 2461</font></strong>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="~/scripts/libs/jquery-2.2.4.min.js"></script>
+    <script src="~/scripts/libs/JsBarcode.all.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#barcode").JsBarcode("@Model.id_anexo", {
+                width: 3,
+                height: 35,
+                //format: "auto",
+                displayValue: true,
+                fontOptions: "",
+                font: "monospace",
+                text: undefined,
+                textAlign: "center",
+                textPosition: "bottom",
+                textMargin: 2,
+                fontSize: 20,
+                background: "#ffffff",
+                lineColor: "#000000",
+                margin: 10,
+                marginTop: undefined,
+                marginBottom: undefined,
+                marginLeft: undefined,
+                marginRight: undefined,
+                valid: function valid() {}
+            });
+        });
+    </script>
+</body>
+</html>

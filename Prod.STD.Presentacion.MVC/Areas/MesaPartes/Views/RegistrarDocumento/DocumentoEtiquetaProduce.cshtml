@@ -1,0 +1,98 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model Prod.STD.Entidades.Documento.DocumentoResponse
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>STD</title>
+</head>
+<body onload="window.print();window.close()">
+    <div align="center">
+        <strong><font size="-2" face="Arial, Helvetica, sans-serif">Ministerio de la Producción</font></strong>
+    </div>
+    <table border="1" align="center" cellspacing="0" width="280">
+        <tbody>
+            <tr>
+                <td align="center" bgcolor="cyan">
+                    <img id="barcode" alt="@Model.id_documento" height="35" />
+                </td>
+                <td align="center" bgcolor="cyan" border="0">
+                    <font size="-4" face="Arial, Helvetica, sans-serif"><strong>N° Folios:</strong> @Model.folios</font>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <font size="-1" face="Arial, Helvetica, sans-serif">
+                        <strong>REGISTRO N°</strong>
+                    </font><strong> <font face="Arial, Helvetica, sans-serif" size="-1">@Model.num_tram_documentario</font></strong>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="left">
+                    <font size="-2" face="Arial, Helvetica, sans-serif"><strong>RAZÓN SOCIAL:</strong></font><strong>
+                        <font size="-2" face="Arial, Helvetica, sans-serif">@(Model.persona != null ? (Model.persona.razon_social_format.Length > 25 ? Model.persona.razon_social_format.Substring(0, 25) + "..." : Model.persona.razon_social_format) : "-")</font>
+                    </strong>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="left">
+                    <font size="-2" face="Arial, Helvetica, sans-serif"><strong>ASUNTO:</strong></font><strong>
+                        <font size="-2" face="Arial, Helvetica, sans-serif">@(Model.asunto.Length > 25 ? @Model.asunto.Substring(0, 25) + "..." : @Model.asunto)</font>
+                    </strong>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <font size="-2" face="Arial, Helvetica, sans-serif"><strong>REGISTRADO POR:</strong> <strong>@Model.usuario</strong></font>
+                </td>
+                <td align="center">
+                    <strong> <font size="-2" face="Arial, Helvetica, sans-serif">FECHA: @Model.auditmod.ToString("dd/MM/yyyy hh:mm:ss")</font></strong>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <font size="-1" face="Arial, Helvetica, sans-serif">
+                        <strong>@(Model.movimiento_documento == null && !Model.movimiento_documento.Where(x => x.id_oficio == null).Any() ? "-" : Model.movimiento_documento.FirstOrDefault(x => x.id_oficio == null).dependencia_destino.siglas)</strong>
+                    </font>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="~/scripts/libs/jquery-2.2.4.min.js"></script>
+    <script src="~/scripts/libs/JsBarcode.all.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#barcode").JsBarcode("@Model.id_documento", {
+                width: 3,
+                height: 35,
+                //format: "auto",
+                displayValue: true,
+                fontOptions: "",
+                font: "monospace",
+                text: undefined,
+                textAlign: "center",
+                textPosition: "bottom",
+                textMargin: 2,
+                fontSize: 20,
+                background: "#ffffff",
+                lineColor: "#000000",
+                margin: 10,
+                marginTop: undefined,
+                marginBottom: undefined,
+                marginLeft: undefined,
+                marginRight: undefined,
+                valid: function valid() {}
+            });
+        });
+    </script>
+</body>
+</html>

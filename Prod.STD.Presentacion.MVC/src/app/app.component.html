@@ -1,0 +1,13 @@
+<app-header [logo]="appInfo.logo" [nombreDesc]="appInfo.nombreDesc"
+    [menuOptions]="menuOptions" [userFullname]="userFullname"></app-header>
+
+<div class="container contenido-principal">
+    <app-breadcrumb [data]="breadcrumb"></app-breadcrumb>
+
+    <router-outlet></router-outlet>
+
+    <ng-container *ngIf="loadingRouteConfig">
+        <div class="text-center">Cargando aplicación...</div>
+    </ng-container>
+</div>
+<app-footer></app-footer>

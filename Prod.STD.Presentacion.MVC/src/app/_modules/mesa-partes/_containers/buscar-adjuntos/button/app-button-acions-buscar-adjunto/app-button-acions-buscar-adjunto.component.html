@@ -1,0 +1,15 @@
+<div class="container-buttons">
+    <button *ngIf="adjunto.PuedeEditarOAnular" (click)="onClickModificarAdjunto(adjunto.id_anexo)"
+        [disabled]="disabled" class="btn btn-secondary-custom btn-icon" placement="bottom"
+        tooltip="Modificar adjunto"><i class="fa fa-edit" aria-hidden="true"></i></button>
+
+    <button *ngIf="adjunto.PuedeEditarOAnular" (click)="onClickAnularAdjunto(adjunto)"
+        [disabled]="disabled" class="btn btn-secondary-custom btn-icon" role="button"
+         placement="bottom" tooltip="Anular adjunto"><i class="fa fa-trash"
+            aria-hidden="true"></i></button>
+    <button (click)="onClickImprimirEtiqueta(adjunto.id_anexo)" [disabled]="disabled"
+        class="btn btn-secondary-custom btn-icon" href="#" role="button"
+        placement="bottom" tooltip="Imprimir etiquetas">
+        <i class="fa fa-print" aria-hidden="true"></i>
+    </button>
+</div>

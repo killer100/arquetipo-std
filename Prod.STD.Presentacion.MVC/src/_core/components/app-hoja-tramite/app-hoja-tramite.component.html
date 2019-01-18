@@ -1,0 +1,110 @@
+<app-modal-envelope modal-title="Hoja de Ruta" [loading]="loading" [onClose]="bsModalRef.hide"
+    [footer]="false">
+    <div body style="max-height: 832px;">
+        <div *ngIf="loading" class="text-center container-cargando-datos">Cargando
+            datos del
+            documento...</div>
+        <div *ngIf="tipo=='E'&&!loading">
+            <div class=" form-group text-center">
+                <h2 class="subtitle-detail">Hoja de Trámite</h2>
+                <h2 class="subtitle-detail">
+                    N°
+                    {{hoja_tramite.documento.num_tram_documentario}}-E
+                    ({{hoja_tramite.documento.tipo}})
+                    <a class="btn btn-link btn-icon" style="vertical-align: top;"
+                        role="button"><i class="fa fa-file-pdf-o fa-lg"
+                            aria-hidden="true"></i></a></h2>
+                <div class="btn-exportar">
+                    <button type="button" class="btn btn-secondary-custom"><i
+                            class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                        Exportar a PDF</button>
+                </div>
+            </div>
+            <div class="form-horizontal">
+                <div class="form-group mb-0">
+                    <label class="col-sm-2 control-label">Remitente:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{hoja_tramite.documento.razon_social}}</p>
+                    </div>
+                </div>
+                <div class="form-group mb-0">
+                    <label class="col-sm-2 control-label">Documento:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{hoja_tramite.documento.nro_documento}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="form-group mb-0">
+                            <label class="col-sm-3 control-label">Asunto:</label>
+                            <div class="col-sm-9">
+                                <p class="form-control-static">{{hoja_tramite.documento.asunto}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group mb-0">
+                            <label class="col-sm-6 control-label">Fecha:</label>
+                            <div class="col-sm-6">
+                                <p class="form-control-static">{{hoja_tramite.documento.fecha}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-0">
+                    <label class="col-sm-2 control-label">Observaciones:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{hoja_tramite.documento.observaciones
+                            || "-"}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="tipo=='I'&&!loading"></div>
+        
+        <hr>
+        <div class="table-responsive" *ngIf="!loading">
+            <app-list-table [tableDef]="tableDef" [items]="hoja_tramite.rutas"></app-list-table>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="well well-sm">
+                    <ol>
+                        <li>Conocimiento y fines</li>
+                        <li>Trámite correspondiente</li>
+                        <li>Coordinar</li>
+                        <li>Urgente</li>
+                        <li>Pendiente</li>
+                        <li>Archivo</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="well well-sm">
+                    <ol>
+                        <li value="7">Evaluar</li>
+                        <li>Opinión</li>
+                        <li>Informar</li>
+                        <li>Corregir</li>
+                        <li>Proyectar resolución</li>
+                        <li>Designar/Propoponer representante</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="well well-sm">
+                    <ol>
+                        <li value="13">Revisar y V°B°</li>
+                        <li>Preparar respuesta</li>
+                        <li>Respuesta</li>
+                        <li>Proceder de acuerdo a normas vigentes</li>
+                        <li>Devolver</li>
+                        <li>Otros</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-modal-envelope>

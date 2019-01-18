@@ -1,0 +1,19 @@
+<app-page-title text="Búscar Documentos">
+  <button type="submit" class="btn btn-primary-custom" (click)="openModalRegistrarDocumento();">
+    <i class="fa fa-plus-circle" aria-hidden="true"></i> Nuevo Documento
+  </button> 
+</app-page-title>
+
+<app-form-busqueda [onSubmit]="handleSubmitForm" 
+                   [estadoBusquedaDocumento]="estadoBusquedaDocumentoInterno"
+                   (selectEstadoBusqueda)="changeEstadoBusqueda($event)">  
+</app-form-busqueda>
+
+<app-button-actions-impresion></app-button-actions-impresion>
+
+<app-datatable [tableDef]="tableDef" [pagination]="pagination" [loading]="loading" [error]="datatableError"
+  [onChangePage]="handleChangePage" [onChangePageSize]="handleChangePageSize">
+  
+<app-button-actions-estado [codEstadoDocInterno] ="selectEstadoBusquedaDoc"></app-button-actions-estado>  
+
+</app-datatable>

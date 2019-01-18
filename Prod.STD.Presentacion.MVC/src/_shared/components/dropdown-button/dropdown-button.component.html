@@ -1,0 +1,10 @@
+<div class="btn-group" dropdown>
+    <button dropdownToggle type="button" class="btn {{buttonClass}} dropdown-toggle"
+        [disabled]="disabled" aria-controls="dropdown-basic">
+        <i class="{{iconClass}}"></i> {{text}} <span class="caret"></span>
+    </button>
+    <ul *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+        <li role="menuitem" *ngFor="let option of options"><a class="dropdown-item"
+                (click)="option.onClick()">{{option.label}}</a></li>
+    </ul>
+</div>

@@ -1,0 +1,100 @@
+<form (submit)="handleSubmit($event)">
+    <app-modal-envelope modal-title="{{title}}" [onClose]="bsModalRef.hide"
+        size="lg" [loading]="loading">
+        <div body>
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label>N° del documento:</label>
+                        <span>{{adjunto.num_documento_anexo}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Fecha de Emisión:</label>
+                        <span>{{adjunto.audit_mod | dateFormat}}</span>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Hora de Emisión:</label>
+                        <span>{{adjunto.audit_mod
+                            | dateFormat:"":"HH:mm:ss"}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error': errors.id_persona}">
+                <label class="control-label">Razón Social <span class="required_field">(*)</span></label>
+                <app-autocomplete *ngIf="!adjunto.id_persona" [(Model)]="_razon_social"
+                    bindLabel="razon_social_format" [getData]="getPersonas"
+                    [onSelect]="handleSelectPersona" [disabled]="loading"></app-autocomplete>
+
+                <div class="input-group" *ngIf="adjunto.id_persona">
+                    <input type="text" class="form-control" readonly value="{{adjunto.persona.razon_social_format}}">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" [disabled]="loading"
+                            type="button" (click)="adjunto.id_persona=null">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </span>
+                </div>
+                <span class="help-block" *ngIf="errors.id_persona">{{errors.id_persona}}</span>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label">Destino</label>
+                <input class="form-control" type="text" readonly value={{adjunto.persona_destino.dependencia.dependencia}}>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Director</label>
+                <input type="text" class="form-control" readonly value="{{adjunto.persona_destino.nombre_format}}">
+            </div>
+
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="form-group" [ngClass]="{'has-error': errors.id_tipo_anexo}">
+                        <label class="control-label">Tipo
+                            documento <span class="required_field">(*)</span></label>
+                        <app-typed-select [items]="enum_tipos_anexo" bindValue="id_tipo_anexo"
+                            bindLabel="descripcion" [(Model)]="adjunto.id_tipo_anexo"
+                            [disabled]="loading">
+                        </app-typed-select>
+                        <span class="help-block" *ngIf="errors.id_tipo_anexo">{{errors.id_tipo_anexo}}</span>
+                    </div>
+                </div>
+                <div class="col-md-3" [ngClass]="{'has-error': errors.folios}">
+                    <div class="form-group">
+                        <label class="control-label">N° de
+                            Folios <span class="required_field">(*)</span></label>
+                        <input [disabled]="loading" type="text" class="form-control"
+                            name="folios" number-only maxlength="3" [(ngModel)]="adjunto.folios">
+                        <span class="help-block" *ngIf="errors.folios">{{errors.folios}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" [ngClass]="{'has-error': errors.contenido}">
+                <label class="control-label">Contenido <span class="required_field">(*)</span></label>
+                <textarea [disabled]="loading" class="form-control" name="contenido"
+                    rows="3" maxlength="200" [(ngModel)]="adjunto.contenido"></textarea>
+                <span class="help-block" *ngIf="errors.contenido">{{errors.contenido}}</span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Observaciones</label>
+                <textarea [disabled]="loading" class="form-control" name="observaciones"
+                    rows="3" maxlength="200" [(ngModel)]="adjunto.observaciones"></textarea>
+            </div>
+
+        </div>
+        <div footer>
+            <button type="submit" class="btn btn-primary-custom" [disabled]="loading">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                {{submit_text}}</button>
+
+            <button type="button" class="btn btn-default-custom" (click)="bsModalRef.hide()"
+                [disabled]="loading"><i class="fa fa-ban" aria-hidden="true"></i>
+                Cancelar</button>
+        </div>
+    </app-modal-envelope>
+</form>

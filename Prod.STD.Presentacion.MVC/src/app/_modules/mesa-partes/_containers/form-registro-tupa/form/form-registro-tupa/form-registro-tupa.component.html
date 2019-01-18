@@ -1,0 +1,132 @@
+<form (submit)="handleSubmit($event)">
+    <app-modal-envelope modal-title="{{title}}" [onClose]="bsModalRef.hide"
+        [loading]="loading">
+        <div body>
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Tipo de Documento:</label>
+                        <span> TUPA</span>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Fecha de Recepción:</label>
+                        <span> {{documento.fecha_recepcion | dateFormat}}</span>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Hora de Recepción:</label>
+                        <span> {{documento.fecha_recepcion |
+                            dateFormat:"":"HH:mm:ss"}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-horizontal">
+
+                <div class="form-group" [ngClass]="{'has-error': errors.id_persona}">
+                    <label class="col-sm-4 control-label">Razón
+                        Social / Apellidos y Nombres</label>
+                    <div class="col-sm-8">
+                        <app-autocomplete [(Model)]="_razon_social" bindLabel="razon_social_format"
+                            [getData]="getPersonas" [onSelect]="handleSelectPersona"
+                            [disabled]="loading"></app-autocomplete>
+                        <span class="help-block" *ngIf="errors.id_persona">{{errors.id_persona}}</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">RUC / DNI</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" value="{{documento.persona.nro_documento}}"
+                            placeholder="RUC / DNI" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Domicilio</label>
+                    <div class="col-sm-8">
+                        <textarea class="form-control" rows="3" placeholder="Domicilio"
+                            value="{{documento.persona.domicilio}}" readonly></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Clase de
+                        Procedimiento</label>
+                    <div class="col-sm-8">
+                        <app-typed-select [items]="enum_clasesTupa" bindValue="id_clase_tupa"
+                            [(Model)]="_id_clase_tupa" bindLabel="descripcion"
+                            [disabled]="loading" [onSelect]="handleChangeClaseTupa"></app-typed-select>
+                    </div>
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error': errors.id_tup}">
+                    <label class="col-sm-4 control-label">Procedimiento</label>
+                    <div class="col-sm-8">
+                        <app-typed-select [items]="enum_tupas" bindValue="id_tupa"
+                            [disabled]="flags_enumerados.tupas||loading"
+                            [(Model)]="documento.id_tup" bindLabel="descripcion_format"
+                            [onSelect]="handleChangeTupa"></app-typed-select>
+                        <span class="help-block" *ngIf="errors.id_tup">{{errors.id_tup}}</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-8">
+                        <button type="button" class="btn btn-primary-custom"
+                            (click)="openModalRequisitos()" [disabled]="loading||!documento.id_tup"><i
+                                class="fa fa-list-alt" aria-hidden="true"></i>
+                            Ver Requisitos</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" [ngClass]="{'has-error': errors.id_clase_documento_interno}">Clase
+                        de Documento</label>
+                    <div class="col-sm-5" [ngClass]="{'has-error': errors.id_clase_documento_interno}">
+                        <app-typed-select [items]="enum_clasesDocumento"
+                            bindValue="id_clase_documento_interno" bindLabel="descripcion"
+                            [disabled]="loading" [(Model)]="documento.id_clase_documento_interno"></app-typed-select>
+                        <span class="help-block" *ngIf="errors.id_clase_documento_interno">{{errors.id_clase_documento_interno}}</span>
+                    </div>
+                    <label class="col-sm-1 control-label" [ngClass]="{'has-error': errors.folios}">Folios</label>
+                    <div class="col-sm-2" [ngClass]="{'has-error': errors.folios}">
+                        <input type="text" class="form-control" [(ngModel)]="documento.folios"
+                            [disabled]="loading" name="folios" placeholder="Folios"
+                            maxlength="3" number-only />
+                        <span class="help-block" *ngIf="errors.folios">{{errors.folios}}</span>
+                    </div>
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error': errors.indicativo_oficio}">
+                    <label class="col-sm-4 control-label">Número de Indicativo</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" [(ngModel)]="documento.indicativo_oficio"
+                            name="indicativo_oficio" placeholder="Número de Indicativo"
+                            [disabled]="loading" />
+                        <span class="help-block" *ngIf="errors.indicativo_oficio">{{errors.indicativo_oficio}}</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Observaciones</label>
+                    <div class="col-sm-8">
+                        <textarea class="form-control" rows="3" placeholder="Observaciones"
+                            [(ngModel)]="documento.observaciones" [disabled]="loading"
+                            name="observaciones"></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div footer>
+            <button type="submit" class="btn btn-primary-custom" [disabled]="loading">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                {{submit_text}}</button>
+
+            <button type="button" class="btn btn-default-custom" (click)="bsModalRef.hide()"
+                [disabled]="loading"><i class="fa fa-ban" aria-hidden="true"></i>
+                Cancelar</button>
+        </div>
+    </app-modal-envelope>
+</form>

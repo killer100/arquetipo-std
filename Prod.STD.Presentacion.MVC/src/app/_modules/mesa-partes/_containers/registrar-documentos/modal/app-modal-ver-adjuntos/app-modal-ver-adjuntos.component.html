@@ -1,0 +1,29 @@
+<app-modal-envelope [loading]="loading" modal-title="Documentos Adjuntos"
+    [onClose]="bsModalRef.hide">
+    <div body>
+        <div class="well well-sm">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">N° Registro:</label>
+                    <div class="col-sm-5">
+                        <p class="form-control-static">{{documento.num_tram_documentario}}</p>
+                    </div>
+                    <label class="col-sm-2 control-label">Fecha:</label>
+                    <div class="col-sm-3">
+                        <p class="form-control-static">{{documento.auditmod
+                            | dateFormat: "": "DD/MM/YYYY HH:mm:ss"}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <app-list-table [tableDef]="tableDef" [items]="adjuntos"></app-list-table>
+        </div>
+
+    </div>
+    <div footer>
+        <button type="button" class="btn btn-default-custom" (click)="bsModalRef.hide()"
+            [disabled]="loading"><i class="fa fa-ban" aria-hidden="true"></i>
+            Cancelar</button>
+    </div>
+</app-modal-envelope>

@@ -1,0 +1,52 @@
+<app-modal-envelope [loading]="loading" modal-title="Anular Adjunto" [onClose]="bsModalRef.hide">
+    <div body>
+        <div class="well well-sm">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">N° Adjunto:</label>
+                    <div class="col-sm-5">
+                        <p class="form-control-static">{{adjunto.num_documento_anexo}}</p>
+                    </div>
+                    <label class="col-sm-2 control-label">Fecha:</label>
+                    <div class="col-sm-3">
+                        <p class="form-control-static">{{adjunto.audit_mod
+                            | dateFormat: "": "DD/MM/YYYY HH:mm:ss"}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Razón Social:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{adjunto.persona.razon_social_format}}
+                            {{adjunto.persona.nro_documento}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Asunto:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{adjunto.contenido}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Derivado a:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{adjunto.persona_destino.dependencia.siglas}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <label>Motivo de Anulación <span class="required_field">(*)</span></label>
+            <textarea [disabled]="loading" class="form-control" rows="3"
+                maxlength="100" [(ngModel)]="motivo"></textarea>
+        </div>
+    </div>
+    <div footer>
+        <button [disabled]="!motivo||loading" (click)="handleAnular()" type="button"
+            class="btn btn-primary-custom"><i class="fa fa-trash fa-lg"></i>
+            Anular</button>
+        <button [disabled]="loading" (click)="bsModalRef.hide()" type="button"
+            class="btn btn-default-custom" data-dismiss="modal"><i class="fa fa-ban fa-lg"
+                aria-hidden="true"></i>
+            Cancelar</button>
+    </div>
+</app-modal-envelope>

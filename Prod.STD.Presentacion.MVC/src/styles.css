@@ -1,0 +1,201 @@
+/* Add application styles & imports to this file! */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.modal-open .modal {
+    overflow-y: auto;
+}
+
+.modal {
+    display: flex !important;
+}
+
+.modal-dialog {
+    margin: auto;
+}
+
+.modal-body {
+    max-height: 700px;
+}
+
+@media (min-width: 1200px) {
+
+    .modal.container {
+        width: 1170px;
+    }
+}
+
+@media only screen and (max-width : 768px) {
+    .modal-dialog {
+        width: 100%;
+    }
+
+    .modal-body {
+        max-height: 480px;
+    }
+}
+
+label.has-error {
+    color: #a94442;
+}
+
+/*
+.modal {
+    text-align: center;
+    padding: 0 !important;
+    overflow-y: auto !important;
+}
+
+.modal:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4;
+}
+
+.modal .modal-dialog {
+    display: inline-block !important;
+    text-align: left !important;
+    vertical-align: middle !important;
+}
+*/
+@media (min-width: 1200px) {
+    .modal-custom.container {
+        width: 1200px;
+    }
+}
+
+.modal .modal-body {
+    overflow-y: auto;
+}
+
+.form-group-doc {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.bs-datepicker-container {
+    padding: 0px !important;
+}
+
+/*.btn {
+    margin-left: 2px;
+    margin-right: 2px;
+}*/
+
+.ng-select.ng-select-bootstrap {
+    min-width: 200px;
+}
+
+.ng-select.ng-select-bootstrap .ng-select-container {}
+
+.ng-select.ng-select-bootstrap.ng-select-disabled .ng-select-container {
+    background-color: #eee;
+}
+
+.ng-select.ng-select-bootstrap .ng-select-container:active,
+.ng-select.ng-select-bootstrap .ng-select-container:focus,
+.ng-select.ng-select-bootstrap .ng-select-container:focus-within {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.has-error .ng-select.ng-select-bootstrap .ng-select-container {
+    border-color: #a94442;
+}
+
+.required_field {
+    color: #a94442;
+}
+
+.theme-datepicker-produce .bs-datepicker-head {
+    background: #dc3545 !important;
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+    padding: 2px;
+    background: #337ab7;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value .ng-value-icon:hover {
+    background: #337ab7;
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value .ng-value-icon.left {
+    border-right: 0px;
+}
+
+/* 
+table.table-custom td, table.table-custom th {
+    vertical-align: middle!important;
+    text-align: center!important;
+} */
+
+.Reg-Doc .form-group-doc .form-control:first-child {
+    width: 191px;
+}
+
+.btn+.btn {
+    /*margin-bottom: 0;*/
+    margin-left: 5px;
+}
+
+.panel-heading h4 {
+    font-family: "WorkSans-SemiBold", Helvetica, Arial, sans-serif;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: #31708f;
+}
+
+.panel-heading h4 a {
+    color: #31708f;
+}
+
+accordion>accordion-group.panel.panel-open>div>div.panel-heading.card-header>div>div>h4>a:before {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.joined.panel-group>panel.panel-open .panel-heading h4 a:before {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.joined.panel-group>.panel .panel-heading h4 a:before {
+    position: relative;
+    content: '\f077';
+    display: inline-block;
+    font-family: "FontAwesome";
+    padding: 10px 15px;
+    padding: 0;
+    float: right;
+    font-size: 17px;
+    margin-left: 13px;
+    top: 0px;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+}
+
+button.btn-tramite {
+    font-family: "WorkSans-SemiBold", Helvetica, Arial, sans-serif;
+    color: #c92329;
+}
+
+button.btn-tramite:focus,
+button.btn-tramite:hover {
+    color: #c92329;
+    text-decoration: underline;
+}

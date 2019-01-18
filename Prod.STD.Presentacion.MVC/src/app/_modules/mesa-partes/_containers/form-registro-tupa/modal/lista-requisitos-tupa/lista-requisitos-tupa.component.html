@@ -1,0 +1,35 @@
+<app-modal-envelope modal-title="Requisitos" [onClose]="bsModalRef.hide">
+    <div body>
+        <div class="well well-sm">
+            <h5 class="title-rojo">{{title}}</h5>
+        </div>
+        <h3 class="subtitle-custom">Requisitos:</h3>
+        <table class="table table-condensed table-requisitos">
+            <tbody>
+                <tr *ngFor="let req of requisitos; index as i">
+                    <th scope="row">{{i+1}}</th>
+                    <td [innerHtml]="req.descripcion"></td>
+                    <td>
+                        <input type="checkbox" [(ngModel)]="req.estado_observacion">
+                    </td>
+                    <td width="300"><textarea class="form-control" rows="2"
+                            [(ngModel)]="req.observaciones" [disabled]="req.estado_observacion"
+                            name="observaciones"></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <label for="exampleInputEmail1">Observaciones Generales de los
+                Requisitos</label>
+            <textarea class="form-control" rows="3" [(ngModel)]="requisito_general.observaciones"></textarea>
+        </div>
+    </div>
+
+    <div footer>
+        <button type="button" class="btn btn-primary-custom" (click)="handleRegister()"><i
+                class="fa fa-check" aria-hidden="true"></i>
+            Registrar requisitos</button>
+        <button type="button" class="btn btn-default-custom" (click)="bsModalRef.hide()"><i
+                class="fa fa-ban" aria-hidden="true"></i> Cancelar</button>
+    </div>
+</app-modal-envelope>

@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <!--<TargetFramework>netstandard2.0</TargetFramework>-->
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />    
+    <PackageReference Include="Release.Helper" Version="1.1.6" />
+  </ItemGroup> 
+  
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\MapDB\Prod.STD.Servicios.Modelo\*.cs">
+      <Link>Modelo\%(FileName)</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Prod.STD.Datos.NoSQL\Prod.STD.Datos.NoSQL.csproj" />
+    <ProjectReference Include="..\Prod.STD.Enumerados\Prod.STD.Enumerados.csproj" />
+    <ProjectReference Include="..\Prod.STD.Entidades\Prod.STD.Entidades.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Applicacion\Proceso\" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,19 @@
+<app-page-title text="Documentos Ingresados">
+    <button type="button" class="btn btn-secondary-custom" (click)="handleOpenListaReportes()"><i
+            class="fa fa-list" aria-hidden="true"></i>
+        Ver listado de reportes</button>
+</app-page-title>
+
+<app-form-buscar-documentos-ingresados [onSubmit]="handleSearch" [disabled]="loading"></app-form-buscar-documentos-ingresados>
+
+<app-input-documentos-ingresados-seleccionados [items]="documentosSeleccionados"
+    [onRemove]="handleDeleteDocumentoSeleccionado" [onClickBarcode]="handleOpenModalBarcodes">
+</app-input-documentos-ingresados-seleccionados>
+
+<app-datatable [tableDef]="tableDef" [pagination]="pagination" [loading]="loading"
+    [error]="datatableError" [onChangePage]="handleChangePage"
+    [onChangePageSize]="handleChangePageSize">
+    <button type="button" class="btn btn-secondary-custom" (click)="handleOpenGeneraReporte()"><i
+            class="fa fa-print" aria-hidden="true"></i> Generar
+        Reporte</button>
+</app-datatable>
